@@ -3,7 +3,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { createNotificationListState } from './state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
-	import MessageTimestamp from '$stylist/chat/component/atom/message-timestamp/index.svelte';
+	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 
 	let props: RecipeNotificationList = $props();
 	const state = createNotificationListState(() => props);

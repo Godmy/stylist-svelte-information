@@ -4,6 +4,7 @@ export type {
 	RecipeCountBadge,
 	RecipeCounter,
 	RecipeErrorMessage,
+	RecipeMessageTimestamp,
 	RecipeNotificationBadge,
 	RecipeNotificationCenter,
 	RecipeNotificationList,

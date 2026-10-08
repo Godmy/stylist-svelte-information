@@ -3,4 +3,5 @@ export { Alert } from './alert/index';
 export { CountBadge } from './count-badge/index';
 export { Counter } from './counter/index';
 export { ErrorMessage } from './error-message/index';
+export { MessageTimestamp } from './message-timestamp/index';
 export { NotificationBadge } from './notification-badge/index';

@@ -4,6 +4,7 @@ export {
 	CountBadge,
 	Counter,
 	ErrorMessage,
+	MessageTimestamp,
 	NotificationBadge
 } from './atom';
 export {

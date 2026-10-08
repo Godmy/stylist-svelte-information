@@ -3,7 +3,7 @@
 	import { createNotificationCenterState } from './state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import CountBadge from '$stylist/notification/component/atom/count-badge/index.svelte';
-	import MessageTimestamp from '$stylist/chat/component/atom/message-timestamp/index.svelte';
+	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 
 	let props: RecipeNotificationCenter = $props();
 	const state = createNotificationCenterState(() => props);
