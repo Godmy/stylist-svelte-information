@@ -1,8 +1,2 @@
 export type TypeTranscriberStatus =
-	| 'idle'
-	| 'recording'
-	| 'processing'
-	| 'uploading'
-	| 'transcribing'
-	| 'done'
-	| 'error';
+	'idle' | 'recording' | 'processing' | 'uploading' | 'transcribing' | 'done' | 'error';

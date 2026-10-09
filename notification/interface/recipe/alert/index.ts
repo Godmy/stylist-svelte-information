@@ -14,27 +14,26 @@ import type { BehaviorSpaced } from '$stylist/layout/interface/behavior/spaced';
 import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { HTMLAttributes } from 'svelte/elements';
 
-export interface RecipeAlert
-	extends ComputeIntersectAll<
-		[
-			{
-				variant?: TokenColorTone;
-				size?: TokenSize;
-				disabled?: boolean;
-				showIcon?: boolean;
-				closable?: boolean;
-			},
-			SlotText,
-			SlotIcon,
-			BehaviorClickable,
-			BehaviorMotionPreset,
-			BehaviorSized,
-			BehaviorShapeable,
-			BehaviorSpaced,
-			SlotClass,
-			SlotChildren,
-			SlotContent,
-			SlotTheme,
-			HTMLAttributes<HTMLDivElement>
-		]
-	> {}
+export interface RecipeAlert extends ComputeIntersectAll<
+	[
+		{
+			variant?: TokenColorTone;
+			size?: TokenSize;
+			disabled?: boolean;
+			showIcon?: boolean;
+			closable?: boolean;
+		},
+		SlotText,
+		SlotIcon,
+		BehaviorClickable,
+		BehaviorMotionPreset,
+		BehaviorSized,
+		BehaviorShapeable,
+		BehaviorSpaced,
+		SlotClass,
+		SlotChildren,
+		SlotContent,
+		SlotTheme,
+		HTMLAttributes<HTMLDivElement>
+	]
+> {}

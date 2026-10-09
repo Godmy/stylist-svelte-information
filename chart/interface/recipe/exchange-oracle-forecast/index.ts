@@ -2,8 +2,9 @@ import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotDimensionable } from '$stylist/layout/interface/slot/dimensionable';
 
-export interface RecipeExchangeOracleForecast
-	extends ComputeIntersectAll<[SlotText, SlotDimensionable]> {
+export interface RecipeExchangeOracleForecast extends ComputeIntersectAll<
+	[SlotText, SlotDimensionable]
+> {
 	history: {
 		time: string;
 		value: number;

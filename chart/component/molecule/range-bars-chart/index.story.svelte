@@ -31,17 +31,29 @@
 				{
 					id: 'a',
 					label: 'Integration',
-					startPercent: Math.min(Number(values.integrationStart) || 0, Number(values.integrationEnd) || 0),
+					startPercent: Math.min(
+						Number(values.integrationStart) || 0,
+						Number(values.integrationEnd) || 0
+					),
 					markerPercent: Number(values.integrationMarker) || 0,
-					endPercent: Math.max(Number(values.integrationStart) || 0, Number(values.integrationEnd) || 0),
+					endPercent: Math.max(
+						Number(values.integrationStart) || 0,
+						Number(values.integrationEnd) || 0
+					),
 					valueLabel: `${values.integrationStart}-${values.integrationMarker}-${values.integrationEnd}d`
 				},
 				{
 					id: 'b',
 					label: 'Migration',
-					startPercent: Math.min(Number(values.migrationStart) || 0, Number(values.migrationEnd) || 0),
+					startPercent: Math.min(
+						Number(values.migrationStart) || 0,
+						Number(values.migrationEnd) || 0
+					),
 					markerPercent: Number(values.migrationMarker) || 0,
-					endPercent: Math.max(Number(values.migrationStart) || 0, Number(values.migrationEnd) || 0),
+					endPercent: Math.max(
+						Number(values.migrationStart) || 0,
+						Number(values.migrationEnd) || 0
+					),
 					valueLabel: `${values.migrationStart}-${values.migrationMarker}-${values.migrationEnd}d`
 				}
 			]}

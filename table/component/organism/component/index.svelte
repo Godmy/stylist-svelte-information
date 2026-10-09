@@ -28,7 +28,8 @@
 				<div class="pcc-search-wrap">
 					<BaseIcon
 						name={Search}
-						size={20} style="position: absolute; top: 50%; left: 1rem; transform: translateY(-50%); color: #fb923c"
+						size={20}
+						style="position: absolute; top: 50%; left: 1rem; transform: translateY(-50%); color: #fb923c"
 					/>
 					<input
 						type="text"
@@ -155,7 +156,8 @@
 							<div class="pcc-card-preview-overlay"></div>
 							<BaseIcon
 								name={state.getCategoryIcon(story.category)}
-								size={64} style="opacity: 0.3; transition: opacity 0.15s"
+								size={64}
+								style="opacity: 0.3; transition: opacity 0.15s"
 								class={colors.text}
 							/>
 							<div class="pcc-preview-label {colors.text}">Preview</div>
@@ -192,10 +194,7 @@
 							<span class="pcc-svelte-version">Svelte 5</span>
 							<div class="pcc-open-link">
 								<span>Open</span>
-								<BaseIcon
-									name={ArrowRight}
-									size={16} style="transition: transform 0.15s"
-								/>
+								<BaseIcon name={ArrowRight} size={16} style="transition: transform 0.15s" />
 							</div>
 						</div>
 					</button>

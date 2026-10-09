@@ -8,19 +8,18 @@ import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { BehaviorChartColorable } from '$stylist/chart/interface/behavior/chart-colorable';
 import type { BehaviorChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { ScatterPlotDataPoint } from '$stylist/chart/interface/slot/scatter-plot-point';
-export interface RecipeScatterPlot
-	extends ComputeIntersectAll<
-		[
-			SlotTheme,
-			SlotDimensionable,
-			SlotText,
-			BehaviorChartAxis,
-			BehaviorLegendable,
-			BehaviorPointClickable<ScatterPlotDataPoint>,
-			BehaviorChartColorable,
-			HTMLAttributes<HTMLDivElement>
-		]
-	> {
+export interface RecipeScatterPlot extends ComputeIntersectAll<
+	[
+		SlotTheme,
+		SlotDimensionable,
+		SlotText,
+		BehaviorChartAxis,
+		BehaviorLegendable,
+		BehaviorPointClickable<ScatterPlotDataPoint>,
+		BehaviorChartColorable,
+		HTMLAttributes<HTMLDivElement>
+	]
+> {
 	data: ScatterPlotDataPoint[];
 	title?: string;
 	showAxis?: boolean;

@@ -4,7 +4,8 @@ import type { SlotTypography } from '$stylist/theme/interface/slot/typography';
 import type { SlotAudioSlider } from '$stylist/audio/interface/slot/audio-slider';
 
 export interface RecipeAudioSlider
-	extends Omit<HTMLAttributes<HTMLDivElement>, 'class'>,
+	extends
+		Omit<HTMLAttributes<HTMLDivElement>, 'class'>,
 		SlotThemeBorder,
 		SlotTypography,
 		SlotAudioSlider {

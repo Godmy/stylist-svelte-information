@@ -17,7 +17,10 @@
 			onclick={() => state.handleNotificationClick(notification)}
 		>
 			{#if state.showTypeIcon}
-				<Icon svg={state.getTypeIcon(notification.type)} class={state.getTypeClass(notification.type)} />
+				<Icon
+					svg={state.getTypeIcon(notification.type)}
+					class={state.getTypeClass(notification.type)}
+				/>
 			{/if}
 			<div class="notification-list__item-body">
 				<div class="notification-list__item-title">{notification.title}</div>

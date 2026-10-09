@@ -12,20 +12,19 @@ import type { BehaviorChartColorable } from '$stylist/chart/interface/behavior/c
 import type { BehaviorChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { LineChartData } from '$stylist/chart/interface/slot/line-chart-data';
 import type { LineChartPoint } from '$stylist/chart/interface/slot/line-chart';
-export interface RecipeLineChart
-	extends ComputeIntersectAll<
-		[
-			SlotTheme,
-			SlotDimensionable,
-			SlotText,
-			BehaviorChartAxis,
-			BehaviorLegendable,
-			BehaviorTooltipable,
-			BehaviorPointClickable<LineChartPoint, LineChartData>,
-			BehaviorChartColorable,
-			HTMLAttributes<HTMLDivElement>
-		]
-	> {
+export interface RecipeLineChart extends ComputeIntersectAll<
+	[
+		SlotTheme,
+		SlotDimensionable,
+		SlotText,
+		BehaviorChartAxis,
+		BehaviorLegendable,
+		BehaviorTooltipable,
+		BehaviorPointClickable<LineChartPoint, LineChartData>,
+		BehaviorChartColorable,
+		HTMLAttributes<HTMLDivElement>
+	]
+> {
 	data: LineChartData[];
 	title?: string;
 	chartClass?: string;

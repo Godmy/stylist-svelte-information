@@ -7,16 +7,13 @@ import type { TokenSize } from '$stylist/theme/type/alias/size';
 import type { SlotBadge } from '$stylist/layout/interface/slot/badge';
 import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { SlotImage } from '$stylist/image/interface/slot/image';
-export interface RecipeBaseCard
-	extends ComputeIntersectAll<
-		[
-			SlotTheme,
-			ComputeIntersectAll<
-				[SlotText, SlotText, SlotImage, SlotBadge, HTMLAttributes<HTMLDivElement>]
-			>,
-			SlotChildren
-		]
-	> {
+export interface RecipeBaseCard extends ComputeIntersectAll<
+	[
+		SlotTheme,
+		ComputeIntersectAll<[SlotText, SlotText, SlotImage, SlotBadge, HTMLAttributes<HTMLDivElement>]>,
+		SlotChildren
+	]
+> {
 	title?: string;
 	description?: string;
 	variant?: string;

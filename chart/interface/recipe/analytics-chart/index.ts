@@ -6,17 +6,16 @@ import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { BehaviorLegendable } from '$stylist/chart/interface/behavior/legendable';
 import type { TokenCanvasChartType } from '$stylist/chart/type/alias/canvas-chart-type';
 import type { AnalyticsChartDataPoint } from '$stylist/chart/interface/slot/analytics-chart-data-point';
-export interface RecipeAnalyticsChart
-	extends ComputeIntersectAll<
-		[
-			SlotTheme,
-			SlotDimensionable,
-			SlotText,
-			SlotText,
-			BehaviorLegendable,
-			HTMLAttributes<HTMLDivElement>
-		]
-	> {
+export interface RecipeAnalyticsChart extends ComputeIntersectAll<
+	[
+		SlotTheme,
+		SlotDimensionable,
+		SlotText,
+		SlotText,
+		BehaviorLegendable,
+		HTMLAttributes<HTMLDivElement>
+	]
+> {
 	data: AnalyticsChartDataPoint[];
 	type?: TokenCanvasChartType;
 	title?: string;

@@ -15,7 +15,7 @@
 		onkeydown={(e) => {
 			if (e.key === 'Enter' || e.key === ' ') {
 				e.preventDefault();
-				!state.hasChildren && state.handleSelect();
+				if (!state.hasChildren) state.handleSelect();
 			}
 		}}
 		role="treeitem"

@@ -43,10 +43,46 @@
 				textY={191}
 				connectorVisible={Boolean(values.connectorVisible)}
 				segments={[
-					{ id: 's1', text: 'Ready', value: 24, color: '#22c55e', x: 122, y: 42, width: 76, height: 28 },
-					{ id: 's2', text: 'Active', value: 36, color: String(values.color || '#2563eb'), x: 122, y: 70, width: 76, height: 42 },
-					{ id: 's3', text: 'Blocked', value: 14, color: '#ef4444', x: 122, y: 112, width: 76, height: 18 },
-					{ id: 's4', text: 'Review', value: 10, color: '#f59e0b', x: 122, y: 130, width: 76, height: 24 }
+					{
+						id: 's1',
+						text: 'Ready',
+						value: 24,
+						color: '#22c55e',
+						x: 122,
+						y: 42,
+						width: 76,
+						height: 28
+					},
+					{
+						id: 's2',
+						text: 'Active',
+						value: 36,
+						color: String(values.color || '#2563eb'),
+						x: 122,
+						y: 70,
+						width: 76,
+						height: 42
+					},
+					{
+						id: 's3',
+						text: 'Blocked',
+						value: 14,
+						color: '#ef4444',
+						x: 122,
+						y: 112,
+						width: 76,
+						height: 18
+					},
+					{
+						id: 's4',
+						text: 'Review',
+						value: 10,
+						color: '#f59e0b',
+						x: 122,
+						y: 130,
+						width: 76,
+						height: 24
+					}
 				]}
 			/>
 		</svg>

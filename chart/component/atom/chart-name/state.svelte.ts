@@ -6,7 +6,9 @@ function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
-export function createChartNameState(getProps: () => ChartNameProps & SVGAttributes<SVGTextElement>) {
+export function createChartNameState(
+	getProps: () => ChartNameProps & SVGAttributes<SVGTextElement>
+) {
 	const props = $derived(getProps());
 	const classes = $derived(ClassNamesManager.merge('c-chart-name', resolveClassName(props.class)));
 

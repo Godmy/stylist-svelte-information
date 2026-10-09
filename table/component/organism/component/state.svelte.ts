@@ -14,7 +14,9 @@ const Package = 'package';
 const ArrowRight = 'arrow-right';
 const Sparkles = 'sparkles';
 
-export function createComponentState(getProps: () => RecipeComponent & HTMLAttributes<HTMLDivElement>) {
+export function createComponentState(
+	getProps: () => RecipeComponent & HTMLAttributes<HTMLDivElement>
+) {
 	const props = $derived(getProps());
 	const stories = $derived(props.stories);
 	const categories = $derived(props.categories);

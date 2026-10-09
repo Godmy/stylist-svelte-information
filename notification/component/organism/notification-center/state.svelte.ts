@@ -15,12 +15,12 @@ export function createNotificationCenterState(getProps: () => RecipeNotification
 
 	const unread = $derived(notifications.filter((n) => !n.read).length);
 	const canMarkAllRead = $derived(showMarkAllRead && Boolean(props.onMarkAllRead) && unread > 0);
-	const canClearAll = $derived(showClearAll && Boolean(props.onClearAll) && notifications.length > 0);
+	const canClearAll = $derived(
+		showClearAll && Boolean(props.onClearAll) && notifications.length > 0
+	);
 	const canFetchMore = $derived(Boolean(props.onFetchMore));
 
-	const containerClasses = $derived(
-		ClassNamesManager.merge('notification-center', className)
-	);
+	const containerClasses = $derived(ClassNamesManager.merge('notification-center', className));
 
 	const restProps = $derived.by(() => {
 		const {

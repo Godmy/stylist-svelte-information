@@ -62,9 +62,7 @@
 									{:else}
 										<CellText
 											value={ObjectManagerTableControls.getCellValue(row, col) as
-												| string
-												| number
-												| null}
+												string | number | null}
 											align={col.cell === 'number' ? 'right' : 'left'}
 										/>
 									{/if}

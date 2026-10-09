@@ -18,9 +18,7 @@ export function createScheduledNotificationState(getProps: () => RecipeScheduled
 	const allowReorder = $derived(props.allowReorder ?? false);
 	const className = $derived(props.class ?? '');
 
-	const containerClasses = $derived(
-		ClassNamesManager.merge('scheduled-notification', className)
-	);
+	const containerClasses = $derived(ClassNamesManager.merge('scheduled-notification', className));
 
 	const restProps = $derived.by(() => {
 		const {

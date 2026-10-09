@@ -94,8 +94,7 @@
 
 	<div class="wideband-delphi-diagram__legend" aria-label="Forecast indicators">
 		<span
-			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--outer"></i> Delphi
-			wideband</span
+			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--outer"></i> Delphi wideband</span
 		>
 		<span
 			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--core"></i> Expert core

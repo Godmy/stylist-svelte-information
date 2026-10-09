@@ -8,19 +8,18 @@ import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { BehaviorChartColorable } from '$stylist/chart/interface/behavior/chart-colorable';
 import type { BehaviorChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { IChartDataPoint } from '$stylist/chart/interface/slot/bar-chart';
-export interface RecipeBarChart
-	extends ComputeIntersectAll<
-		[
-			SlotTheme,
-			SlotDimensionable,
-			SlotText,
-			BehaviorChartAxis,
-			BehaviorLegendable,
-			BehaviorTooltipable,
-			BehaviorChartColorable,
-			HTMLAttributes<HTMLDivElement>
-		]
-	> {
+export interface RecipeBarChart extends ComputeIntersectAll<
+	[
+		SlotTheme,
+		SlotDimensionable,
+		SlotText,
+		BehaviorChartAxis,
+		BehaviorLegendable,
+		BehaviorTooltipable,
+		BehaviorChartColorable,
+		HTMLAttributes<HTMLDivElement>
+	]
+> {
 	onBarClick?: (item: IChartDataPoint) => void;
 	data: IChartDataPoint[];
 	title?: string;

@@ -8,19 +8,18 @@ import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { BehaviorChartColorable } from '$stylist/chart/interface/behavior/chart-colorable';
 import type { BehaviorChartAxis } from '$stylist/chart/interface/behavior/chart-axis';
 import type { IHeatmapCell } from '$stylist/chart/interface/slot/heatmap/cell';
-export interface RecipeHeatmap
-	extends ComputeIntersectAll<
-		[
-			SlotTheme,
-			SlotDimensionable,
-			SlotText,
-			BehaviorChartAxis,
-			BehaviorLegendable,
-			BehaviorTooltipable,
-			BehaviorChartColorable,
-			HTMLAttributes<HTMLDivElement>
-		]
-	> {
+export interface RecipeHeatmap extends ComputeIntersectAll<
+	[
+		SlotTheme,
+		SlotDimensionable,
+		SlotText,
+		BehaviorChartAxis,
+		BehaviorLegendable,
+		BehaviorTooltipable,
+		BehaviorChartColorable,
+		HTMLAttributes<HTMLDivElement>
+	]
+> {
 	onCellClick?: (item: IHeatmapCell) => void;
 
 	data: IHeatmapCell[];

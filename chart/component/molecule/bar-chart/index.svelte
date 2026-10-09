@@ -8,11 +8,7 @@
 	const state = createBarChartState(() => props);
 </script>
 
-<div
-	class={state.containerClasses}
-	style={`width: min(100%, ${props.width ?? 600}px);`}
-	{...props}
->
+<div class={state.containerClasses} style={`width: min(100%, ${props.width ?? 600}px);`} {...props}>
 	{#if props.title}
 		<div class={state.titleContainerClasses}>
 			<h3 class={state.titleClasses}>{props.title}</h3>

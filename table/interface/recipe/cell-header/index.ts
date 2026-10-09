@@ -4,8 +4,9 @@ import type { BehaviorClickable } from '$stylist/layout/interface/behavior/click
 import type { BehaviorFocusable } from '$stylist/layout/interface/behavior/focusable';
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 
-export interface RecipeCellHeader
-	extends ComputeIntersectAll<[BehaviorClickable, BehaviorFocusable]> {
+export interface RecipeCellHeader extends ComputeIntersectAll<
+	[BehaviorClickable, BehaviorFocusable]
+> {
 	title: string;
 	sortKey?: string;
 	currentSortKey?: string;

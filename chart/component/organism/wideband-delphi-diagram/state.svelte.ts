@@ -2,7 +2,9 @@ import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import { ManagerWidebandDelphiDiagram } from '$stylist/chart/class/manager/wideband-delphi-diagram';
 import type { RecipeWidebandDelphiDiagram } from '$stylist/chart/interface/recipe/wideband-delphi-diagram';
 
-export default function createWidebandDelphiDiagramState(getProps: () => RecipeWidebandDelphiDiagram) {
+export default function createWidebandDelphiDiagramState(
+	getProps: () => RecipeWidebandDelphiDiagram
+) {
 	const props = $derived(getProps());
 	const className = $derived(ClassNamesManager.merge('wideband-delphi-diagram', props.class));
 	const layout = $derived.by(() =>

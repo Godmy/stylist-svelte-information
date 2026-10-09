@@ -18,7 +18,9 @@
 >
 	{#snippet children(values: any)}
 		{#if removed}
-			<p>Удалено (демо). <button type="button" onclick={() => (removed = false)}>Вернуть</button></p>
+			<p>
+				Удалено (демо). <button type="button" onclick={() => (removed = false)}>Вернуть</button>
+			</p>
 		{:else}
 			<MediaThumbnail
 				src="https://placehold.co/400x300"
