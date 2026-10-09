@@ -4,15 +4,18 @@ export {
 	AudioPlayer,
 	AudioRecordButton,
 	AudioSlider,
-	AudioVisualizer
+	AudioVisualizer,
+	Transcriber
 } from './component';
 export { TOKEN_AUDIO_ICON } from './const';
 export { formatAudioTime } from './function';
+export type { TypeTranscriberStatus } from './type';
 export type {
 	RecipeAudioPlayer,
 	RecipeAudioRecordButton,
 	RecipeAudioSlider,
 	RecipeAudioVisualizer,
+	RecipeTranscriber,
 	SlotAudioPlayer,
 	SlotAudioRecording,
 	SlotAudioSlider,

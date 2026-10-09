@@ -4,4 +4,7 @@ export {
 	AudioSlider,
 	AudioVisualizer
 } from './atom';
-export { AudioPlayer } from './organism';
+export {
+	AudioPlayer,
+	Transcriber
+} from './organism';
