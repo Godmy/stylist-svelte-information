@@ -18,7 +18,7 @@
 		...restProps
 	}: RecipeSortableList = $props();
 
-	const state = createSortableListState({
+	const state = createSortableListState(() => ({
 		items,
 		class: className,
 		onItemsChange,
@@ -28,7 +28,7 @@
 		showActions,
 		variant,
 		...restProps
-	});
+	}));
 </script>
 
 <div class={state.rootClass} {...restProps}>

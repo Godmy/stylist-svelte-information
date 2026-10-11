@@ -6,7 +6,10 @@ function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
-export function createChartLegendState(props: RecipeChartLegend & HTMLAttributes<HTMLDivElement>) {
+export function createChartLegendState(
+	getProps: () => RecipeChartLegend & HTMLAttributes<HTMLDivElement>
+) {
+	const props = $derived(getProps());
 	const classes = $derived(
 		ClassNamesManager.merge('c-chart-legend', resolveClassName(props.class))
 	);

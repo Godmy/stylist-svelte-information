@@ -4,16 +4,15 @@ import type { RecipeMessageTimestamp } from '$stylist/notification/interface/rec
 export function createMessageTimestampState(getProps: () => RecipeMessageTimestamp) {
 	const props = $derived(getProps());
 	// Initialize props with defaults
-	const parsedTimestamp = (() => {
+	const timestamp = $derived.by(() => {
 		if (props.timestamp instanceof Date) {
 			return props.timestamp;
 		}
 		const candidate = new Date(props.timestamp as unknown as string | number | Date);
 		return Number.isNaN(candidate.getTime()) ? new Date(0) : candidate;
-	})();
-	const timestamp = parsedTimestamp;
-	const formatStyle = props.formatStyle ?? 'datetime';
-	const showRelative = props.showRelative ?? false;
+	});
+	const formatStyle = $derived(props.formatStyle ?? 'datetime');
+	const showRelative = $derived(props.showRelative ?? false);
 
 	// Format time value
 	function formatTimeValue(): string {

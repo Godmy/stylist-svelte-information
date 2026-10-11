@@ -6,7 +6,10 @@ function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
-export function createChartCanvasState(props: ChartCanvasProps & HTMLAttributes<HTMLDivElement>) {
+export function createChartCanvasState(
+	getProps: () => ChartCanvasProps & HTMLAttributes<HTMLDivElement>
+) {
+	const props = $derived(getProps());
 	const width = $derived(props.width ?? 640);
 	const height = $derived(props.height ?? 380);
 	const padding = $derived(36);

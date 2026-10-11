@@ -2,11 +2,7 @@ import type { RecipeFilterText } from '$stylist/table/interface/recipe/filter-te
 
 export function createFilterTextState(getProps: () => RecipeFilterText) {
 	const props = $derived(getProps());
-	let value = $state(props.value ?? '');
-
-	$effect(() => {
-		value = props.value ?? '';
-	});
+	let value = $derived(props.value ?? '');
 
 	const handleInput = (e: Event) => {
 		value = (e.target as HTMLInputElement).value;

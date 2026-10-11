@@ -14,7 +14,7 @@
 		...restProps
 	}: RecipeRowExpandable = $props();
 
-	const state = createExpandableTableRowState({
+	const state = createExpandableTableRowState(() => ({
 		expandableContent,
 		rowContent,
 		isExpanded,
@@ -23,7 +23,7 @@
 		headerCellClass,
 		onToggle,
 		...restProps
-	});
+	}));
 </script>
 
 <tr class="c-row-expandable {hostClass}" data-expanded={state.expanded || undefined} {...restProps}>

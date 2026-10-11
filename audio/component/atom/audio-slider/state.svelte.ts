@@ -2,11 +2,7 @@ import type { RecipeAudioSlider } from '$stylist/audio/interface/recipe/audio-sl
 
 export function createAudioSliderState(getProps: () => RecipeAudioSlider) {
 	const props = $derived(getProps());
-	let localValue = $state(props.value ?? 0);
-
-	$effect(() => {
-		localValue = props.value ?? 0;
-	});
+	let localValue = $derived(props.value ?? 0);
 
 	const min = $derived(props.min ?? 0);
 	const max = $derived(props.max ?? 100);

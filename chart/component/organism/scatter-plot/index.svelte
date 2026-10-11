@@ -23,7 +23,7 @@
 		onPointClick,
 		...restProps
 	}: ScatterPlotProps = $props();
-	const state = createScatterPlotState({
+	const state = createScatterPlotState(() => ({
 		data,
 		title,
 		width,
@@ -35,7 +35,7 @@
 		showLabels,
 		class: className,
 		onPointClick
-	});
+	}));
 </script>
 
 <div class={state.rootClass} style={`width:${width}px`} {...restProps}>

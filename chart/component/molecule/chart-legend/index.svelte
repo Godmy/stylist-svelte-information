@@ -5,7 +5,10 @@
 	import createChartLegendState from './state.svelte';
 
 	let props: RecipeChartLegend & HTMLAttributes<HTMLDivElement> = $props();
-	const state = createChartLegendState({ ...props, class: ClassNamesManager.merge(props.class) });
+	const state = createChartLegendState(() => ({
+		...props,
+		class: ClassNamesManager.merge(props.class)
+	}));
 </script>
 
 <div class={state.classes}>

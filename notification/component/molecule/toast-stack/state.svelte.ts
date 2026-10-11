@@ -1,5 +1,5 @@
 import { TOKEN_COLOR_TONE_ICON } from '$stylist/theme/const/map/color-tone-icon';
-import type { TokenColorTone } from '$stylist/theme/type/alias/color-tone';
+import type { TokenColorTone } from '$stylist/design-token/type/alias/color-tone';
 import type { RecipeToastStack } from '$stylist/notification/interface/recipe/toast-stack';
 
 export function createToastStackState(getProps: () => RecipeToastStack) {

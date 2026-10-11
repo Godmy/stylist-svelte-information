@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotThemeBorder } from '$stylist/theme/interface/slot/theme-border';
-import type { SlotTypography } from '$stylist/theme/interface/slot/typography';
+import type { SlotTypography } from '$stylist/typography/interface/slot/typography';
 import { formatTime } from '$stylist/video/function/script/format-time';
 import type { RecipeVideoPlayer } from '$stylist/video/interface/recipe/video-player';
 
@@ -10,7 +10,7 @@ export function createVideoPlayerState(getProps: () => RecipeVideoPlayer) {
 	const props = $derived(getProps());
 	let videoRef = $state<HTMLVideoElement | null>(null);
 	let isPlaying = $state(false);
-	let isMuted = $state(props.muted ?? false);
+	let isMuted = $derived(props.muted ?? false);
 	let currentTime = $state(0);
 	let duration = $state(0);
 	let volume = $state(1.0);

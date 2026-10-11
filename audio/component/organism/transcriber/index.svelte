@@ -5,7 +5,7 @@
 	import { createTranscriberState } from './state.svelte';
 
 	let props: RecipeTranscriber = $props();
-	const state = createTranscriberState(props);
+	const state = createTranscriberState(() => props);
 </script>
 
 <section class={`c-transcriber ${state.className}`} {...state.restProps}>

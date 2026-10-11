@@ -2,11 +2,7 @@ import type { SlotColumnManager as ColumnManagerProps } from '$stylist/table/int
 
 export function createColumnManagerState(getProps: () => ColumnManagerProps) {
 	const props = $derived(getProps());
-	let localColumns = $state(props.columns.map((column) => ({ ...column })));
-
-	$effect(() => {
-		localColumns = props.columns.map((column) => ({ ...column }));
-	});
+	let localColumns = $derived(props.columns.map((column) => ({ ...column })));
 
 	function emit(nextColumns: Array<(typeof props.columns)[number]>) {
 		localColumns = nextColumns.map((column) => ({ ...column }));

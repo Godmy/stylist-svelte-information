@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
-import type { TOKEN_SIZE } from '$stylist/theme/const/array/size';
+import type { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
 import type { SlotImage } from '$stylist/image/interface/slot/image';
 export interface RecipeImage extends ComputeIntersectAll<[SlotImage]> {
 	content?: Snippet;

@@ -13,11 +13,14 @@
 	import { ManagerChartCanvas } from '$stylist/chart/class/manager/chart-canvas';
 
 	let props: RecipeAnalyticsChartCanvas & HTMLAttributes<HTMLDivElement> = $props();
-	const state = createChartCanvasState({
-		width: props.width,
-		height: props.height,
-		class: ClassNamesManager.merge(props.class)
-	} as InformationChartCanvasRecipe & HTMLAttributes<HTMLDivElement>);
+	const state = createChartCanvasState(
+		() =>
+			({
+				width: props.width,
+				height: props.height,
+				class: ClassNamesManager.merge(props.class)
+			}) as InformationChartCanvasRecipe & HTMLAttributes<HTMLDivElement>
+	);
 
 	const width = $derived(state.width);
 	const height = $derived(state.height);

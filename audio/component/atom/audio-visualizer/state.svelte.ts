@@ -5,11 +5,7 @@ export function createAudioVisualizerState(
 	getProps: () => RecipeAudioVisualizer & HTMLAttributes<HTMLDivElement>
 ) {
 	const props = $derived(getProps());
-	let localIsPlaying = $state(props.isPlaying ?? false);
-
-	$effect(() => {
-		localIsPlaying = props.isPlaying ?? false;
-	});
+	let localIsPlaying = $derived(props.isPlaying ?? false);
 
 	const src = $derived(props.src ?? '');
 	const alt = $derived(props.alt ?? 'Audio Visualization');

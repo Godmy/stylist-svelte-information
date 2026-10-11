@@ -43,6 +43,7 @@
 			/>
 			{#each state.layout.items as item (item.id)}
 				<path
+					role="presentation"
 					class={`legend-bar-diagram__connector ${$activeItemId === item.id ? 'legend-bar-diagram__connector--active' : ''}`}
 					d={`M ${item.connectorX} ${item.connectorY1} V ${item.connectorY2}`}
 					stroke={$activeItemId === item.id ? hoverColor : item.color}
@@ -54,6 +55,7 @@
 			{/each}
 			{#each state.layout.items as item (item.id)}
 				<g
+					role="graphics-symbol"
 					class={`legend-bar-diagram__item ${$activeItemId === item.id ? 'legend-bar-diagram__item--active' : ''}`}
 					style={`--legend-bar-hover-color: ${hoverColor};`}
 					onpointerenter={() => {

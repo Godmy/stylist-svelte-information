@@ -1,6 +1,6 @@
-import { TOKEN_OPACITY } from '$stylist/theme/const/object/opacity';
+import { TOKEN_OPACITY } from '$stylist/design-token/const/object/opacity';
 import type { LayoutShape } from '$stylist/layout/type/alias/item-layout-shape';
-import type { TokenSize } from '$stylist/theme/type/alias/size';
+import type { TokenSize } from '$stylist/design-token/type/alias/size';
 import type { RecipeCard } from '$stylist/image/interface/recipe/card';
 
 export function createCardState(getProps: () => RecipeCard) {

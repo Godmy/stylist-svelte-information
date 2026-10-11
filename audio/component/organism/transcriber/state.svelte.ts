@@ -4,7 +4,8 @@ import type { TypeTranscriberStatus } from '$stylist/audio/type/alias/transcribe
 import type { SlotTranscriptionResult } from '$stylist/audio/interface/slot/transcription-result';
 import { AudioRecorderManager } from '$stylist/audio/class/manager/audio-recorder';
 
-export function createTranscriberState(props: RecipeTranscriber) {
+export function createTranscriberState(getProps: () => RecipeTranscriber) {
+	const props = $derived(getProps());
 	const recorder = new AudioRecorderManager();
 	let recording = $state<SlotAudioRecording | null>(null);
 	let transcription = $state<SlotTranscriptionResult | null>(null);

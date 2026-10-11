@@ -2,7 +2,8 @@ import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
 import type { ScatterPlotDataPoint } from '$stylist/chart/interface/slot/scatter-plot-point';
 
-export function createScatterPlotState(props: RecipeScatterPlot) {
+export function createScatterPlotState(getProps: () => RecipeScatterPlot) {
+	const props = $derived(getProps());
 	const maxX = $derived(Math.max(...props.data.map((point: ScatterPlotDataPoint) => point.x), 100));
 	const maxY = $derived(Math.max(...props.data.map((point: ScatterPlotDataPoint) => point.y), 100));
 	const chartWidth = $derived((props.width ?? 700) - 70);
