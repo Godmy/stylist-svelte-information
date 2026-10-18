@@ -1,20 +1,14 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-recording';
+	import type { RecipeAudioRecordButton } from '$stylist/audio/interface/recipe/audio-record-button';
 
 	import AudioRecordButton from './index.svelte';
 
+	// Render of index.story.ts: the recorded file and the event log come from callback props.
+	let args: RecipeAudioRecordButton = $props();
+
 	let recording = $state<SlotAudioRecording | null>(null);
 	let eventLog = $state<string[]>([]);
-
-	const controls: SlotStory[] = [
-		{ name: 'startLabel', type: 'text', defaultValue: 'Record' },
-		{ name: 'stopLabel', type: 'text', defaultValue: 'Stop' },
-		{ name: 'saveLabel', type: 'text', defaultValue: 'Audio ready' },
-		{ name: 'fileName', type: 'text', defaultValue: 'audio-message.webm' },
-		{ name: 'disabled', type: 'boolean', defaultValue: false }
-	];
 
 	function handleRecordingStart() {
 		eventLog = ['Recording started', ...eventLog].slice(0, 4);
@@ -34,65 +28,50 @@
 	}
 </script>
 
-<Story
-	id="atoms-audio-record-button"
-	title="Audio Record Button"
-	component={AudioRecordButton}
-	category="Atoms"
-	description="A button that records an audio message and exposes the created file to the host."
-	{controls}
->
-	{#snippet children(values: any)}
-		<section class="_c1">
-			<div class="_c2">
-				<p class="_c3">Recorder</p>
-				<div class="_c4">
-					<AudioRecordButton
-						startLabel={values.startLabel}
-						stopLabel={values.stopLabel}
-						saveLabel={values.saveLabel}
-						fileName={values.fileName}
-						disabled={values.disabled}
-						onRecordingStart={handleRecordingStart}
-						onRecorded={handleRecorded}
-						onError={handleError}
-					/>
-				</div>
+<section class="_c1">
+	<div class="_c2">
+		<p class="_c3">Recorder</p>
+		<div class="_c4">
+			<AudioRecordButton
+				{...args}
+				onRecordingStart={handleRecordingStart}
+				onRecorded={handleRecorded}
+				onError={handleError}
+			/>
+		</div>
 
-				{#if recording}
-					<div class="_c5">
-						<audio src={recording.url} controls class="_c6"></audio>
-						<dl class="_c7">
-							<div>
-								<dt>File</dt>
-								<dd>{recording.fileName}</dd>
-							</div>
-							<div>
-								<dt>Size</dt>
-								<dd>{Math.round(recording.blob.size / 1024)} KB</dd>
-							</div>
-							<div>
-								<dt>Duration</dt>
-								<dd>{Math.round(recording.durationMs / 1000)} s</dd>
-							</div>
-						</dl>
+		{#if recording}
+			<div class="_c5">
+				<audio src={recording.url} controls class="_c6"></audio>
+				<dl class="_c7">
+					<div>
+						<dt>File</dt>
+						<dd>{recording.fileName}</dd>
 					</div>
-				{/if}
+					<div>
+						<dt>Size</dt>
+						<dd>{Math.round(recording.blob.size / 1024)} KB</dd>
+					</div>
+					<div>
+						<dt>Duration</dt>
+						<dd>{Math.round(recording.durationMs / 1000)} s</dd>
+					</div>
+				</dl>
 			</div>
+		{/if}
+	</div>
 
-			<div class="_c8">
-				<p class="_c3">Events</p>
-				<div class="_c9">
-					{#each eventLog as item}
-						<p>{item}</p>
-					{:else}
-						<p>No recorder events yet</p>
-					{/each}
-				</div>
-			</div>
-		</section>
-	{/snippet}
-</Story>
+	<div class="_c8">
+		<p class="_c3">Events</p>
+		<div class="_c9">
+			{#each eventLog as item, index (index)}
+				<p>{item}</p>
+			{:else}
+				<p>No recorder events yet</p>
+			{/each}
+		</div>
+	</div>
+</section>
 
 <style>
 	._c1 {
