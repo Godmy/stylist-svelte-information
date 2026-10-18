@@ -1,13 +1,13 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { RecipeChartCanvas as ChartCanvasProps } from '$stylist/chart/interface/recipe/chart-canvas';
+import type { RecipeChartCanvas } from '$stylist/chart/interface/recipe/chart-canvas';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
 export function createChartCanvasState(
-	getProps: () => ChartCanvasProps & HTMLAttributes<HTMLDivElement>
+	getProps: () => RecipeChartCanvas & HTMLAttributes<HTMLDivElement>
 ) {
 	const props = $derived(getProps());
 	const width = $derived(props.width ?? 640);
