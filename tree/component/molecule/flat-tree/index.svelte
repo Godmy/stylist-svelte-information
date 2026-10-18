@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import type { RecipeTree } from '$stylist/tree/interface/recipe/tree';
 	import type { TreeNode } from '$stylist/tree/type/object/tree-node';
 	import createTreeExpansionState from '$stylist/tree/function/state/tree-expansion/index.svelte';
@@ -11,10 +10,7 @@
 		node: nodeContent,
 		class: className = '',
 		...restProps
-	}: RecipeTree & {
-		onToggle?: (node: TreeNode, expanded: boolean) => void;
-		node?: Snippet<[TreeNode, number, boolean]>;
-	} = $props();
+	}: RecipeTree = $props();
 	const state = createTreeExpansionState();
 	const rootClass = $derived(['c-flat-tree', className].filter(Boolean).join(' '));
 
