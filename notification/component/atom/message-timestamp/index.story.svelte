@@ -1,32 +1,11 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import MessageTimestamp from './index.svelte';
+	import type { RecipeMessageTimestamp } from '$stylist/notification/interface/recipe/message-timestamp';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'formatStyle',
-			type: 'select',
-			defaultValue: 'datetime',
-			options: ['datetime', 'time', 'date']
-		},
-		{ name: 'showRelative', type: 'boolean', defaultValue: false },
-		{ name: 'minutesAgo', type: 'number', defaultValue: 5, min: 0, max: 180 }
-	];
+	// Render of index.story.ts: the timestamp is a Date computed from the minutesAgo knob.
+	let { minutesAgo = 5, ...args }: RecipeMessageTimestamp & { minutesAgo?: number } = $props();
+
+	const timestamp = $derived(new Date(Date.now() - (minutesAgo || 0) * 60_000));
 </script>
 
-<Story
-	{controls}
-	component={MessageTimestamp}
-	title="MessageTimestamp"
-	category="Atoms/Information/Notification"
-	description="Formatted message timestamp with optional relative mode"
->
-	{#snippet children(values: any)}
-		<MessageTimestamp
-			timestamp={new Date(Date.now() - (Number(values.minutesAgo) || 0) * 60_000)}
-			formatStyle={values.formatStyle as 'datetime' | 'time' | 'date'}
-			showRelative={values.showRelative as boolean}
-		/>
-	{/snippet}
-</Story>
+<MessageTimestamp {...args} {timestamp} />
