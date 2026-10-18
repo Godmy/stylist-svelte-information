@@ -1,25 +1,15 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
+	// Render of index.story.ts: the pills are controlled, the story keeps the active values onToggle reports.
 	import FilterPills from './index.svelte';
+	import type { RecipeFilterPills } from '$stylist/table/interface/recipe/filter-pills';
 
-	let active = $state<string[]>([]);
+	let args: RecipeFilterPills = $props();
+	let toggled = $state<string[] | null>(null);
+	const active = $derived(toggled ?? args.active ?? []);
+
+	function toggle(_: string, value: string) {
+		toggled = active.includes(value) ? active.filter((item) => item !== value) : [...active, value];
+	}
 </script>
 
-<Story
-	component={FilterPills}
-	title="FilterPills"
-	description="Pill group filter for enum/category columns."
->
-	{#snippet children()}
-		<FilterPills
-			columnKey="role"
-			label="Role"
-			options={['Admin', 'Editor', 'Viewer', 'Guest']}
-			{active}
-			onToggle={(_, v) => {
-				active = active.includes(v) ? active.filter((x) => x !== v) : [...active, v];
-			}}
-		/>
-		<p style="margin-top:.5rem;font-size:12px;color:gray">Active: {active.join(', ') || '—'}</p>
-	{/snippet}
-</Story>
+<FilterPills {...args} {active} onToggle={toggle} />

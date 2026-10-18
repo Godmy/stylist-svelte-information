@@ -1,9 +1,9 @@
-import type { SlotDataTableShell } from '$stylist/table/interface/slot/data-table-shell';
+import type { RecipeDataTableShell } from '$stylist/table/interface/recipe/data-table-shell';
 import { ObjectManagerTableControls } from '$stylist/table/class/manager/table-controls';
 
 type Row = Record<string, unknown>;
 
-export function createDataTableShellState(props: SlotDataTableShell<Row>) {
+export function createDataTableShellState(props: RecipeDataTableShell<Row>) {
 	let searchTerm = $state('');
 	let pageSize = $state(props.defaultPageSize ?? 10);
 	let currentPage = $state(1);
