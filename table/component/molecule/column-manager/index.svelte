@@ -9,8 +9,8 @@
 
 <div class="c-column-manager {props.class ?? ''}">
 	<div class="c-column-manager__header">
-		<span class="c-column-manager__label">Columns</span>
-		<button type="button" class="c-column-manager__reset" onclick={state.reset}>Reset</button>
+		<span class="c-column-manager__label">{props.title ?? 'Columns'}</span>
+		<button type="button" class="c-column-manager__reset" onclick={state.reset}>{props.resetLabel ?? 'Reset'}</button>
 	</div>
 	<ul class="c-column-manager__list">
 		{#each state.localColumns as col, i}

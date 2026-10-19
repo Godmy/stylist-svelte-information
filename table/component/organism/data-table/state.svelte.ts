@@ -23,6 +23,9 @@ export function createDataTableState(getProps: () => RecipeDataTable<Row>) {
 	const hoverable = $derived(props.hoverable ?? true);
 	const onRowClick = $derived(props.onRowClick);
 	const className = $derived(props.class ?? '');
+	const rowNumbers = $derived(props.rowNumbers ?? false);
+	const stickyHeader = $derived(props.stickyHeader ?? false);
+	const emptyText = $derived(props.emptyText ?? 'No data to display.');
 	const visibleSchema = $derived(schema.filter((col) => !col.hidden));
 	const sortedData = $derived(ObjectManagerTableControls.sortData(data, sortKey, sortDirection));
 	const rootClass = $derived(['c-data-table', className].filter(Boolean).join(' '));
@@ -38,6 +41,9 @@ export function createDataTableState(getProps: () => RecipeDataTable<Row>) {
 			maxHeight: _maxHeight,
 			onRowClick: _onRowClick,
 			class: _class,
+			rowNumbers: _rowNumbers,
+			stickyHeader: _stickyHeader,
+			emptyText: _emptyText,
 			...rest
 		} = props;
 		return rest;
@@ -58,6 +64,15 @@ export function createDataTableState(getProps: () => RecipeDataTable<Row>) {
 		},
 		get className() {
 			return className;
+		},
+		get rowNumbers() {
+			return rowNumbers;
+		},
+		get stickyHeader() {
+			return stickyHeader;
+		},
+		get emptyText() {
+			return emptyText;
 		},
 		get restProps() {
 			return restProps;

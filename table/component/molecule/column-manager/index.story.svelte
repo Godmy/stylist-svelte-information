@@ -20,6 +20,8 @@
 		<div class="column-manager-story">
 			<ColumnManager
 				{columns}
+				title="Колонки"
+				resetLabel="Сбросить"
 				onColumnsChange={(nextColumns) => {
 					columns = nextColumns;
 				}}

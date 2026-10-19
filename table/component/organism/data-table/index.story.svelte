@@ -2,6 +2,7 @@
 	import Story from '$stylist/theme/component/molecule/story/index.svelte';
 	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import { createColumn } from '$stylist/table/function/create/column';
+	import type { ColumnSchema } from '$stylist/table/type/object/column';
 	import DataTable from './index.svelte';
 
 	type RowData = Record<string, unknown>;
@@ -19,7 +20,33 @@
 		{ name: 'hoverable', type: 'boolean', defaultValue: true },
 		{ name: 'compact', type: 'boolean', defaultValue: false },
 		{ name: 'showHeader', type: 'boolean', defaultValue: true },
-		{ name: 'sortable', type: 'boolean', defaultValue: true }
+		{ name: 'sortable', type: 'boolean', defaultValue: true },
+		{ name: 'rowNumbers', type: 'boolean', defaultValue: true },
+		{ name: 'stickyHeader', type: 'boolean', defaultValue: true },
+		{ name: 'emptyText', type: 'text', defaultValue: 'Nothing found for this period.' },
+		{ name: 'empty', type: 'boolean', defaultValue: false }
+	];
+
+	const statusPill = (value: unknown) =>
+		value === 'active' ? 'success' : value === 'inactive' ? 'danger' : 'default';
+
+	// Optional features: row numbers, sticky header, totals under headers,
+	// coloured pills and a custom (snippet) cell.
+	const featureSchema = [
+		createColumn<RowData>('name', { cell: 'text', header: 'Name', sortable: true }),
+		createColumn<RowData>('email', {
+			cell: 'custom',
+			header: 'Email',
+			// a template snippet passed through an object needs the schema's Snippet type
+			snippet: emailCell as unknown as ColumnSchema<RowData>['snippet']
+		}),
+		createColumn<RowData>('id', { cell: 'number', header: 'Seats', sortable: true, total: 15 }),
+		createColumn<RowData>('status', {
+			cell: 'pill',
+			header: 'Status',
+			sortable: true,
+			pill: statusPill
+		})
 	];
 
 	const data: RowData[] = [
@@ -103,9 +130,27 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="_c3">
+				<h2 class="_c4">Optional features</h2>
+				<div class="_c5">
+					<DataTable
+						data={values.empty ? [] : data}
+						schema={featureSchema}
+						rowNumbers={values.rowNumbers}
+						stickyHeader={values.stickyHeader}
+						emptyText={values.emptyText}
+						maxHeight="10rem"
+					/>
+				</div>
+			</div>
 		</div>
 	{/snippet}
 </Story>
+
+{#snippet emailCell(row: RowData)}
+	<a href={`mailto:${String(row.email)}`} onclick={(e) => e.stopPropagation()}>{String(row.email)}</a>
+{/snippet}
 
 <style>
 	._c1 {

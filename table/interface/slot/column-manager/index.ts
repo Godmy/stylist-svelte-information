@@ -18,4 +18,8 @@ export interface SlotColumnManager {
 		}[]
 	) => void;
 	class?: string;
+	/** Heading of the list; defaults to «Columns». */
+	title?: string;
+	/** Label of the reset button; defaults to «Reset». */
+	resetLabel?: string;
 }

@@ -18,6 +18,7 @@
 
 <div
 	class="c-data-table {state.className}"
+	class:c-data-table--sticky={state.stickyHeader}
 	style={state.containerStyle || undefined}
 	{...state.restProps}
 >
@@ -25,6 +26,9 @@
 		{#snippet content()}
 			<thead>
 				<tr>
+					{#if state.rowNumbers}
+						<th class="c-data-table__number" scope="col">№</th>
+					{/if}
 					{#each state.visibleSchema as col}
 						<Column
 							schema={col}
@@ -38,8 +42,11 @@
 			<tbody>
 				{#if state.sortedData.length === 0}
 					<tr>
-						<td class="c-data-table__empty" colspan={state.visibleSchema.length}>
-							No data to display.
+						<td
+							class="c-data-table__empty"
+							colspan={state.visibleSchema.length + (state.rowNumbers ? 1 : 0)}
+						>
+							{state.emptyText}
 						</td>
 					</tr>
 				{:else}
@@ -50,14 +57,20 @@
 							onclick={() => state.onRowClick?.(row)}
 						>
 							{#snippet content()}
+								{#if state.rowNumbers}
+									<td class="c-data-table__number">{i + 1}</td>
+								{/if}
 								{#each state.visibleSchema as col}
-									{#if col.cell === 'icon'}
+									{#if col.cell === 'custom' && col.snippet}
+										<td class="c-data-table__custom">{@render col.snippet(row)}</td>
+									{:else if col.cell === 'icon'}
 										<CellIcon
 											icon={String(ObjectManagerTableControls.getCellValue(row, col) ?? '')}
 										/>
 									{:else if col.cell === 'pill'}
 										<CellPill
 											value={String(ObjectManagerTableControls.getCellValue(row, col) ?? '')}
+											variant={col.pill?.(row[col.key], row)}
 										/>
 									{:else}
 										<CellText
@@ -81,6 +94,33 @@
 		overflow: auto;
 		border: 1px solid var(--color-border-primary);
 		border-radius: 0.375rem;
+	}
+
+	.c-data-table__number,
+	.c-data-table__custom {
+		padding: 0.3rem 0.75rem;
+		border-bottom: 1px solid var(--color-border-primary);
+		font-size: 13px;
+	}
+
+	.c-data-table__number {
+		width: 1%;
+		text-align: right;
+		white-space: nowrap;
+		color: var(--color-text-secondary);
+		font-variant-numeric: tabular-nums;
+	}
+
+	th.c-data-table__number {
+		font-size: 11px;
+		font-weight: 600;
+		background: var(--color-background-secondary);
+	}
+
+	.c-data-table--sticky :global(thead th) {
+		position: sticky;
+		top: 0;
+		z-index: 1;
 	}
 
 	.c-data-table__empty {

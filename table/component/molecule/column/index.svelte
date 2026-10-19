@@ -16,7 +16,12 @@
 	onclick={state.handleSort}
 >
 	<span class="c-column__inner">
-		<span>{props.schema.header}</span>
+		<span class="c-column__label">
+			<span>{props.schema.header}</span>
+			{#if props.schema.total !== undefined}
+				<span class="c-column__total">{props.schema.total}</span>
+			{/if}
+		</span>
 		{#if props.schema.sortable}
 			<Icon name={state.sortIcon} class="c-column__icon" />
 		{/if}
@@ -48,6 +53,18 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.25rem;
+	}
+
+	.c-column__label {
+		display: inline-flex;
+		flex-direction: column;
+	}
+
+	.c-column__total {
+		font-weight: 500;
+		text-transform: none;
+		font-variant-numeric: tabular-nums;
+		color: var(--color-text-primary);
 	}
 
 	:global(.c-column__icon) {
