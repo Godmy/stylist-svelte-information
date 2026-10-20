@@ -1,26 +1,21 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
+	import NotificationCenter from './index.svelte';
+	import type { RecipeNotificationCenter } from '$stylist/notification/interface/recipe/notification-center';
 	import type { NotificationItem } from '$stylist/notification/type/object/notification-item';
 
-	import NotificationCenter from './index.svelte';
+	// Render of index.story.ts: the toolbar and Load more need callbacks over local notifications.
+	let args: RecipeNotificationCenter = $props();
 
-	const controls: SlotStory[] = [
-		{ name: 'showUnreadCount', type: 'boolean', defaultValue: true },
-		{ name: 'showMarkAllRead', type: 'boolean', defaultValue: true },
-		{ name: 'showClearAll', type: 'boolean', defaultValue: true },
-		{ name: 'showTimestamp', type: 'boolean', defaultValue: true },
-		{ name: 'pollingInterval', type: 'number', defaultValue: 30000 }
-	];
-
-	const notifications: NotificationItem[] = [
+	const minute = 1000 * 60;
+	let seed = $state(4);
+	let notifications = $state<NotificationItem[]>([
 		{
 			id: '1',
 			title: 'Welcome',
 			message: 'Welcome to the platform.',
 			type: 'info',
 			read: false,
-			timestamp: new Date(Date.now() - 1000 * 60 * 2)
+			timestamp: new Date(Date.now() - minute * 2)
 		},
 		{
 			id: '2',
@@ -28,7 +23,7 @@
 			message: 'Production build completed successfully.',
 			type: 'success',
 			read: true,
-			timestamp: new Date(Date.now() - 1000 * 60 * 15)
+			timestamp: new Date(Date.now() - minute * 15)
 		},
 		{
 			id: '3',
@@ -36,47 +31,46 @@
 			message: 'Your invoice is now available.',
 			type: 'info',
 			read: false,
-			timestamp: new Date(Date.now() - 1000 * 60 * 60)
+			timestamp: new Date(Date.now() - minute * 60)
 		}
-	];
+	]);
+
+	function markRead(notification: NotificationItem) {
+		notifications = notifications.map((item) =>
+			item.id === notification.id ? { ...item, read: true } : item
+		);
+	}
+
+	function markAllRead() {
+		notifications = notifications.map((item) => ({ ...item, read: true }));
+	}
+
+	function clearAll() {
+		notifications = [];
+	}
+
+	function fetchMore() {
+		const id = String(seed);
+		seed += 1;
+		notifications = [
+			...notifications,
+			{
+				id,
+				title: `Older notification ${id}`,
+				message: 'Loaded from the notification history.',
+				type: 'neutral',
+				read: true,
+				timestamp: new Date(Date.now() - minute * 60 * Number(id))
+			}
+		];
+	}
 </script>
 
-<Story
-	id="organisms-notification-center"
-	title="Organisms / Interaction / Feedback / Notifications / Notification Center"
-	component={NotificationCenter}
-	category="Organisms/Interaction/Feedback/Notifications"
-	description="Notification center with a compact unread summary."
-	{controls}
->
-	{#snippet children(values: any)}
-		<div class="_c1">
-			<NotificationCenter
-				{notifications}
-				showUnreadCount={values.showUnreadCount}
-				showMarkAllRead={values.showMarkAllRead}
-				showClearAll={values.showClearAll}
-				showTimestamp={values.showTimestamp}
-				pollingInterval={values.pollingInterval}
-				onNotificationClick={(notification: NotificationItem) => {
-					console.log('Notification clicked:', notification);
-				}}
-				onMarkAllRead={() => {
-					console.log('Mark all as read');
-				}}
-				onClearAll={() => {
-					console.log('Clear all notifications');
-				}}
-				onFetchMore={() => {
-					console.log('Fetch more notifications');
-				}}
-			/>
-		</div>
-	{/snippet}
-</Story>
-
-<style>
-	._c1 {
-		padding: 1rem;
-	}
-</style>
+<NotificationCenter
+	{...args}
+	{notifications}
+	onNotificationClick={markRead}
+	onMarkAllRead={markAllRead}
+	onClearAll={clearAll}
+	onFetchMore={fetchMore}
+/>

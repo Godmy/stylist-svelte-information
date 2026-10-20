@@ -1,14 +1,6 @@
 <script lang="ts">
 	import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
-	import type { ScatterPlotDataPoint } from '$stylist/chart/interface/slot/scatter-plot-point';
 	import createScatterPlotState from './state.svelte';
-	type ScatterPlotProps = RecipeScatterPlot & {
-		width?: number;
-		height?: number;
-		showLegend?: boolean;
-		class?: string;
-		onPointClick?: (point: ScatterPlotDataPoint) => void;
-	};
 	let {
 		data = [],
 		title = 'Scatter Plot',
@@ -22,7 +14,7 @@
 		class: className = '',
 		onPointClick,
 		...restProps
-	}: ScatterPlotProps = $props();
+	}: RecipeScatterPlot = $props();
 	const state = createScatterPlotState(() => ({
 		data,
 		title,
@@ -43,7 +35,7 @@
 	<div class="sp-chart-wrap">
 		<svg {width} {height}>
 			{#if showGrid}
-				{#each Array(5).fill(0) as _, i}
+				{#each Array(5).fill(0) as _, i (i)}
 					<line
 						x1="50"
 						y1={10 + i * (state.chartHeight / 4)}
@@ -63,7 +55,7 @@
 					stroke="var(--color-text-secondary)"
 				/> <line x1="50" y1="10" x2="50" y2={height - 30} stroke="var(--color-text-secondary)" />
 			{/if}
-			{#each data as d}
+			{#each data as d, index (index)}
 				<g
 					role="button"
 					tabindex="0"

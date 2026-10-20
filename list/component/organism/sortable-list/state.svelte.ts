@@ -1,7 +1,7 @@
 import type { SlotSortableListItem as SortableListItem } from '$stylist/list/interface/slot/sortable-list-item';
-import type { SlotSortableList as SortableListProps } from '$stylist/list/interface/slot/sortable-list';
+import type { RecipeSortableList } from '$stylist/list/interface/recipe/sortable-list';
 
-export function createSortableListState(getProps: () => SortableListProps) {
+export function createSortableListState(getProps: () => RecipeSortableList) {
 	const props = $derived(getProps());
 	const rootClass = $derived(['c-sortable-list', props.class].filter(Boolean).join(' '));
 	let dragged = $state<SortableListItem | null>(null);

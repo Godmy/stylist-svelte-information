@@ -1,6 +1,6 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { ChartFunctionPoint } from '$stylist/chart/interface/slot/chart-point';
-import type { RecipeChartPolyline as ChartPolylineProps } from '$stylist/chart/interface/recipe/chart-polyline';
+import type { RecipeChartPolyline } from '$stylist/chart/interface/recipe/chart-polyline';
 import { ManagerChart } from '$stylist/chart/class/manager/chart';
 
 function resolveClassName(className: unknown): string | undefined {
@@ -28,7 +28,7 @@ function mapPointsToViewBox(
 		.join(' ');
 }
 
-export function createChartPolylineState(getProps: () => ChartPolylineProps) {
+export function createChartPolylineState(getProps: () => RecipeChartPolyline) {
 	const props = $derived(getProps());
 	const classes = $derived(
 		ClassNamesManager.merge('c-chart-polyline', resolveClassName(props.class))
