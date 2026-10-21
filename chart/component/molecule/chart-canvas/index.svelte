@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import type { RecipeChartCanvas as InformationChartCanvasRecipe } from '$stylist/chart/interface/recipe/chart-canvas';
+	import type { RecipeChartCanvas } from '$stylist/chart/interface/recipe/chart-canvas';
 	import type { RecipeAnalyticsChartCanvas } from '$stylist/chart/interface/recipe/analytics-chart-canvas';
 	import createChartCanvasState from './state.svelte';
 	import ChartAxisX from '$stylist/chart/component/atom/chart-axis-x/index.svelte';
@@ -19,7 +19,7 @@
 				width: props.width,
 				height: props.height,
 				class: ClassNamesManager.merge(props.class)
-			}) as InformationChartCanvasRecipe & HTMLAttributes<HTMLDivElement>
+			}) as RecipeChartCanvas & HTMLAttributes<HTMLDivElement>
 	);
 
 	const width = $derived(state.width);

@@ -1,12 +1,7 @@
 <script lang="ts">
-	type Props = {
-		src: string;
-		poster?: string;
-		label?: string;
-		active?: boolean;
-	};
+	import type { RecipeVideoScene } from '$stylist/video/interface/recipe/video-scene';
 
-	let { src, poster, label = 'Видео-сцена', active = true }: Props = $props();
+	let { src, poster, label = 'Видео-сцена', active = true }: RecipeVideoScene = $props();
 </script>
 
 <video

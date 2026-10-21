@@ -1,6 +1,6 @@
-import type { SlotColumnManager as ColumnManagerProps } from '$stylist/table/interface/slot/column-manager';
+import type { RecipeColumnManager } from '$stylist/table/interface/recipe/column-manager';
 
-export function createColumnManagerState(getProps: () => ColumnManagerProps) {
+export function createColumnManagerState(getProps: () => RecipeColumnManager) {
 	const props = $derived(getProps());
 	let localColumns = $derived(props.columns.map((column) => ({ ...column })));
 

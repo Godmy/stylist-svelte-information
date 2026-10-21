@@ -1,11 +1,11 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
-import type { RecipeChartAxisX as ChartAxisXProps } from '$stylist/chart/interface/recipe/chart-axis-x';
+import type { RecipeChartAxisX } from '$stylist/chart/interface/recipe/chart-axis-x';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
 }
 
-export function createChartAxisXState(getProps: () => ChartAxisXProps) {
+export function createChartAxisXState(getProps: () => RecipeChartAxisX) {
 	const props = $derived(getProps());
 	const axisClasses = $derived(
 		ClassNamesManager.merge('c-chart-axis', resolveClassName(props.class))
