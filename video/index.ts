@@ -4,4 +4,7 @@ export {
 	VideoScene
 } from './component';
 export { formatTime } from './function';
-export type { RecipeVideoPlayer } from './interface';
+export type {
+	RecipeVideoPlayer,
+	RecipeVideoScene
+} from './interface';
