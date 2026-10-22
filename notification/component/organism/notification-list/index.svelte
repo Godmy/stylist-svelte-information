@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { RecipeNotificationList } from '$stylist/notification/interface/recipe/notification-list';
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { createNotificationListState } from './state.svelte';
+	import { createNotificationListState } from '$stylist/notification/component/organism/notification-list/state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 

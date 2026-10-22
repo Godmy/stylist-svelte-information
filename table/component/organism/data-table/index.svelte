@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeDataTable } from '$stylist/table/interface/recipe/data-table';
-	import { createDataTableState } from './state.svelte';
+	import { createDataTableState } from '$stylist/table/component/organism/data-table/state.svelte';
 	import Table from '$stylist/table/component/atom/table/index.svelte';
 	import Row from '$stylist/table/component/atom/row/index.svelte';
 	import Column from '$stylist/table/component/molecule/column/index.svelte';

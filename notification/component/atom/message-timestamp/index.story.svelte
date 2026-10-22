@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MessageTimestamp from './index.svelte';
+	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 	import type { RecipeMessageTimestamp } from '$stylist/notification/interface/recipe/message-timestamp';
 
 	// Render of index.story.ts: the timestamp is a Date computed from the minutesAgo knob.

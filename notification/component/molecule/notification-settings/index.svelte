@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { RecipeNotificationSettings } from '$stylist/notification/interface/recipe/notification-settings';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
-	import createNotificationSettingsState from './state.svelte';
+	import createNotificationSettingsState from '$stylist/notification/component/molecule/notification-settings/state.svelte';
 
 	let props: RecipeNotificationSettings = $props();
 	const state = createNotificationSettingsState(() => props);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createWidebandDelphiDiagramState from './state.svelte';
+	import createWidebandDelphiDiagramState from '$stylist/chart/component/organism/wideband-delphi-diagram/state.svelte';
 	import type { RecipeWidebandDelphiDiagram } from '$stylist/chart/interface/recipe/wideband-delphi-diagram';
 
 	let props: RecipeWidebandDelphiDiagram = $props();

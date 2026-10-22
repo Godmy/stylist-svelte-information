@@ -1,4 +1,4 @@
-import RowExpandable from './index.svelte';
+import RowExpandable from '$stylist/table/component/molecule/row-expandable/index.svelte';
 import type { RecipeRowExpandable } from '$stylist/table/interface/recipe/row-expandable';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

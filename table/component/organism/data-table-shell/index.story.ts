@@ -1,4 +1,4 @@
-import DataTableShell from './index.svelte';
+import DataTableShell from '$stylist/table/component/organism/data-table-shell/index.svelte';
 import type { RecipeDataTableShell } from '$stylist/table/interface/recipe/data-table-shell';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { createColumn } from '$stylist/table/function/create/column';

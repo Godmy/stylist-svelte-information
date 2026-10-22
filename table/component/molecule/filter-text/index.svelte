@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeFilterText } from '$stylist/table/interface/recipe/filter-text';
-	import { createFilterTextState } from './state.svelte';
+	import { createFilterTextState } from '$stylist/table/component/molecule/filter-text/state.svelte';
 
 	let props: RecipeFilterText = $props();
 	const state = createFilterTextState(() => props);

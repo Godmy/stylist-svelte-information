@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeChart } from '$stylist/chart/interface/recipe/chart';
-	import createChartState from './state.svelte';
+	import createChartState from '$stylist/chart/component/organism/chart/state.svelte';
 	import ChartCanvas from '$stylist/chart/component/molecule/chart-canvas/index.svelte';
 	import ChartLegend from '$stylist/chart/component/molecule/chart-legend/index.svelte';
 

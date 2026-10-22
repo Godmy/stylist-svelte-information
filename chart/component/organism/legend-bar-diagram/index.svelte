@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ChartLegendBar from '$stylist/chart/component/molecule/chart-legend-bar/index.svelte';
-	import createLegendBarDiagramState from './state.svelte';
+	import createLegendBarDiagramState from '$stylist/chart/component/organism/legend-bar-diagram/state.svelte';
 	import { writable } from 'svelte/store';
 	import type { RecipeLegendBarDiagram } from '$stylist/chart/interface/recipe/legend-bar-diagram';
 

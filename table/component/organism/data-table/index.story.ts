@@ -1,4 +1,4 @@
-import DataTable from './index.svelte';
+import DataTable from '$stylist/table/component/organism/data-table/index.svelte';
 import type { RecipeDataTable } from '$stylist/table/interface/recipe/data-table';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { createColumn } from '$stylist/table/function/create/column';

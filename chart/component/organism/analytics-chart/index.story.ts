@@ -1,4 +1,4 @@
-import AnalyticsChart from './index.svelte';
+import AnalyticsChart from '$stylist/chart/component/organism/analytics-chart/index.svelte';
 import type { RecipeAnalyticsChart } from '$stylist/chart/interface/recipe/analytics-chart';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_CANVAS_CHART_TYPE } from '$stylist/chart/const/array/canvas-chart-type';

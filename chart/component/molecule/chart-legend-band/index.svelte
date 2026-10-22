@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createChartLegendBandState from './state.svelte';
+	import createChartLegendBandState from '$stylist/chart/component/molecule/chart-legend-band/state.svelte';
 	import type { RecipeChartLegendBand } from '$stylist/chart/interface/recipe/chart-legend-band';
 
 	let props: RecipeChartLegendBand = $props();

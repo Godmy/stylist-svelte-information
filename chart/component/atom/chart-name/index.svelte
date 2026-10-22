@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SVGAttributes } from 'svelte/elements';
 	import type { RecipeChartName } from '$stylist/chart/interface/recipe/chart-name';
-	import createChartNameState from './state.svelte';
+	import createChartNameState from '$stylist/chart/component/atom/chart-name/state.svelte';
 
 	let props: RecipeChartName & SVGAttributes<SVGTextElement> = $props();
 	const state = createChartNameState(() => props);

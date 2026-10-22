@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createChartLegendBarState from './state.svelte';
+	import createChartLegendBarState from '$stylist/chart/component/molecule/chart-legend-bar/state.svelte';
 	import type { RecipeChartLegendBar } from '$stylist/chart/interface/recipe/chart-legend-bar';
 
 	let props: RecipeChartLegendBar = $props();

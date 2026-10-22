@@ -1,4 +1,4 @@
-import Row from './index.svelte';
+import Row from '$stylist/table/component/atom/row/index.svelte';
 import type { RecipeRow } from '$stylist/table/interface/recipe/row';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

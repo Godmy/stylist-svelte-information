@@ -1,4 +1,4 @@
-import NotificationBadge from './index.svelte';
+import NotificationBadge from '$stylist/notification/component/atom/notification-badge/index.svelte';
 import type { RecipeNotificationBadge } from '$stylist/notification/interface/recipe/notification-badge';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

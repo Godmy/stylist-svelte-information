@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeChartPolyline } from '$stylist/chart/interface/recipe/chart-polyline';
-	import createChartPolylineState from './state.svelte';
+	import createChartPolylineState from '$stylist/chart/component/atom/chart-polyline/state.svelte';
 
 	let props: RecipeChartPolyline = $props();
 	const state = createChartPolylineState(() => props);

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeAudioRecordButton } from '$stylist/audio/interface/recipe/audio-record-button';
-	import { createAudioRecordButtonState } from './state.svelte';
+	import { createAudioRecordButtonState } from '$stylist/audio/component/atom/audio-record-button/state.svelte';
 
 	let props: RecipeAudioRecordButton = $props();
 	const state = createAudioRecordButtonState(() => props);

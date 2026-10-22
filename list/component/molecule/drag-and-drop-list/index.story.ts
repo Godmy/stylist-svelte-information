@@ -1,4 +1,4 @@
-import DragAndDropList from './index.svelte';
+import DragAndDropList from '$stylist/list/component/molecule/drag-and-drop-list/index.svelte';
 import type { RecipeDragAndDropList } from '$stylist/list/interface/recipe/drag-and-drop-list';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

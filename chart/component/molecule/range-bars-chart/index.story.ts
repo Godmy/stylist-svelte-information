@@ -1,4 +1,4 @@
-import RangeBarsChart from './index.svelte';
+import RangeBarsChart from '$stylist/chart/component/molecule/range-bars-chart/index.svelte';
 import type { RecipeRangeBarsChart } from '$stylist/chart/interface/recipe/range-bars-chart';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

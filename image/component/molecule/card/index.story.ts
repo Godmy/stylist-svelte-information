@@ -1,4 +1,4 @@
-import Card from './index.svelte';
+import Card from '$stylist/image/component/molecule/card/index.svelte';
 import type { RecipeCard } from '$stylist/image/interface/recipe/card';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

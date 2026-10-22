@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createCountBadgeState from './state.svelte';
+	import createCountBadgeState from '$stylist/notification/component/atom/count-badge/state.svelte';
 	import type { RecipeCountBadge } from '$stylist/notification/interface/recipe/count-badge';
 
 	let props: RecipeCountBadge = $props();

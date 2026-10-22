@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeDataTableShell } from '$stylist/table/interface/recipe/data-table-shell';
-	import { createDataTableShellState } from './state.svelte';
+	import { createDataTableShellState } from '$stylist/table/component/organism/data-table-shell/state.svelte';
 	import FilterBar from '$stylist/table/component/molecule/filter-bar/index.svelte';
 	import ColumnManager from '$stylist/table/component/molecule/column-manager/index.svelte';
 	import DataTable from '$stylist/table/component/organism/data-table/index.svelte';

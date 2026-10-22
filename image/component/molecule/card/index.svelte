@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeCard } from '$stylist/image/interface/recipe/card';
-	import { createCardState } from './state.svelte';
+	import { createCardState } from '$stylist/image/component/molecule/card/state.svelte';
 
 	let props: RecipeCard = $props();
 	const state = createCardState(() => props);

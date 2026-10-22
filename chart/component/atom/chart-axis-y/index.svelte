@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeChartAxisY } from '$stylist/chart/interface/recipe/chart-axis-y';
-	import createChartAxisYState from './state.svelte';
+	import createChartAxisYState from '$stylist/chart/component/atom/chart-axis-y/state.svelte';
 
 	let props: RecipeChartAxisY = $props();
 	const state = createChartAxisYState(() => props);

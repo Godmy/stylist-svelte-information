@@ -1,4 +1,4 @@
-import FilterPills from './index.svelte';
+import FilterPills from '$stylist/table/component/molecule/filter-pills/index.svelte';
 import type { RecipeFilterPills } from '$stylist/table/interface/recipe/filter-pills';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import ComponentCatalog from './index.svelte';
+import ComponentCatalog from '$stylist/table/component/organism/component/index.svelte';
 import type { RecipeComponent } from '$stylist/table/interface/recipe/component';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { PLAYGROUND_COMPONENT_CATALOG_VIEW_MODE } from '$stylist/table/const/array/playground-component-catalog-view-mode';

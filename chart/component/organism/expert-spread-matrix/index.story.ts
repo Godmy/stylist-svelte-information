@@ -1,4 +1,4 @@
-import ExpertSpreadMatrix from './index.svelte';
+import ExpertSpreadMatrix from '$stylist/chart/component/organism/expert-spread-matrix/index.svelte';
 import type { RecipeExpertSpreadMatrix } from '$stylist/chart/interface/recipe/expert-spread-matrix';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

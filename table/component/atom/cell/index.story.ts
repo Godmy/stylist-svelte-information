@@ -1,4 +1,4 @@
-import Cell from './index.svelte';
+import Cell from '$stylist/table/component/atom/cell/index.svelte';
 import type { RecipeCell } from '$stylist/table/interface/recipe/cell';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

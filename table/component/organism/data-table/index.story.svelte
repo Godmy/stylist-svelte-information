@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: custom cell snippets and pill callbacks cannot cross postMessage.
-	import DataTable from './index.svelte';
+	import DataTable from '$stylist/table/component/organism/data-table/index.svelte';
 	import { createColumn } from '$stylist/table/function/create/column';
 	import type { RecipeDataTable } from '$stylist/table/interface/recipe/data-table';
 	import type { ColumnSchema } from '$stylist/table/type/object/column';

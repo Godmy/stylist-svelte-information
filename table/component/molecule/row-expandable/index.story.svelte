@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: rowContent and expandableContent are required snippets.
-	import RowExpandable from './index.svelte';
+	import RowExpandable from '$stylist/table/component/molecule/row-expandable/index.svelte';
 	import type { RecipeRowExpandable } from '$stylist/table/interface/recipe/row-expandable';
 
 	let args: Partial<RecipeRowExpandable> = $props();

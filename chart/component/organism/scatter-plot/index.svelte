@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
-	import createScatterPlotState from './state.svelte';
+	import createScatterPlotState from '$stylist/chart/component/organism/scatter-plot/state.svelte';
 	let {
 		data = [],
 		title = 'Scatter Plot',

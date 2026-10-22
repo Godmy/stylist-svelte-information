@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ErrorMessage from './index.svelte';
+	import ErrorMessage from '$stylist/notification/component/atom/error-message/index.svelte';
 	import type { RecipeErrorMessage } from '$stylist/notification/interface/recipe/error-message';
 
 	// Render of index.story.ts: the retry button appears only with an onRetry callback.

@@ -1,4 +1,4 @@
-import CellHeader from './index.svelte';
+import CellHeader from '$stylist/table/component/atom/cell-header/index.svelte';
 import type { RecipeCellHeader } from '$stylist/table/interface/recipe/cell-header';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

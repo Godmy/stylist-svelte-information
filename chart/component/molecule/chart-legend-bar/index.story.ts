@@ -1,4 +1,4 @@
-import ChartLegendBar from './index.svelte';
+import ChartLegendBar from '$stylist/chart/component/molecule/chart-legend-bar/index.svelte';
 import type { RecipeChartLegendBar } from '$stylist/chart/interface/recipe/chart-legend-bar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

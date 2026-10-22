@@ -1,4 +1,4 @@
-import TableListPanel from './index.svelte';
+import TableListPanel from '$stylist/table/component/organism/table-list-panel/index.svelte';
 import type { RecipeTableListPanel } from '$stylist/table/interface/recipe/table-list-panel';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createCriticalPathTimelineState from './state.svelte';
+	import createCriticalPathTimelineState from '$stylist/chart/component/organism/critical-path-timeline/state.svelte';
 	import type { RecipeCriticalPathTimeline } from '$stylist/chart/interface/recipe/critical-path-timeline';
 
 	let props: RecipeCriticalPathTimeline = $props();

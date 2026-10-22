@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createOutlierConstellationState from './state.svelte';
+	import createOutlierConstellationState from '$stylist/chart/component/organism/outlier-constellation/state.svelte';
 	import type { RecipeOutlierConstellation } from '$stylist/chart/interface/recipe/outlier-constellation';
 
 	let props: RecipeOutlierConstellation = $props();

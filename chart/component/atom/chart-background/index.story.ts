@@ -1,4 +1,4 @@
-import ChartBackground from './index.svelte';
+import ChartBackground from '$stylist/chart/component/atom/chart-background/index.svelte';
 import type { RecipeChartBackground } from '$stylist/chart/interface/recipe/chart-background';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

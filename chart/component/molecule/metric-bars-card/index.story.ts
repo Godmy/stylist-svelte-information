@@ -1,4 +1,4 @@
-import MetricBarsCard from './index.svelte';
+import MetricBarsCard from '$stylist/chart/component/molecule/metric-bars-card/index.svelte';
 import type { RecipeMetricBarsCard } from '$stylist/chart/interface/recipe/metric-bars-card';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

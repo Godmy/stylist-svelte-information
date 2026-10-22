@@ -4,7 +4,7 @@
 	const MoreHorizontal = 'more-horizontal';
 
 	import type { RecipeSortableList } from '$stylist/list/interface/recipe/sortable-list';
-	import createSortableListState from './state.svelte';
+	import createSortableListState from '$stylist/list/component/organism/sortable-list/state.svelte';
 
 	let {
 		items = [],

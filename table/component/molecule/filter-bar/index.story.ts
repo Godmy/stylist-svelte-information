@@ -1,4 +1,4 @@
-import FilterBar from './index.svelte';
+import FilterBar from '$stylist/table/component/molecule/filter-bar/index.svelte';
 import type { RecipeFilterBar } from '$stylist/table/interface/recipe/filter-bar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

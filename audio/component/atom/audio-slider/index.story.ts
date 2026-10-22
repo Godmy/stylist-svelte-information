@@ -1,4 +1,4 @@
-import AudioSlider from './index.svelte';
+import AudioSlider from '$stylist/audio/component/atom/audio-slider/index.svelte';
 import type { RecipeAudioSlider } from '$stylist/audio/interface/recipe/audio-slider';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

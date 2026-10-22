@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createRiskImpactMapState from './state.svelte';
+	import createRiskImpactMapState from '$stylist/chart/component/organism/risk-impact-map/state.svelte';
 	import type { RecipeRiskImpactMap } from '$stylist/chart/interface/recipe/risk-impact-map';
 
 	let props: RecipeRiskImpactMap = $props();

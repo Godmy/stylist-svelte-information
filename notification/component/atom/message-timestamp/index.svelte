@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createMessageTimestampState from './state.svelte';
+	import createMessageTimestampState from '$stylist/notification/component/atom/message-timestamp/state.svelte';
 	import type { RecipeMessageTimestamp } from '$stylist/notification/interface/recipe/message-timestamp';
 
 	let props: RecipeMessageTimestamp = $props();

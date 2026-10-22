@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeNotificationBadge } from '$stylist/notification/interface/recipe/notification-badge';
-	import { createNotificationBadgeState } from './state.svelte';
+	import { createNotificationBadgeState } from '$stylist/notification/component/atom/notification-badge/state.svelte';
 
 	let props: RecipeNotificationBadge = $props();
 	const state = createNotificationBadgeState(() => props);

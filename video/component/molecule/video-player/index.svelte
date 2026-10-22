@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeVideoPlayer } from '$stylist/video/interface/recipe/video-player';
-	import { createVideoPlayerState } from './state.svelte';
+	import { createVideoPlayerState } from '$stylist/video/component/molecule/video-player/state.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Button from '$stylist/button/component/atom/button/index.svelte';
 

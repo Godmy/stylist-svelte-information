@@ -1,4 +1,4 @@
-import ColumnManager from './index.svelte';
+import ColumnManager from '$stylist/table/component/molecule/column-manager/index.svelte';
 import type { RecipeColumnManager } from '$stylist/table/interface/recipe/column-manager';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

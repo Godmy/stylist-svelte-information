@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createVerticalBarsChartState from './state.svelte';
+	import createVerticalBarsChartState from '$stylist/chart/component/molecule/vertical-bars-chart/state.svelte';
 	import type { RecipeVerticalBarsChart } from '$stylist/chart/interface/recipe/vertical-bars-chart';
 
 	let props: RecipeVerticalBarsChart = $props();

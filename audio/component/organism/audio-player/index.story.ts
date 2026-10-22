@@ -1,4 +1,4 @@
-import AudioPlayer from './index.svelte';
+import AudioPlayer from '$stylist/audio/component/organism/audio-player/index.svelte';
 import type { RecipeAudioPlayer } from '$stylist/audio/interface/recipe/audio-player';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

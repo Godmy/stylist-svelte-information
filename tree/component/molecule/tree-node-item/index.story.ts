@@ -1,4 +1,4 @@
-import TreeNodeItem from './index.svelte';
+import TreeNodeItem from '$stylist/tree/component/molecule/tree-node-item/index.svelte';
 import type { RecipeTreeNodeItem } from '$stylist/tree/interface/recipe/tree-node-item';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -3,7 +3,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeChartCanvas } from '$stylist/chart/interface/recipe/chart-canvas';
 	import type { RecipeAnalyticsChartCanvas } from '$stylist/chart/interface/recipe/analytics-chart-canvas';
-	import createChartCanvasState from './state.svelte';
+	import createChartCanvasState from '$stylist/chart/component/molecule/chart-canvas/state.svelte';
 	import ChartAxisX from '$stylist/chart/component/atom/chart-axis-x/index.svelte';
 	import ChartAxisY from '$stylist/chart/component/atom/chart-axis-y/index.svelte';
 	import ChartAxisZ from '$stylist/chart/component/atom/chart-axis-z/index.svelte';

@@ -1,4 +1,4 @@
-import Heatmap from './index.svelte';
+import Heatmap from '$stylist/chart/component/organism/heatmap/index.svelte';
 import type { RecipeHeatmap } from '$stylist/chart/interface/recipe/heatmap';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_THEME_SCHEME } from '$stylist/theme/const/array/theme-scheme';

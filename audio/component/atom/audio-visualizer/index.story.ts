@@ -1,4 +1,4 @@
-import AudioVisualizer from './index.svelte';
+import AudioVisualizer from '$stylist/audio/component/atom/audio-visualizer/index.svelte';
 import type { RecipeAudioVisualizer } from '$stylist/audio/interface/recipe/audio-visualizer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

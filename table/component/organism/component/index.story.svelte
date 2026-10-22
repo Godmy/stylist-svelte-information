@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the catalog needs Set selections and its required callbacks.
-	import ComponentCatalog from './index.svelte';
+	import ComponentCatalog from '$stylist/table/component/organism/component/index.svelte';
 	import type { RecipeComponent } from '$stylist/table/interface/recipe/component';
 
 	let args: Partial<RecipeComponent> = $props();

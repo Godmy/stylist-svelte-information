@@ -2,7 +2,7 @@
 	import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-recording';
 	import type { RecipeAudioRecordButton } from '$stylist/audio/interface/recipe/audio-record-button';
 
-	import AudioRecordButton from './index.svelte';
+	import AudioRecordButton from '$stylist/audio/component/atom/audio-record-button/index.svelte';
 
 	// Render of index.story.ts: the recorded file and the event log come from callback props.
 	let args: RecipeAudioRecordButton = $props();

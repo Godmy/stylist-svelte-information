@@ -1,4 +1,4 @@
-import TreeViewer from './index.svelte';
+import TreeViewer from '$stylist/tree/component/molecule/tree-viewer/index.svelte';
 import type { RecipeTreeViewer } from '$stylist/tree/interface/recipe/tree-viewer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

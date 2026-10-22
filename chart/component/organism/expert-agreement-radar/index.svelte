@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createExpertAgreementRadarState from './state.svelte';
+	import createExpertAgreementRadarState from '$stylist/chart/component/organism/expert-agreement-radar/state.svelte';
 	import type { RecipeExpertAgreementRadar } from '$stylist/chart/interface/recipe/expert-agreement-radar';
 
 	let props: RecipeExpertAgreementRadar = $props();

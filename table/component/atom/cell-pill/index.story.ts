@@ -1,4 +1,4 @@
-import CellPill from './index.svelte';
+import CellPill from '$stylist/table/component/atom/cell-pill/index.svelte';
 import type { RecipeCellPill } from '$stylist/table/interface/recipe/cell-pill';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

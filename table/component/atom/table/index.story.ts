@@ -1,4 +1,4 @@
-import Table from './index.svelte';
+import Table from '$stylist/table/component/atom/table/index.svelte';
 import type { RecipeTable } from '$stylist/table/interface/recipe/table';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { HtmlNode } from '$stylist/html/type/alias/html-node';

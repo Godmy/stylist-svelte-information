@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the list only emits onItemsChange, so the reordered items live in local state.
-	import DragAndDropList from './index.svelte';
+	import DragAndDropList from '$stylist/list/component/molecule/drag-and-drop-list/index.svelte';
 	import type { RecipeDragAndDropList } from '$stylist/list/interface/recipe/drag-and-drop-list';
 	import type { SlotDragAndDropListItem } from '$stylist/list/interface/slot/drag-and-drop-list-item';
 

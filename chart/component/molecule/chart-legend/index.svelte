@@ -2,7 +2,7 @@
 	import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeChartLegend } from '$stylist/chart/interface/recipe/chart-legend';
-	import createChartLegendState from './state.svelte';
+	import createChartLegendState from '$stylist/chart/component/molecule/chart-legend/state.svelte';
 
 	let props: RecipeChartLegend & HTMLAttributes<HTMLDivElement> = $props();
 	const state = createChartLegendState(() => ({

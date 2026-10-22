@@ -1,4 +1,4 @@
-import FlatTree from './index.svelte';
+import FlatTree from '$stylist/tree/component/molecule/flat-tree/index.svelte';
 import type { RecipeTree } from '$stylist/tree/interface/recipe/tree';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

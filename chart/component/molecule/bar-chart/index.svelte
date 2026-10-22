@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Tooltip from '$stylist/animation/component/atom/tooltip/index.svelte';
-	import createBarChartState from './state.svelte';
+	import createBarChartState from '$stylist/chart/component/molecule/bar-chart/state.svelte';
 	import type { RecipeBarChart } from '$stylist/chart/interface/recipe/bar-chart';
 
 	let props: RecipeBarChart = $props();

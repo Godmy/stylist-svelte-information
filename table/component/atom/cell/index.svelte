@@ -2,7 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeCell } from '$stylist/table/interface/recipe/cell';
-	import { createCellState } from './state.svelte';
+	import { createCellState } from '$stylist/table/component/atom/cell/state.svelte';
 
 	let props: RecipeCell & HTMLAttributes<HTMLTableCellElement> & { children?: Snippet } = $props();
 	const state = createCellState(() => props);

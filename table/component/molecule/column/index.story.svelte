@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the column headers are controlled and share the sort state of the row.
-	import Column from './index.svelte';
+	import Column from '$stylist/table/component/molecule/column/index.svelte';
 	import type { RecipeColumn } from '$stylist/table/interface/recipe/column';
 	import type { TokenSortDirection } from '$stylist/table/type/record/sort-direction';
 

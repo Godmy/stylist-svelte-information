@@ -1,4 +1,4 @@
-import MetricBar from './index.svelte';
+import MetricBar from '$stylist/chart/component/atom/metric-bar/index.svelte';
 import type { RecipeMetricBar } from '$stylist/chart/interface/recipe/metric-bar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

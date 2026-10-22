@@ -1,4 +1,4 @@
-import ScatterPlot from './index.svelte';
+import ScatterPlot from '$stylist/chart/component/organism/scatter-plot/index.svelte';
 import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

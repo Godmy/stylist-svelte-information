@@ -1,4 +1,4 @@
-import CriticalPathTimeline from './index.svelte';
+import CriticalPathTimeline from '$stylist/chart/component/organism/critical-path-timeline/index.svelte';
 import type { RecipeCriticalPathTimeline } from '$stylist/chart/interface/recipe/critical-path-timeline';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

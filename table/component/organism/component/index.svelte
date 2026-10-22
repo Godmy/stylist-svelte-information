@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeComponent } from '$stylist/table/interface/recipe/component';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
-	import { createComponentState } from './state.svelte';
+	import { createComponentState } from '$stylist/table/component/organism/component/state.svelte';
 	import type { PlaygroundComponentCatalogSortBy as ComponentSortBy } from '$stylist/table/type/alias/playground-component-catalog-sort-by';
 	const Search = 'search';
 	const Filter = 'filter';

@@ -1,4 +1,4 @@
-import SortableList from './index.svelte';
+import SortableList from '$stylist/list/component/organism/sortable-list/index.svelte';
 import type { RecipeSortableList } from '$stylist/list/interface/recipe/sortable-list';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

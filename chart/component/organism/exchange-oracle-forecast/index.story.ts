@@ -1,4 +1,4 @@
-import ExchangeOracleForecast from './index.svelte';
+import ExchangeOracleForecast from '$stylist/chart/component/organism/exchange-oracle-forecast/index.svelte';
 import type { RecipeExchangeOracleForecast } from '$stylist/chart/interface/recipe/exchange-oracle-forecast';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

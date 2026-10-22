@@ -2,7 +2,7 @@
 	import Button from '$stylist/button/component/atom/button/index.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeTranscriber } from '$stylist/audio/interface/recipe/transcriber';
-	import { createTranscriberState } from './state.svelte';
+	import { createTranscriberState } from '$stylist/audio/component/organism/transcriber/state.svelte';
 
 	let props: RecipeTranscriber = $props();
 	const state = createTranscriberState(() => props);

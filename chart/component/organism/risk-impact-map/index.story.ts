@@ -1,4 +1,4 @@
-import RiskImpactMap from './index.svelte';
+import RiskImpactMap from '$stylist/chart/component/organism/risk-impact-map/index.svelte';
 import type { RecipeRiskImpactMap } from '$stylist/chart/interface/recipe/risk-impact-map';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

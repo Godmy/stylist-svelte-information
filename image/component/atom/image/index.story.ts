@@ -1,11 +1,11 @@
-import Image from './index.svelte';
+import Image from '$stylist/image/component/atom/image/index.svelte';
 import type { RecipeImage } from '$stylist/image/interface/recipe/image';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
-import hero from '../../../data/png/1-hero-consensus-decision-room.png';
-import about from '../../../data/png/2-section-about.png';
-import delphi from '../../../data/png/3-section-wideband-delphi.png';
-import history from '../../../data/png/4-section-history.png';
+import hero from '$stylist/image/data/png/1-hero-consensus-decision-room.png';
+import about from '$stylist/image/data/png/2-section-about.png';
+import delphi from '$stylist/image/data/png/3-section-wideband-delphi.png';
+import history from '$stylist/image/data/png/4-section-history.png';
 
 /** Image with a fade-in loading state, an automatic fallback on error and size tokens. */
 export default {

@@ -1,4 +1,4 @@
-import ListItemMarker from './index.svelte';
+import ListItemMarker from '$stylist/list/component/atom/list-item-marker/index.svelte';
 import type { RecipeListItemMarker } from '$stylist/list/interface/recipe/list-item-marker';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { LIST_ITEM_MARKER_TYPE } from '$stylist/list/const/array/list-item-marker-type';

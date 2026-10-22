@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeListItemMarker } from '$stylist/list/interface/recipe/list-item-marker';
-	import createListItemMarkerState from './state.svelte';
+	import createListItemMarkerState from '$stylist/list/component/atom/list-item-marker/state.svelte';
 
 	type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
 

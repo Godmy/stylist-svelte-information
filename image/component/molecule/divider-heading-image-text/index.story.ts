@@ -1,10 +1,10 @@
-import DividerHeadingImageText from './index.svelte';
+import DividerHeadingImageText from '$stylist/image/component/molecule/divider-heading-image-text/index.svelte';
 import type { RecipeDividerHeadingImageText } from '$stylist/image/interface/recipe/divider-heading-image-text';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
-import hero from '../../../data/png/1-hero-consensus-decision-room.png';
-import about from '../../../data/png/2-section-about.png';
-import delphi from '../../../data/png/3-section-wideband-delphi.png';
-import history from '../../../data/png/4-section-history.png';
+import hero from '$stylist/image/data/png/1-hero-consensus-decision-room.png';
+import about from '$stylist/image/data/png/2-section-about.png';
+import delphi from '$stylist/image/data/png/3-section-wideband-delphi.png';
+import history from '$stylist/image/data/png/4-section-history.png';
 
 /** Labelled divider, a 1:1 heading/image block and a full-width text block. */
 export default {

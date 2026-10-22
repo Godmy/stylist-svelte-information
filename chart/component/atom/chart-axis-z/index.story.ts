@@ -1,4 +1,4 @@
-import ChartAxisZ from './index.svelte';
+import ChartAxisZ from '$stylist/chart/component/atom/chart-axis-z/index.svelte';
 import type { RecipeChartAxisZ } from '$stylist/chart/interface/recipe/chart-axis-z';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeErrorMessage } from '$stylist/notification/interface/recipe/error-message';
-	import { createErrorMessageState } from './state.svelte';
+	import { createErrorMessageState } from '$stylist/notification/component/atom/error-message/state.svelte';
 
 	let props: RecipeErrorMessage = $props();
 

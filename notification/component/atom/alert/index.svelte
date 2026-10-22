@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createAlertState } from './state.svelte';
+	import { createAlertState } from '$stylist/notification/component/atom/alert/state.svelte';
 	import type { RecipeAlert } from '$stylist/notification/interface/recipe/alert';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 

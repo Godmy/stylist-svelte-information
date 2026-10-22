@@ -1,4 +1,4 @@
-import ScheduledNotification from './index.svelte';
+import ScheduledNotification from '$stylist/notification/component/organism/scheduled-notification/index.svelte';
 import type { RecipeScheduledNotification } from '$stylist/notification/interface/recipe/scheduled-notification';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import ExpertAgreementRadar from './index.svelte';
+import ExpertAgreementRadar from '$stylist/chart/component/organism/expert-agreement-radar/index.svelte';
 import type { RecipeExpertAgreementRadar } from '$stylist/chart/interface/recipe/expert-agreement-radar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

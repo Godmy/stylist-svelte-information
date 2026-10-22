@@ -1,4 +1,4 @@
-import LineChart from './index.svelte';
+import LineChart from '$stylist/chart/component/organism/line-chart/index.svelte';
 import type { RecipeLineChart } from '$stylist/chart/interface/recipe/line-chart';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_LINE_TYPE } from '$stylist/chart/const/array/line-type';

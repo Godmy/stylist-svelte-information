@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the header cells are controlled and share the sort state of the row.
-	import CellHeader from './index.svelte';
+	import CellHeader from '$stylist/table/component/atom/cell-header/index.svelte';
 	import type { RecipeCellHeader } from '$stylist/table/interface/recipe/cell-header';
 	import type { TokenSortDirection } from '$stylist/table/type/record/sort-direction';
 

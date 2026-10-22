@@ -1,4 +1,4 @@
-import ImageGallery from './index.svelte';
+import ImageGallery from '$stylist/image/component/organism/image-gallery/index.svelte';
 import type { RecipeImageGallery } from '$stylist/image/interface/recipe/image-gallery';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

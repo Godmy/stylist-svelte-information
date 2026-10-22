@@ -1,4 +1,4 @@
-import ErrorMessage from './index.svelte';
+import ErrorMessage from '$stylist/notification/component/atom/error-message/index.svelte';
 import type { RecipeErrorMessage } from '$stylist/notification/interface/recipe/error-message';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

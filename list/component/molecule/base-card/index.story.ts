@@ -1,4 +1,4 @@
-import BaseCard from './index.svelte';
+import BaseCard from '$stylist/list/component/molecule/base-card/index.svelte';
 import type { RecipeBaseCard } from '$stylist/list/interface/recipe/base-card';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

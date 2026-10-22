@@ -1,4 +1,4 @@
-import MediaThumbnail from './index.svelte';
+import MediaThumbnail from '$stylist/image/component/molecule/media-thumbnail/index.svelte';
 import type { RecipeMediaThumbnail } from '$stylist/image/interface/recipe/media-thumbnail';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

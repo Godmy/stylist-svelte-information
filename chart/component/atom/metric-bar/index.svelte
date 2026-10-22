@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createMetricBarState from './state.svelte';
+	import createMetricBarState from '$stylist/chart/component/atom/metric-bar/state.svelte';
 	import type { RecipeMetricBar } from '$stylist/chart/interface/recipe/metric-bar';
 
 	let props: RecipeMetricBar = $props();

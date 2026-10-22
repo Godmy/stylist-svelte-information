@@ -2,7 +2,7 @@
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeHeatmap } from '$stylist/chart/interface/recipe/heatmap';
 	import Tooltip from '$stylist/animation/component/atom/tooltip/index.svelte';
-	import createHeatmapState from './state.svelte';
+	import createHeatmapState from '$stylist/chart/component/organism/heatmap/state.svelte';
 	import { ManagerHeatmap } from '$stylist/chart/class/manager/heatmap';
 
 	let props: RecipeHeatmap = $props();

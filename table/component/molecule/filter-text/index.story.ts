@@ -1,4 +1,4 @@
-import FilterText from './index.svelte';
+import FilterText from '$stylist/table/component/molecule/filter-text/index.svelte';
 import type { RecipeFilterText } from '$stylist/table/interface/recipe/filter-text';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

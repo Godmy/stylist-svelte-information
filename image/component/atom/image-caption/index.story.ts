@@ -1,10 +1,10 @@
-import ImageCaption from './index.svelte';
+import ImageCaption from '$stylist/image/component/atom/image-caption/index.svelte';
 import type { RecipeImageCaption } from '$stylist/image/interface/recipe/image-caption';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
-import hero from '../../../data/png/1-hero-consensus-decision-room.png';
-import about from '../../../data/png/2-section-about.png';
-import delphi from '../../../data/png/3-section-wideband-delphi.png';
-import history from '../../../data/png/4-section-history.png';
+import hero from '$stylist/image/data/png/1-hero-consensus-decision-room.png';
+import about from '$stylist/image/data/png/2-section-about.png';
+import delphi from '$stylist/image/data/png/3-section-wideband-delphi.png';
+import history from '$stylist/image/data/png/4-section-history.png';
 
 /** Image with a caption and rounded/bordered/shadow framing. */
 export default {

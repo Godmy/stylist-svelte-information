@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeColumn } from '$stylist/table/interface/recipe/column';
-	import { createColumnState } from './state.svelte';
+	import { createColumnState } from '$stylist/table/component/molecule/column/state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let props: RecipeColumn = $props();

@@ -1,4 +1,4 @@
-import CellIcon from './index.svelte';
+import CellIcon from '$stylist/table/component/atom/cell-icon/index.svelte';
 import type { RecipeCellIcon } from '$stylist/table/interface/recipe/cell-icon';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

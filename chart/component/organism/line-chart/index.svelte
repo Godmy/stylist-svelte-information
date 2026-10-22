@@ -2,7 +2,7 @@
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Tooltip from '$stylist/animation/component/atom/tooltip/index.svelte';
 	import type { RecipeLineChart } from '$stylist/chart/interface/recipe/line-chart';
-	import createLineChartState from './state.svelte';
+	import createLineChartState from '$stylist/chart/component/organism/line-chart/state.svelte';
 	import { ManagerLineChart } from '$stylist/chart/class/manager/line-chart';
 
 	let props: RecipeLineChart = $props();

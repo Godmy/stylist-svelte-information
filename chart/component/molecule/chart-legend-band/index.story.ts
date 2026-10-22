@@ -1,4 +1,4 @@
-import ChartLegendBand from './index.svelte';
+import ChartLegendBand from '$stylist/chart/component/molecule/chart-legend-band/index.svelte';
 import type { RecipeChartLegendBand } from '$stylist/chart/interface/recipe/chart-legend-band';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

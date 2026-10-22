@@ -1,4 +1,4 @@
-import Counter from './index.svelte';
+import Counter from '$stylist/notification/component/atom/counter/index.svelte';
 import type { RecipeCounter } from '$stylist/notification/interface/recipe/counter';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

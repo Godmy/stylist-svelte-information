@@ -1,4 +1,4 @@
-import BarChart from './index.svelte';
+import BarChart from '$stylist/chart/component/molecule/bar-chart/index.svelte';
 import type { RecipeBarChart } from '$stylist/chart/interface/recipe/bar-chart';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_THEME_SCHEME } from '$stylist/theme/const/array/theme-scheme';

@@ -1,4 +1,4 @@
-import NotificationSettings from './index.svelte';
+import NotificationSettings from '$stylist/notification/component/molecule/notification-settings/index.svelte';
 import type { RecipeNotificationSettings } from '$stylist/notification/interface/recipe/notification-settings';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ToastStack from './index.svelte';
+	import ToastStack from '$stylist/notification/component/molecule/toast-stack/index.svelte';
 	import type { RecipeToastStack } from '$stylist/notification/interface/recipe/toast-stack';
 	import type { RecipeToast } from '$stylist/notification/interface/recipe/toast';
 

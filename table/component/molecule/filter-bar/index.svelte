@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeFilterBar } from '$stylist/table/interface/recipe/filter-bar';
-	import { createFilterBarState } from './state.svelte';
+	import { createFilterBarState } from '$stylist/table/component/molecule/filter-bar/state.svelte';
 	import FilterText from '$stylist/table/component/molecule/filter-text/index.svelte';
 	import FilterPills from '$stylist/table/component/molecule/filter-pills/index.svelte';
 

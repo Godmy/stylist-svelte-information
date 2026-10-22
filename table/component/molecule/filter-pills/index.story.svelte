@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the pills are controlled, the story keeps the active values onToggle reports.
-	import FilterPills from './index.svelte';
+	import FilterPills from '$stylist/table/component/molecule/filter-pills/index.svelte';
 	import type { RecipeFilterPills } from '$stylist/table/interface/recipe/filter-pills';
 
 	let args: RecipeFilterPills = $props();

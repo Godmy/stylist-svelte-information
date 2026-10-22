@@ -1,4 +1,4 @@
-import CellText from './index.svelte';
+import CellText from '$stylist/table/component/atom/cell-text/index.svelte';
 import type { RecipeCellText } from '$stylist/table/interface/recipe/cell-text';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

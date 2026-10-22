@@ -1,4 +1,4 @@
-import ChartCanvas from './index.svelte';
+import ChartCanvas from '$stylist/chart/component/molecule/chart-canvas/index.svelte';
 import type { RecipeAnalyticsChartCanvas } from '$stylist/chart/interface/recipe/analytics-chart-canvas';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

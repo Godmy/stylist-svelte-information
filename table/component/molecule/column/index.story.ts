@@ -1,4 +1,4 @@
-import Column from './index.svelte';
+import Column from '$stylist/table/component/molecule/column/index.svelte';
 import type { RecipeColumn } from '$stylist/table/interface/recipe/column';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

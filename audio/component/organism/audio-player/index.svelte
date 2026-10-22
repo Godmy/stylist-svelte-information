@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeAudioPlayer } from '$stylist/audio/interface/recipe/audio-player';
-	import { createAudioPlayerState } from './state.svelte';
+	import { createAudioPlayerState } from '$stylist/audio/component/organism/audio-player/state.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Button from '$stylist/button/component/atom/button/index.svelte';
 

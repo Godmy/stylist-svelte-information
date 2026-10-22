@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeTreeNodeItem } from '$stylist/tree/interface/recipe/tree-node-item';
-	import createTreeNodeItemState from './state.svelte';
-	import Self from './index.svelte';
+	import createTreeNodeItemState from '$stylist/tree/component/molecule/tree-node-item/state.svelte';
+	import Self from '$stylist/tree/component/molecule/tree-node-item/index.svelte';
 
 	let props: RecipeTreeNodeItem = $props();
 	const state = createTreeNodeItemState(() => props);

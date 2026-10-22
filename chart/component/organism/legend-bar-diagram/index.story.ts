@@ -1,4 +1,4 @@
-import LegendBarDiagram from './index.svelte';
+import LegendBarDiagram from '$stylist/chart/component/organism/legend-bar-diagram/index.svelte';
 import type { RecipeLegendBarDiagram } from '$stylist/chart/interface/recipe/legend-bar-diagram';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

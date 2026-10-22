@@ -1,4 +1,4 @@
-import ChartPolyline from './index.svelte';
+import ChartPolyline from '$stylist/chart/component/atom/chart-polyline/index.svelte';
 import type { RecipeChartPolyline } from '$stylist/chart/interface/recipe/chart-polyline';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

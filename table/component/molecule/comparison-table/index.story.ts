@@ -1,4 +1,4 @@
-import ComparisonTable from './index.svelte';
+import ComparisonTable from '$stylist/table/component/molecule/comparison-table/index.svelte';
 import type { RecipeComparisonTable } from '$stylist/table/interface/recipe/comparison-table';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

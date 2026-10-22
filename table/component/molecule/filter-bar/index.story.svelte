@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the pill groups are controlled, the story keeps the active values onTogglePill reports.
-	import FilterBar from './index.svelte';
+	import FilterBar from '$stylist/table/component/molecule/filter-bar/index.svelte';
 	import type { RecipeFilterBar } from '$stylist/table/interface/recipe/filter-bar';
 
 	let args: RecipeFilterBar = $props();

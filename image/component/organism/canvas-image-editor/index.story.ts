@@ -1,4 +1,4 @@
-import CanvasImageEditor from './index.svelte';
+import CanvasImageEditor from '$stylist/image/component/organism/canvas-image-editor/index.svelte';
 import type { RecipeCanvasImageEditor } from '$stylist/image/interface/recipe/canvas-image-editor';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_IMAGE_FILTER } from '$stylist/layout/const/array/image-filter';

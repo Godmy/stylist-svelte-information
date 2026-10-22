@@ -1,4 +1,4 @@
-import NotificationCenter from './index.svelte';
+import NotificationCenter from '$stylist/notification/component/organism/notification-center/index.svelte';
 import type { RecipeNotificationCenter } from '$stylist/notification/interface/recipe/notification-center';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

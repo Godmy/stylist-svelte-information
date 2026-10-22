@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from './index.svelte';
+	import Card from '$stylist/image/component/molecule/card/index.svelte';
 	import type { RecipeCard } from '$stylist/image/interface/recipe/card';
 
 	// Render of index.story.ts: the header, body and footer are snippet props.

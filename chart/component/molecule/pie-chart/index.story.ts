@@ -1,4 +1,4 @@
-import PieChart from './index.svelte';
+import PieChart from '$stylist/chart/component/molecule/pie-chart/index.svelte';
 import type { RecipePieChart } from '$stylist/chart/interface/recipe/pie-chart';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

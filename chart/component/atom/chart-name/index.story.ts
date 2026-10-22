@@ -1,4 +1,4 @@
-import ChartName from './index.svelte';
+import ChartName from '$stylist/chart/component/atom/chart-name/index.svelte';
 import type { RecipeChartName } from '$stylist/chart/interface/recipe/chart-name';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

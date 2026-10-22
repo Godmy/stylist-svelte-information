@@ -1,4 +1,4 @@
-import CountBadge from './index.svelte';
+import CountBadge from '$stylist/notification/component/atom/count-badge/index.svelte';
 import type { RecipeCountBadge } from '$stylist/notification/interface/recipe/count-badge';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import MessageTimestamp from './index.svelte';
+import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 import type { RecipeMessageTimestamp } from '$stylist/notification/interface/recipe/message-timestamp';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_TIMESTAMP_FORMAT } from '$stylist/calendar/const/array/timestamp-format';

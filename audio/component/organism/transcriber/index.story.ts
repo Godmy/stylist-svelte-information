@@ -1,4 +1,4 @@
-import Transcriber from './index.svelte';
+import Transcriber from '$stylist/audio/component/organism/transcriber/index.svelte';
 import type { RecipeTranscriber } from '$stylist/audio/interface/recipe/transcriber';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

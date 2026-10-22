@@ -1,4 +1,4 @@
-import Alert from './index.svelte';
+import Alert from '$stylist/notification/component/atom/alert/index.svelte';
 import type { RecipeAlert } from '$stylist/notification/interface/recipe/alert';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

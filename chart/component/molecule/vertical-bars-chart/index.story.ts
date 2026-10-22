@@ -1,4 +1,4 @@
-import VerticalBarsChart from './index.svelte';
+import VerticalBarsChart from '$stylist/chart/component/molecule/vertical-bars-chart/index.svelte';
 import type { RecipeVerticalBarsChart } from '$stylist/chart/interface/recipe/vertical-bars-chart';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

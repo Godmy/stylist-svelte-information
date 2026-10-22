@@ -1,4 +1,4 @@
-import WidebandDelphiDiagram from './index.svelte';
+import WidebandDelphiDiagram from '$stylist/chart/component/organism/wideband-delphi-diagram/index.svelte';
 import type { RecipeWidebandDelphiDiagram } from '$stylist/chart/interface/recipe/wideband-delphi-diagram';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeNotificationCenter } from '$stylist/notification/interface/recipe/notification-center';
-	import { createNotificationCenterState } from './state.svelte';
+	import { createNotificationCenterState } from '$stylist/notification/component/organism/notification-center/state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import CountBadge from '$stylist/notification/component/atom/count-badge/index.svelte';
 	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';

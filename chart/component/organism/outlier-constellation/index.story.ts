@@ -1,4 +1,4 @@
-import OutlierConstellation from './index.svelte';
+import OutlierConstellation from '$stylist/chart/component/organism/outlier-constellation/index.svelte';
 import type { RecipeOutlierConstellation } from '$stylist/chart/interface/recipe/outlier-constellation';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

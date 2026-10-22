@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeRowExpandable } from '$stylist/table/interface/recipe/row-expandable';
-	import { createExpandableTableRowState } from './state.svelte';
+	import { createExpandableTableRowState } from '$stylist/table/component/molecule/row-expandable/state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let {

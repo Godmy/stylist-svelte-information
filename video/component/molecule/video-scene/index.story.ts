@@ -1,4 +1,4 @@
-import VideoScene from './index.svelte';
+import VideoScene from '$stylist/video/component/molecule/video-scene/index.svelte';
 import type { RecipeVideoScene } from '$stylist/video/interface/recipe/video-scene';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

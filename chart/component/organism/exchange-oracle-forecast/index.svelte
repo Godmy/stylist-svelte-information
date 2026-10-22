@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createExchangeOracleForecastState from './state.svelte';
+	import createExchangeOracleForecastState from '$stylist/chart/component/organism/exchange-oracle-forecast/state.svelte';
 	import type { RecipeExchangeOracleForecast } from '$stylist/chart/interface/recipe/exchange-oracle-forecast';
 
 	let props: RecipeExchangeOracleForecast = $props();

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createExpertSpreadMatrixState from './state.svelte';
+	import createExpertSpreadMatrixState from '$stylist/chart/component/organism/expert-spread-matrix/state.svelte';
 	import type { RecipeExpertSpreadMatrix } from '$stylist/chart/interface/recipe/expert-spread-matrix';
 
 	let props: RecipeExpertSpreadMatrix = $props();

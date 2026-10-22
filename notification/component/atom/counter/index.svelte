@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeCounter } from '$stylist/notification/interface/recipe/counter';
-	import createCounterState from './state.svelte';
+	import createCounterState from '$stylist/notification/component/atom/counter/state.svelte';
 
 	let props: RecipeCounter = $props();
 

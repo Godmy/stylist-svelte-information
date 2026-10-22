@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeCellPill } from '$stylist/table/interface/recipe/cell-pill';
-	import { createCellPillState } from './state.svelte';
+	import { createCellPillState } from '$stylist/table/component/atom/cell-pill/state.svelte';
 
 	let props: RecipeCellPill & HTMLAttributes<HTMLTableCellElement> = $props();
 	const state = createCellPillState(() => props);

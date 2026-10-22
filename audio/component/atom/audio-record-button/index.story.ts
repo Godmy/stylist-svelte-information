@@ -1,4 +1,4 @@
-import AudioRecordButton from './index.svelte';
+import AudioRecordButton from '$stylist/audio/component/atom/audio-record-button/index.svelte';
 import type { RecipeAudioRecordButton } from '$stylist/audio/interface/recipe/audio-record-button';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

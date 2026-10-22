@@ -1,4 +1,4 @@
-import VideoPlayer from './index.svelte';
+import VideoPlayer from '$stylist/video/component/molecule/video-player/index.svelte';
 import type { RecipeVideoPlayer } from '$stylist/video/interface/recipe/video-player';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -2,7 +2,7 @@
 	import type { RecipeTreeViewer } from '$stylist/tree/interface/recipe/tree-viewer';
 	import FlatTree from '$stylist/tree/component/molecule/flat-tree/index.svelte';
 	import { normalizeTreeViewerNode } from '$stylist/tree/function/script/normalize-tree-viewer-node';
-	import createTreeViewerState from './state.svelte';
+	import createTreeViewerState from '$stylist/tree/component/molecule/tree-viewer/state.svelte';
 
 	let props: RecipeTreeViewer = $props();
 
