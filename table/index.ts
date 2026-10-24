@@ -32,6 +32,7 @@ export {
 } from './const';
 export {
 	createColumn,
+	createColumnVisibility,
 	createTable
 } from './function';
 export type {

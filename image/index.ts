@@ -5,6 +5,7 @@ export {
 	DividerHeadingImageText,
 	Image,
 	ImageCaption,
+	ImageCaptionEditorCard,
 	ImageGallery,
 	MediaThumbnail
 } from './component';
@@ -14,6 +15,7 @@ export type {
 	RecipeDividerHeadingImageText,
 	RecipeImage,
 	RecipeImageCaption,
+	RecipeImageCaptionEditorCard,
 	RecipeImageGallery,
 	RecipeMediaThumbnail,
 	SlotImage

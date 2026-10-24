@@ -10,5 +10,6 @@ export {
 } from './molecule';
 export {
 	CanvasImageEditor,
+	ImageCaptionEditorCard,
 	ImageGallery
 } from './organism';

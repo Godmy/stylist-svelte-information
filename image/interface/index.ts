@@ -5,6 +5,7 @@ export type {
 	RecipeDividerHeadingImageText,
 	RecipeImage,
 	RecipeImageCaption,
+	RecipeImageCaptionEditorCard,
 	RecipeImageGallery,
 	RecipeMediaThumbnail
 } from './recipe';

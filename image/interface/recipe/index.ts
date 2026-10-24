@@ -4,5 +4,6 @@ export type { RecipeCard } from './card';
 export type { RecipeDividerHeadingImageText } from './divider-heading-image-text';
 export type { RecipeImage } from './image';
 export type { RecipeImageCaption } from './image-caption';
+export type { RecipeImageCaptionEditorCard } from './image-caption-editor-card';
 export type { RecipeImageGallery } from './image-gallery';
 export type { RecipeMediaThumbnail } from './media-thumbnail';
