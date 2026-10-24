@@ -19,7 +19,7 @@
 		onSelect?.(node);
 		if (node.children?.length) {
 			const expanded = !state.isOpen(node);
-			state.toggle(node.id);
+			state.toggle(node.id, expanded);
 			onToggle?.(node, expanded);
 		}
 	}
