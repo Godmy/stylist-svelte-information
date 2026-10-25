@@ -50,13 +50,13 @@
 	.tree-viewer {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-1);
+		gap: var(--space-1);
 	}
 	.tree-viewer__node {
 		display: inline-flex;
 		min-width: 0;
 		align-items: center;
-		gap: var(--spacing-2);
+		gap: var(--space-2);
 	}
 	.tree-viewer__label {
 		min-width: 0;

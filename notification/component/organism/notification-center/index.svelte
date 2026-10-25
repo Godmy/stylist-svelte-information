@@ -74,7 +74,7 @@
 
 <style>
 	.notification-center {
-		border-radius: var(--border-radius-large, 0.5rem);
+		border-radius: var(--radius-2, 0.5rem);
 		border: 1px solid var(--color-border-primary);
 		background: var(--color-background-primary);
 		padding: 1rem;
@@ -116,7 +116,7 @@
 		align-items: center;
 		gap: 0.375rem;
 		border: 1px solid var(--color-border-primary);
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: var(--color-background-primary);
 		color: var(--color-text-secondary);
 		padding: 0.375rem 0.625rem;
@@ -148,7 +148,7 @@
 		gap: 0.625rem;
 		width: 100%;
 		border: 1px solid var(--color-border-primary);
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: var(--color-background-primary);
 		padding: 0.625rem;
 		text-align: left;
@@ -205,7 +205,7 @@
 		width: 100%;
 		margin-top: 0.75rem;
 		border: 1px dashed var(--color-border-primary);
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: transparent;
 		color: var(--color-text-secondary);
 		padding: 0.5rem;

@@ -8,7 +8,7 @@
 	const Filter = 'filter';
 	const Grid = 'grid';
 	const List = 'list';
-	const SortAsc = 'sort-asc';
+	const SortAsc = 'chevron-up';
 	const X = 'x';
 	const Tag = 'tag';
 	const Code = 'code';

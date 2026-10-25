@@ -1,12 +1,13 @@
 import type { RecipeNotificationSettings } from '$stylist/notification/interface/recipe/notification-settings';
 import type { TokenNotifictionChannel } from '$stylist/notification/type/alias/notification-channel';
 import { updateNotificationPreference } from '$stylist/notification/function/script/notification-settings';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
-const Bell = 'bell';
-const Mail = 'mail';
-const Smartphone = 'smartphone';
-const Monitor = 'monitor';
-const Settings = 'settings';
+const Bell: TokenIconName = 'bell';
+const Mail: TokenIconName = 'mail';
+const Smartphone: TokenIconName = 'phone';
+const Monitor: TokenIconName = 'laptop-2';
+const Settings: TokenIconName = 'settings';
 
 export function createNotificationSettingsState(getProps: () => RecipeNotificationSettings) {
 	const props = $derived(getProps());

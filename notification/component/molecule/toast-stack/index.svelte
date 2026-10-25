@@ -105,7 +105,7 @@
 
 	.toast-stack__dismiss-all {
 		border: 1px solid var(--color-border-primary);
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: var(--color-background-primary);
 		color: var(--color-text-secondary);
 		box-shadow: var(--shadow-sm, 0 1px 2px rgb(15 23 42 / 0.08));
@@ -123,7 +123,7 @@
 
 	.toast-item {
 		width: 100%;
-		border-radius: var(--border-radius-large, 0.5rem);
+		border-radius: var(--radius-2, 0.5rem);
 		border: 1px solid transparent;
 		padding: 1rem;
 		box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
@@ -225,7 +225,7 @@
 	.toast-item__action-btn {
 		display: inline-flex;
 		align-items: center;
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		border: 1px solid transparent;
 		background-color: var(--color-primary-100);
 		padding: 0.25rem 0.625rem;

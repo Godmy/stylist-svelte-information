@@ -1,5 +1,8 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { ListItemMarker } from './atom';
+export {
+	DragAndDrop,
+	ListItemMarker
+} from './atom';
 export {
 	BaseCard,
 	DragAndDropList

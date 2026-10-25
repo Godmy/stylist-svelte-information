@@ -89,11 +89,11 @@
 	.c-tree-node__header {
 		display: flex;
 		align-items: center;
-		padding: var(--spacing-1) var(--spacing-2);
-		border-radius: var(--border-radius-base);
+		padding: var(--space-1) var(--space-2);
+		border-radius: var(--radius-1-5);
 		cursor: pointer;
 		transition: background-color;
-		min-height: var(--spacing-8);
+		min-height: var(--space-8);
 	}
 
 	.c-tree-node__header:hover {
@@ -106,9 +106,9 @@
 
 	/* Tree toggle icon styles */
 	.c-tree-node__toggle {
-		width: var(--spacing-4);
-		height: var(--spacing-4);
-		margin-right: var(--spacing-2);
+		width: var(--space-4);
+		height: var(--space-4);
+		margin-right: var(--space-2);
 		cursor: pointer;
 		color: var(--color-text-secondary);
 	}
@@ -119,9 +119,9 @@
 
 	/* No toggle placeholder */
 	.c-tree-node__no-toggle {
-		width: var(--spacing-4);
-		height: var(--spacing-4);
-		margin-right: var(--spacing-2);
+		width: var(--space-4);
+		height: var(--space-4);
+		margin-right: var(--space-2);
 	}
 
 	/* Tree node text */
@@ -132,20 +132,20 @@
 
 	/* Secondary icon */
 	.c-tree-node__icon {
-		margin-left: var(--spacing-2);
+		margin-left: var(--space-2);
 		color: var(--color-text-secondary);
 	}
 
 	.c-tree-node__icon-img {
-		margin-left: var(--spacing-2);
-		width: var(--spacing-4);
-		height: var(--spacing-4);
+		margin-left: var(--space-2);
+		width: var(--space-4);
+		height: var(--space-4);
 	}
 
 	/* Tree node children */
 	.c-tree-node__children {
-		margin-left: var(--spacing-6);
+		margin-left: var(--space-6);
 		border-left: 2px solid var(--color-border-secondary);
-		padding-left: var(--spacing-2);
+		padding-left: var(--space-2);
 	}
 </style>

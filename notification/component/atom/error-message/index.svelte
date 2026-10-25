@@ -39,7 +39,7 @@
 	.error-message {
 		display: grid;
 		gap: 0.25rem;
-		border-radius: var(--border-radius-large, 0.5rem);
+		border-radius: var(--radius-2, 0.5rem);
 		border: 1px solid var(--color-danger-200);
 		background-color: var(--color-danger-50);
 		padding: 1rem;
@@ -65,7 +65,7 @@
 	.error-message__retry-btn {
 		display: inline-flex;
 		align-items: center;
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background-color: var(--color-danger-600);
 		padding: 0.375rem 0.75rem;
 		font-size: 0.875rem;

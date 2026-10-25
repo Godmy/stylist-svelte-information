@@ -46,7 +46,7 @@
 <style>
 	.alert-container {
 		padding: 1rem;
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		border: 1px solid transparent;
 		box-shadow: var(--shadow-sm, 0 1px 2px rgb(15 23 42 / 0.08));
 	}
@@ -158,7 +158,7 @@
 		width: 1.75rem;
 		height: 1.75rem;
 		border: 0;
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: transparent;
 		color: inherit;
 		cursor: pointer;

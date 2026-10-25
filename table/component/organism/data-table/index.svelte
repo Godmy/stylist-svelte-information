@@ -8,12 +8,16 @@
 	import CellIcon from '$stylist/table/component/atom/cell-icon/index.svelte';
 	import CellPill from '$stylist/table/component/atom/cell-pill/index.svelte';
 	import { ObjectManagerTableControls } from '$stylist/table/class/manager/table-controls';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	type RowData = Record<string, unknown>;
 
 	let props: RecipeDataTable<RowData> = $props();
 
 	const state = createDataTableState(() => props);
+
+	// Cell values come from row data; unknown names fall back to the box icon.
+	const toCellIcon = (value: unknown) => (isIconName(value) ? value : 'box');
 </script>
 
 <div
@@ -65,7 +69,7 @@
 										<td class="c-data-table__custom">{@render col.snippet(row)}</td>
 									{:else if col.cell === 'icon'}
 										<CellIcon
-											icon={String(ObjectManagerTableControls.getCellValue(row, col) ?? '')}
+											icon={toCellIcon(ObjectManagerTableControls.getCellValue(row, col))}
 										/>
 									{:else if col.cell === 'pill'}
 										<CellPill

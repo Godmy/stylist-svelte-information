@@ -2,6 +2,7 @@
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeListItemMarker } from '$stylist/list/interface/recipe/list-item-marker';
 	import createListItemMarkerState from '$stylist/list/component/atom/list-item-marker/state.svelte';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
 
@@ -46,7 +47,7 @@
 	{:else if state.type === 'number'}
 		{state.value}
 	{:else if typeof state.value === 'string'}
-		<Icon name={state.value} size={iconSize} />
+		<Icon name={isIconName(state.value) ? state.value : 'box'} size={iconSize} />
 	{/if}
 </span>
 

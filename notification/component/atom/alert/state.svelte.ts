@@ -1,21 +1,22 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeAlert } from '$stylist/notification/interface/recipe/alert';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 export function createAlertState(getProps: () => RecipeAlert) {
 	const props = $derived(getProps());
 	const iconMap = {
 		info: 'info',
 		success: 'check-circle',
-		warning: 'alert-triangle',
+		warning: 'alert',
 		error: 'x-circle',
 		danger: 'x-circle',
 		primary: 'info',
 		secondary: 'info'
-	} as const;
+	} as const satisfies Record<string, TokenIconName>;
 
 	const variant = $derived(props.variant ?? 'info');
 	const IconComponent = $derived(iconMap[variant as keyof typeof iconMap] ?? 'info');
-	const XIcon = 'x';
+	const XIcon: TokenIconName = 'x';
 
 	const alertClasses = $derived(
 		ClassNamesManager.join('alert-container', `variant-${variant}`, props.class ?? '')

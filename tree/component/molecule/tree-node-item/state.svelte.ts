@@ -1,9 +1,10 @@
 import type { RecipeTreeNodeItem } from '$stylist/tree/interface/recipe/tree-node-item';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 export function createTreeNodeItemState(getProps: () => RecipeTreeNodeItem) {
 	const props = $derived(getProps());
-	const ChevronRight = 'chevron-right';
-	const ChevronDown = 'chevron-down';
+	const ChevronRight: TokenIconName = 'chevron-right';
+	const ChevronDown: TokenIconName = 'chevron-down';
 
 	const expandedNodes = $derived(props.expandedNodes ?? new Set<string>());
 	const node = $derived(props.node);

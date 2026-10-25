@@ -98,7 +98,7 @@
 		flex-direction: column;
 		height: 100%;
 		background: var(--color-background-primary, #fff);
-		border-radius: var(--radius-lg, 0.75rem);
+		border-radius: var(--radius-3, 0.75rem);
 		border: 1px solid var(--color-border-primary, #e5e7eb);
 		box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
 		overflow: hidden;
@@ -119,7 +119,7 @@
 		justify-content: center;
 		width: 2.25rem;
 		height: 2.25rem;
-		border-radius: var(--radius-md, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: var(--color-primary-50, #eef2ff);
 		color: var(--color-primary-600, #4f46e5);
 		flex-shrink: 0;
@@ -150,7 +150,7 @@
 	.c-table-list-panel__search-input {
 		width: 100%;
 		border: 1px solid var(--color-border-primary, #d1d5db);
-		border-radius: var(--radius-md, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		padding: 0.4rem 0.75rem 0.4rem 2rem;
 		font-size: 0.875rem;
 		color: var(--color-text-primary, #111827);
@@ -186,7 +186,7 @@
 		justify-content: space-between;
 		width: 100%;
 		padding: 0.5rem 0.75rem;
-		border-radius: var(--radius-md, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		border: none;
 		background: transparent;
 		text-align: left;

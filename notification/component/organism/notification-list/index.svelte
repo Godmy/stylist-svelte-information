@@ -71,7 +71,7 @@
 		gap: 0.625rem;
 		width: 100%;
 		border: 1px solid var(--color-border-primary);
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		background: var(--color-background-primary);
 		padding: 0.625rem;
 		text-align: left;
@@ -133,7 +133,7 @@
 		flex-shrink: 0;
 		width: 1.5rem;
 		height: 1.5rem;
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		color: var(--color-text-tertiary);
 		cursor: pointer;
 	}

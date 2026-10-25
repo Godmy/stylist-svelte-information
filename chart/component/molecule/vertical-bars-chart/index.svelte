@@ -52,7 +52,7 @@
 	}
 	.vertical-bars-chart__bar {
 		border-radius: 0.25rem 0.25rem 0 0;
-		transition: height var(--duration-300, 300ms) var(--animation-ease, ease);
+		transition: height var(--duration-300, 300ms) var(--easing-ease, ease);
 	}
 	.vertical-bars-chart small,
 	.vertical-bars-chart__label {
