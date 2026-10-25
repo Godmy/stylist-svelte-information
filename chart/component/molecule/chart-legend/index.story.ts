@@ -14,6 +14,9 @@ export default {
 			{ id: 'f3', name: 'h(x) = 0.5x + 2', color: '#ea580c' }
 		]
 	},
+	controls: {
+		items: { type: 'json', example: [{ id: 'f1', name: 'f(x) = x^2', color: '#2563eb' }] }
+	},
 	presets: {
 		Single: { items: [{ id: 'f1', name: 'f(x) = x^2', color: '#2563eb' }] }
 	}
