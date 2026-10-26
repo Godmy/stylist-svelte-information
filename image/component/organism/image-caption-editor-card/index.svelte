@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { IMAGE_IMAGE_CAPTION_EDITOR_CARD_MESSAGE } from '$stylist/image/const/record/image-caption-editor-card-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
 	import type { RecipeImageCaptionEditorCard } from '$stylist/image/interface/recipe/image-caption-editor-card';
 
 	let {
@@ -15,12 +17,14 @@
 		note,
 		message = null,
 		enhance = () => {},
-		fieldLabel = 'Caption',
-		saveLabel = 'Save',
-		cancelLabel = 'Cancel',
-		resetLabel = 'Restore original',
+		fieldLabel,
+		saveLabel,
+		cancelLabel,
+		resetLabel,
 		class: className = ''
 	}: RecipeImageCaptionEditorCard = $props();
+
+	const t = useMessage('image-caption-editor-card', IMAGE_IMAGE_CAPTION_EDITOR_CARD_MESSAGE);
 
 	// Unsaved text; a saved (or restored) caption from the consumer drops it.
 	let draft = $derived.by<string | null>(() => {
@@ -46,16 +50,16 @@
 			{name}
 			rows="3"
 			maxlength={maxLength}
-			aria-label={fieldLabel}
+			aria-label={fieldLabel ?? t('field')}
 			value={text}
 			oninput={(event) => (draft = event.currentTarget.value)}></textarea>
 		<div class="c-image-caption-editor-card__actions">
-			<button type="submit" class="primary" disabled={!changed}>{saveLabel}</button>
+			<button type="submit" class="primary" disabled={!changed}>{saveLabel ?? t('save')}</button>
 			{#if changed}
-				<button type="button" onclick={() => (draft = null)}>{cancelLabel}</button>
+				<button type="button" onclick={() => (draft = null)}>{cancelLabel ?? t('cancel')}</button>
 			{/if}
 			{#if resetAction && edited}
-				<button type="submit" formaction={resetAction}>{resetLabel}</button>
+				<button type="submit" formaction={resetAction}>{resetLabel ?? t('reset')}</button>
 			{/if}
 			<span class="c-image-caption-editor-card__count">{text.length}/{maxLength}</span>
 		</div>

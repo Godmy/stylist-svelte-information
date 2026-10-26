@@ -2,14 +2,18 @@
 	import type { RecipeImageCaption } from '$stylist/image/interface/recipe/image-caption';
 	import { createImageCaptionState } from '$stylist/image/component/atom/image-caption/state.svelte';
 
+	import { IMAGE_IMAGE_CAPTION_MESSAGE } from '$stylist/image/const/record/image-caption-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeImageCaption = $props();
 	const state = createImageCaptionState(() => props);
+	const t = useMessage('image-caption', IMAGE_IMAGE_CAPTION_MESSAGE);
 </script>
 
 <div class={state.hostClasses} {...state.restProps}>
 	<img
 		src={props.imageSrc}
-		alt={props.imageAlt ?? 'Image'}
+		alt={props.imageAlt ?? t('alt')}
 		width={props.imageWidth ?? '100%'}
 		height={props.imageHeight ?? 'auto'}
 		loading={props.imageLoading ?? 'lazy'}

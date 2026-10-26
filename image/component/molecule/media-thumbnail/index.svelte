@@ -2,7 +2,11 @@
 	import CloseButton from '$stylist/button/component/atom/close-button/index.svelte';
 	import type { RecipeMediaThumbnail } from '$stylist/image/interface/recipe/media-thumbnail';
 
+	import { IMAGE_MEDIA_THUMBNAIL_MESSAGE } from '$stylist/image/const/record/media-thumbnail-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeMediaThumbnail = $props();
+	const t = useMessage('media-thumbnail', IMAGE_MEDIA_THUMBNAIL_MESSAGE);
 </script>
 
 <figure class="media-thumbnail {props.class ?? ''}">
@@ -12,7 +16,7 @@
 			class="media-thumbnail__remove"
 			size="sm"
 			variant="default"
-			ariaLabel="Удалить изображение"
+			ariaLabel={t('remove')}
 			onclick={props.onRemove}
 		/>
 	{/if}

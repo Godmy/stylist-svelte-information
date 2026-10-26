@@ -3,8 +3,12 @@
 	import { createImageGalleryState } from '$stylist/image/component/organism/image-gallery/state.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 
+	import { IMAGE_IMAGE_GALLERY_MESSAGE } from '$stylist/image/const/record/image-gallery-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeImageGallery = $props();
 	const state = createImageGalleryState(() => props);
+	const t = useMessage('image-gallery', IMAGE_IMAGE_GALLERY_MESSAGE);
 </script>
 
 <div class={state.containerClass} {...state.restProps}>
@@ -22,7 +26,7 @@
 				<img
 					src={state.images[state.currentIndex].imageSrc}
 					alt={state.images[state.currentIndex].imageAlt ||
-						`Gallery image ${state.currentIndex + 1}`}
+						t('image', { index: state.currentIndex + 1 })}
 					loading={state.images[state.currentIndex].imageLoading ?? 'lazy'}
 					width={state.images[state.currentIndex].imageWidth}
 					height={state.images[state.currentIndex].imageHeight}
@@ -35,7 +39,7 @@
 						type="button"
 						class={state.navigationButtonClasses}
 						onclick={() => state.prevImage()}
-						aria-label="Previous image"
+						aria-label={t('previous')}
 					>
 						<BaseIcon name="chevron-left" size={24} />
 					</button>
@@ -44,7 +48,7 @@
 						type="button"
 						class={state.navigationButtonClasses}
 						onclick={() => state.nextImage()}
-						aria-label="Next image"
+						aria-label={t('next')}
 					>
 						<BaseIcon name="chevron-right" size={24} />
 					</button>
@@ -76,7 +80,7 @@
 						>
 							<img
 								src={img.imageSrc}
-								alt={img.imageAlt || `Thumbnail ${index + 1}`}
+								alt={img.imageAlt || t('thumbnail', { index: index + 1 })}
 								loading={img.imageLoading ?? 'lazy'}
 								width={img.imageWidth}
 								height={img.imageHeight}
@@ -96,7 +100,7 @@
 				type="button"
 				class="image-gallery__fullscreen-close-button"
 				onclick={() => state.closeFullscreen()}
-				aria-label="Close fullscreen"
+				aria-label={t('close')}
 			>
 				<BaseIcon name="x" size={24} />
 			</button>
@@ -105,7 +109,7 @@
 				type="button"
 				class="image-gallery__fullscreen-left-button"
 				onclick={() => state.prevImage()}
-				aria-label="Previous image"
+				aria-label={t('previous')}
 			>
 				<BaseIcon name="chevron-left" size={32} />
 			</button>
@@ -114,7 +118,7 @@
 				<img
 					src={state.images[state.currentIndex].imageSrc}
 					alt={state.images[state.currentIndex].imageAlt ||
-						`Fullscreen image ${state.currentIndex + 1}`}
+						t('fullscreen', { index: state.currentIndex + 1 })}
 					loading={state.images[state.currentIndex].imageLoading ?? 'lazy'}
 					width={state.images[state.currentIndex].imageWidth}
 					height={state.images[state.currentIndex].imageHeight}
@@ -136,7 +140,7 @@
 				type="button"
 				class="image-gallery__fullscreen-right-button"
 				onclick={() => state.nextImage()}
-				aria-label="Next image"
+				aria-label={t('next')}
 			>
 				<BaseIcon name="chevron-right" size={32} />
 			</button>
