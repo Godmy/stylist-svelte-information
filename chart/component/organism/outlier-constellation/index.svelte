@@ -2,14 +2,15 @@
 	import createOutlierConstellationState from '$stylist/chart/component/organism/outlier-constellation/state.svelte';
 	import type { RecipeOutlierConstellation } from '$stylist/chart/interface/recipe/outlier-constellation';
 
+	import { CHART_OUTLIER_CONSTELLATION_MESSAGE } from '$stylist/chart/const/record/outlier-constellation-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeOutlierConstellation = $props();
 	const state = createOutlierConstellationState(() => props);
+	const t = useMessage('outlier-constellation', CHART_OUTLIER_CONSTELLATION_MESSAGE);
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Outlier constellation'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}<header class="outlier-constellation__header">
 			<h3>{props.text}</h3>
 			{#if props.description}<p>{props.description}</p>{/if}

@@ -2,9 +2,11 @@
 	import type { RecipeCanvasChart } from '$stylist/chart/interface/recipe/canvas-chart';
 	import createCanvasChartState from '$stylist/chart/component/organism/canvas-chart/state.svelte';
 	import { ManagerCanvasChart } from '$stylist/chart/class/manager/canvas-chart';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
 
 	let props: RecipeCanvasChart = $props();
 	const state = createCanvasChartState(() => props);
+	const format = useFormat();
 
 	let canvasRef: HTMLCanvasElement | null = null;
 	const resolvedColors = $derived(ManagerCanvasChart.resolveColors(state.colors));
@@ -21,7 +23,9 @@
 				xAxisLabel: props.xAxisLabel ?? '',
 				yAxisLabel: props.yAxisLabel ?? '',
 				showGrid: state.showGrid,
-				colors: resolvedColors
+				colors: resolvedColors,
+				formatValue: (value) =>
+					format.number(value, { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 			});
 		}
 	});

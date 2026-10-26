@@ -2,15 +2,21 @@
 	import createMetricBarState from '$stylist/chart/component/atom/metric-bar/state.svelte';
 	import type { RecipeMetricBar } from '$stylist/chart/interface/recipe/metric-bar';
 
+	import { CHART_METRIC_BAR_MESSAGE } from '$stylist/chart/const/record/metric-bar-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
+
 	let props: RecipeMetricBar = $props();
 	const state = createMetricBarState(() => props);
+	const t = useMessage('metric-bar', CHART_METRIC_BAR_MESSAGE);
+	const format = useFormat();
 </script>
 
 <div
 	class={state.containerClasses}
 	style={state.combinedStyle}
 	role="group"
-	aria-label={`Metric row: ${state.text}`}
+	aria-label={t('row', { text: state.text })}
 	{...state.restProps}
 >
 	<div class={state.headerClasses}>
@@ -24,7 +30,10 @@
 		aria-valuenow={state.percentage}
 		aria-valuemin="0"
 		aria-valuemax="100"
-		aria-label={`${state.text}: ${state.percentage}%`}
+		aria-label={t('value', {
+			text: state.text,
+			percent: format.number(state.percentage / 100, { style: 'percent' })
+		})}
 	>
 		<div class={state.fillClasses} style={state.widthStyle} aria-hidden="true"></div>
 	</div>

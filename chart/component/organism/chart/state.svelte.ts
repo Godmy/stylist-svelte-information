@@ -2,6 +2,8 @@ import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { ChartSeries } from '$stylist/chart/interface/slot/chart-series';
 import type { RecipeChart } from '$stylist/chart/interface/recipe/chart';
 import { ManagerChart } from '$stylist/chart/class/manager/chart';
+import { CHART_CHART_MESSAGE } from '$stylist/chart/const/record/chart-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 
 function resolveClassName(className: unknown): string | undefined {
 	return typeof className === 'string' ? className : undefined;
@@ -38,7 +40,10 @@ export function createChartState(getProps: () => RecipeChart) {
 		ClassNamesManager.merge('c-chart', resolveClassName(props.class))
 	);
 	const series = $derived(ManagerChart.resolveSeries(props.series));
-	const legendItems = $derived(ManagerChart.resolveLegendItems(series));
+	const t = useMessage('chart', CHART_CHART_MESSAGE);
+	const legendItems = $derived(
+		ManagerChart.resolveLegendItems(series, (index) => t('series', { index }))
+	);
 	const bounds = $derived(getChartBounds(series));
 
 	return {

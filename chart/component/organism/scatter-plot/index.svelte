@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { RecipeScatterPlot } from '$stylist/chart/interface/recipe/scatter-plot';
 	import createScatterPlotState from '$stylist/chart/component/organism/scatter-plot/state.svelte';
+	import { CHART_SCATTER_PLOT_MESSAGE } from '$stylist/chart/const/record/scatter-plot-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
 	let {
 		data = [],
-		title = 'Scatter Plot',
+		title,
 		width = 700,
 		height = 420,
 		showLegend = true,
@@ -28,10 +31,12 @@
 		class: className,
 		onPointClick
 	}));
+	const t = useMessage('scatter-plot', CHART_SCATTER_PLOT_MESSAGE);
+	const format = useFormat();
 </script>
 
 <div class={state.rootClass} style={`width:${width}px`} {...restProps}>
-	<h3 class="sp-title">{title}</h3>
+	<h3 class="sp-title">{title ?? t('title')}</h3>
 	<div class="sp-chart-wrap">
 		<svg {width} {height}>
 			{#if showGrid}
@@ -87,7 +92,10 @@
 	</div>
 	{#if showLegend}
 		<div class="sp-legend">
-			X max: {Math.round(state.maxX)}, Y max: {Math.round(state.maxY)}
+			{t('extent', {
+				x: format.number(Math.round(state.maxX)),
+				y: format.number(Math.round(state.maxY))
+			})}
 		</div>
 	{/if}
 </div>

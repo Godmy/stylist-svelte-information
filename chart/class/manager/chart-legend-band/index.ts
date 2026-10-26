@@ -18,6 +18,7 @@ export class ManagerChartLegendBand {
 			color?: string;
 		}[],
 		options: {
+			sectionLabels: Record<'atom' | 'molecule' | 'organism' | 'template' | 'page', string>;
 			width?: number;
 			height?: number;
 			plotHeight?: number;
@@ -32,7 +33,7 @@ export class ManagerChartLegendBand {
 			tickCount?: number;
 			fontSize?: number;
 			color?: string;
-		} = {}
+		}
 	): {
 		width: number;
 		height: number;
@@ -65,6 +66,8 @@ export class ManagerChartLegendBand {
 			textY: number;
 			segments: {
 				id: string;
+				/** Component level; the text is its localized name. */
+				level: 'atom' | 'molecule' | 'organism' | 'template' | 'page';
 				text: string;
 				value: number;
 				color: string;
@@ -124,11 +127,36 @@ export class ManagerChartLegendBand {
 				...item,
 				value: total,
 				sections: [
-					{ id: 'atom', text: 'Atom', value: atom, color: componentColors.atom },
-					{ id: 'molecule', text: 'Molecule', value: molecule, color: componentColors.molecule },
-					{ id: 'organism', text: 'Organism', value: organism, color: componentColors.organism },
-					{ id: 'template', text: 'Template', value: template, color: componentColors.template },
-					{ id: 'page', text: 'Page', value: page, color: componentColors.page }
+					{
+						id: 'atom' as const,
+						text: options.sectionLabels.atom,
+						value: atom,
+						color: componentColors.atom
+					},
+					{
+						id: 'molecule' as const,
+						text: options.sectionLabels.molecule,
+						value: molecule,
+						color: componentColors.molecule
+					},
+					{
+						id: 'organism' as const,
+						text: options.sectionLabels.organism,
+						value: organism,
+						color: componentColors.organism
+					},
+					{
+						id: 'template' as const,
+						text: options.sectionLabels.template,
+						value: template,
+						color: componentColors.template
+					},
+					{
+						id: 'page' as const,
+						text: options.sectionLabels.page,
+						value: page,
+						color: componentColors.page
+					}
 				].filter((section) => section.value > 0)
 			};
 		});
@@ -231,6 +259,7 @@ export class ManagerChartLegendBand {
 
 					return {
 						id: `${item.text}-${section.id}-${index}`,
+						level: section.id,
 						text: section.text,
 						value: section.value,
 						color: section.color,

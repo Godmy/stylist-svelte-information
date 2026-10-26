@@ -2,14 +2,15 @@
 	import createExpertSpreadMatrixState from '$stylist/chart/component/organism/expert-spread-matrix/state.svelte';
 	import type { RecipeExpertSpreadMatrix } from '$stylist/chart/interface/recipe/expert-spread-matrix';
 
+	import { CHART_EXPERT_SPREAD_MATRIX_MESSAGE } from '$stylist/chart/const/record/expert-spread-matrix-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeExpertSpreadMatrix = $props();
 	const state = createExpertSpreadMatrixState(() => props);
+	const t = useMessage('expert-spread-matrix', CHART_EXPERT_SPREAD_MATRIX_MESSAGE);
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Expert spread matrix'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}
 		<header class="expert-spread-matrix__header">
 			<h3>{props.text}</h3>

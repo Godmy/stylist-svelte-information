@@ -2,14 +2,21 @@
 	import createCriticalPathTimelineState from '$stylist/chart/component/organism/critical-path-timeline/state.svelte';
 	import type { RecipeCriticalPathTimeline } from '$stylist/chart/interface/recipe/critical-path-timeline';
 
+	import { CHART_CRITICAL_PATH_TIMELINE_MESSAGE } from '$stylist/chart/const/record/critical-path-timeline-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
+
 	let props: RecipeCriticalPathTimeline = $props();
 	const state = createCriticalPathTimelineState(() => props);
+	const t = useMessage('critical-path-timeline', CHART_CRITICAL_PATH_TIMELINE_MESSAGE);
+	const format = useFormat();
+	const DAY: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' };
+	// Content texts: the catalog gives defaults, `labels` overrides them.
+	const label = (key: keyof NonNullable<RecipeCriticalPathTimeline['labels']>) =>
+		props.labels?.[key] ?? t(key);
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Critical path timeline'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}
 		<header class="critical-path-timeline__header">
 			<h3>{props.text}</h3>
@@ -23,7 +30,7 @@
 		<svg
 			viewBox={`0 0 ${Math.max(state.layout.width, state.layout.plotX + state.layout.plotWidth + 32)} ${state.layout.height}`}
 			role="img"
-			aria-label={props.ariaLabel ?? props.text ?? 'Work schedule critical path'}
+			aria-label={props.ariaLabel ?? props.text ?? t('chart')}
 		>
 			<rect
 				class="critical-path-timeline__plot"
@@ -95,7 +102,13 @@
 						height={task.height}
 						rx="6"
 					/>
-					<title>{task.text}: {task.startLabel} - {task.endLabel}</title>
+					<title
+						>{t('task', {
+							task: task.text,
+							start: format.date(`${task.startLabel}T00:00:00`, DAY),
+							end: format.date(`${task.endLabel}T00:00:00`, DAY)
+						})}</title
+					>
 				</g>
 			{/each}
 		</svg>
@@ -103,8 +116,8 @@
 
 	<div class="critical-path-timeline__summary">
 		<span
-			><i class="critical-path-timeline__marker critical-path-timeline__marker--critical"></i> Critical
-			path</span
+			><i class="critical-path-timeline__marker critical-path-timeline__marker--critical"></i>
+			{label('critical')}</span
 		>
 		<strong>{state.layout.criticalPathLabel}</strong>
 	</div>

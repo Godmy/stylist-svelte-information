@@ -74,8 +74,11 @@ export class ManagerCanvasChart {
 		yAxisLabel: string;
 		showGrid: boolean;
 		colors: readonly string[];
+		/** Y axis tick text; components pass their locale number formatter. */
+		formatValue: (value: number) => string;
 	}): void {
-		const { canvas, data, type, title, xAxisLabel, yAxisLabel, showGrid, colors } = params;
+		const { canvas, data, type, title, xAxisLabel, yAxisLabel, showGrid, colors, formatValue } =
+			params;
 		const context = canvas.getContext('2d');
 		if (!context) {
 			return;
@@ -93,14 +96,14 @@ export class ManagerCanvasChart {
 
 		switch (type) {
 			case 'bar':
-				this.drawBarChart(context, canvas, data, padding, [...colors]);
+				this.drawBarChart(context, canvas, data, padding, [...colors], formatValue);
 				break;
 			case 'pie':
 				this.drawPieChart(context, canvas, data, [...colors]);
 				break;
 			case 'line':
 			default:
-				this.drawLineChart(context, canvas, data, padding, [...colors]);
+				this.drawLineChart(context, canvas, data, padding, [...colors], formatValue);
 				break;
 		}
 	}
@@ -200,7 +203,8 @@ export class ManagerCanvasChart {
 			label?: string;
 		}[],
 		padding: CanvasChartPadding,
-		colors: string[]
+		colors: string[],
+		formatValue: (value: number) => string
 	): void {
 		if (data.length === 0) {
 			return;
@@ -247,7 +251,8 @@ export class ManagerCanvasChart {
 			yRange,
 			chartHeight,
 			xStep,
-			false
+			false,
+			formatValue
 		);
 	}
 
@@ -260,7 +265,8 @@ export class ManagerCanvasChart {
 			label?: string;
 		}[],
 		padding: CanvasChartPadding,
-		colors: string[]
+		colors: string[],
+		formatValue: (value: number) => string
 	): void {
 		if (data.length === 0) {
 			return;
@@ -290,7 +296,8 @@ export class ManagerCanvasChart {
 			yRange,
 			chartHeight,
 			xStep,
-			true
+			true,
+			formatValue
 		);
 	}
 
@@ -307,7 +314,8 @@ export class ManagerCanvasChart {
 		yRange: number,
 		chartHeight: number,
 		xStep: number,
-		isBarChart: boolean
+		isBarChart: boolean,
+		formatValue: (value: number) => string
 	): void {
 		context.fillStyle = 'var(--color-text-primary)';
 		context.font = '12px sans-serif';
@@ -324,7 +332,7 @@ export class ManagerCanvasChart {
 		for (let i = 0; i <= 10; i += 1) {
 			const yValue = minY + (yRange / 10) * i;
 			const y = padding.top + chartHeight - (i / 10) * chartHeight;
-			context.fillText(yValue.toFixed(1), padding.left - 10, y + 4);
+			context.fillText(formatValue(yValue), padding.left - 10, y + 4);
 		}
 	}
 

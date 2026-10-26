@@ -27,5 +27,13 @@ export interface RecipeLegendBandDiagram extends ComputeIntersectAll<
 	maxValue?: number;
 	tickCount?: number;
 	color?: string;
+	/** Component level names over the catalog defaults. */
+	labels?: {
+		atom?: string;
+		molecule?: string;
+		organism?: string;
+		template?: string;
+		page?: string;
+	};
 	class?: string;
 }

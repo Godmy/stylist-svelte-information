@@ -52,10 +52,6 @@ export class ManagerHeatmap {
 		return HEATMAP_GRADIENT_BY_SCHEME[scheme] ?? HEATMAP_GRADIENT_BY_SCHEME.minimal;
 	}
 
-	static resolveLegendTitle(scheme: TokenThemeScheme): string {
-		return `${scheme.charAt(0).toUpperCase() + scheme.slice(1)} Color Scale`;
-	}
-
 	static resolveAxisLabel(label: HeatmapAxisValue): string {
 		const normalizedLabel = String(label);
 		return normalizedLabel.length > 10 ? `${normalizedLabel.substring(0, 7)}...` : normalizedLabel;

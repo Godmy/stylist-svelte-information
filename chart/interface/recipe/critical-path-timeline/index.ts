@@ -16,5 +16,7 @@ export interface RecipeCriticalPathTimeline extends ComputeIntersectAll<[SlotTex
 	rowHeight?: number;
 	dayWidth?: number;
 	timeLabelStep?: number;
+	/** Content texts over the catalog defaults. */
+	labels?: { critical?: string };
 	class?: string;
 }

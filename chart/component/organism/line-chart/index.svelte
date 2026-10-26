@@ -5,8 +5,14 @@
 	import createLineChartState from '$stylist/chart/component/organism/line-chart/state.svelte';
 	import { ManagerLineChart } from '$stylist/chart/class/manager/line-chart';
 
+	import { CHART_LINE_CHART_MESSAGE } from '$stylist/chart/const/record/line-chart-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
+
 	let props: RecipeLineChart = $props();
 	const state = createLineChartState(() => props);
+	const t = useMessage('line-chart', CHART_LINE_CHART_MESSAGE);
+	const format = useFormat();
 </script>
 
 <div
@@ -128,7 +134,7 @@
 						onblur={state.clearFocusedPoint}
 						role="button"
 						tabindex="0"
-						aria-label={ManagerLineChart.resolveAriaLabel(point)}
+						aria-label={t('point', { name: point.name, value: format.number(point.value) })}
 					/>
 				{/each}
 			{/each}

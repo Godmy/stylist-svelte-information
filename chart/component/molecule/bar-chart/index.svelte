@@ -4,8 +4,14 @@
 	import createBarChartState from '$stylist/chart/component/molecule/bar-chart/state.svelte';
 	import type { RecipeBarChart } from '$stylist/chart/interface/recipe/bar-chart';
 
+	import { CHART_BAR_CHART_MESSAGE } from '$stylist/chart/const/record/bar-chart-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
+
 	let props: RecipeBarChart = $props();
 	const state = createBarChartState(() => props);
+	const t = useMessage('bar-chart', CHART_BAR_CHART_MESSAGE);
+	const format = useFormat();
 </script>
 
 <div class={state.containerClasses} style={`width: min(100%, ${props.width ?? 600}px);`} {...props}>
@@ -100,7 +106,10 @@
 					onblur={state.handleBarBlur}
 					role="button"
 					tabindex="0"
-					aria-label={`Bar chart item: ${props.data[i].name}, Value: ${props.data[i].value}`}
+					aria-label={t('item', {
+						name: props.data[i].name,
+						value: format.number(props.data[i].value)
+					})}
 				>
 					<rect
 						x={position.x}

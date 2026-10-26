@@ -19,5 +19,14 @@ export interface RecipeExchangeOracleForecast extends ComputeIntersectAll<
 	}[];
 	currency?: string;
 	timeLabelStep?: number;
+	/** Zone and legend texts over the catalog defaults. */
+	labels?: {
+		quoteZone?: string;
+		oracleZone?: string;
+		quote?: string;
+		corridor?: string;
+		core?: string;
+		consensus?: string;
+	};
 	class?: string;
 }

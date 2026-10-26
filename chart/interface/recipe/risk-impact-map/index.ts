@@ -11,5 +11,7 @@ export interface RecipeRiskImpactMap extends ComputeIntersectAll<[SlotText, Slot
 		exposure: number;
 		critical?: boolean;
 	}[];
+	/** Axis names over the catalog defaults. */
+	labels?: { probability?: string; impact?: string };
 	class?: string;
 }

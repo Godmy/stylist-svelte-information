@@ -1,5 +1,4 @@
 import type { LineChartData } from '$stylist/chart/interface/slot/line-chart-data';
-import type { LineChartPoint } from '$stylist/chart/interface/slot/line-chart';
 import { LINE_CHART_COLOR_SCHEME } from '$stylist/chart/const/preset/line-chart-color-scheme';
 
 export class ManagerLineChart {
@@ -95,9 +94,5 @@ export class ManagerLineChart {
 				return `${path}C ${controlPointX} ${previousPoint.y}, ${controlPointX} ${point.y}, ${point.x} ${point.y} `;
 			}, '');
 		});
-	}
-
-	static resolveAriaLabel(point: LineChartPoint): string {
-		return `Data point: ${point.name}, Value: ${point.value}`;
 	}
 }

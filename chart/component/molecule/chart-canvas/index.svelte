@@ -12,7 +12,11 @@
 	import ChartPolyline from '$stylist/chart/component/atom/chart-polyline/index.svelte';
 	import { ManagerChartCanvas } from '$stylist/chart/class/manager/chart-canvas';
 
+	import { CHART_CHART_CANVAS_MESSAGE } from '$stylist/chart/const/record/chart-canvas-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeAnalyticsChartCanvas & HTMLAttributes<HTMLDivElement> = $props();
+	const t = useMessage('chart-canvas', CHART_CHART_CANVAS_MESSAGE);
 	const state = createChartCanvasState(
 		() =>
 			({
@@ -43,13 +47,7 @@
 </script>
 
 <div class={state.wrapperClasses}>
-	<svg
-		class={state.svgClasses}
-		{width}
-		{height}
-		role="img"
-		aria-label={props.title ?? 'Chart canvas'}
-	>
+	<svg class={state.svgClasses} {width} {height} role="img" aria-label={props.title ?? t('label')}>
 		<ChartBackground {width} {height} />
 		{#if props.title}
 			<ChartName text={props.title} x={padding} y={24} />

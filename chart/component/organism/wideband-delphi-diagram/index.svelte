@@ -2,14 +2,18 @@
 	import createWidebandDelphiDiagramState from '$stylist/chart/component/organism/wideband-delphi-diagram/state.svelte';
 	import type { RecipeWidebandDelphiDiagram } from '$stylist/chart/interface/recipe/wideband-delphi-diagram';
 
+	import { CHART_WIDEBAND_DELPHI_DIAGRAM_MESSAGE } from '$stylist/chart/const/record/wideband-delphi-diagram-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeWidebandDelphiDiagram = $props();
 	const state = createWidebandDelphiDiagramState(() => props);
+	const t = useMessage('wideband-delphi-diagram', CHART_WIDEBAND_DELPHI_DIAGRAM_MESSAGE);
+	// Content texts: the catalog gives defaults, `labels` overrides them.
+	const label = (key: keyof NonNullable<RecipeWidebandDelphiDiagram['labels']>) =>
+		props.labels?.[key] ?? t(key);
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Wideband Delphi diagram'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}
 		<header class="wideband-delphi-diagram__header">
 			<h3>{props.text}</h3>
@@ -23,7 +27,7 @@
 		<svg
 			viewBox={`0 0 ${state.layout.width} ${state.layout.height}`}
 			role="img"
-			aria-label={props.ariaLabel ?? props.text ?? 'Wideband Delphi procurement forecast'}
+			aria-label={props.ariaLabel ?? props.text ?? t('chart')}
 		>
 			<rect
 				class="wideband-delphi-diagram__plot"
@@ -92,23 +96,26 @@
 		</svg>
 	</div>
 
-	<div class="wideband-delphi-diagram__legend" aria-label="Forecast indicators">
+	<div class="wideband-delphi-diagram__legend" aria-label={t('indicators')}>
 		<span
-			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--outer"></i> Delphi wideband</span
+			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--outer"></i>
+			{label('wideband')}</span
 		>
 		<span
-			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--core"></i> Expert core
-			range</span
+			><i class="wideband-delphi-diagram__swatch wideband-delphi-diagram__swatch--core"></i>
+			{label('core')}</span
 		>
 		<span
-			><i class="wideband-delphi-diagram__line wideband-delphi-diagram__line--consensus"></i> Consensus</span
+			><i class="wideband-delphi-diagram__line wideband-delphi-diagram__line--consensus"></i>
+			{label('consensus')}</span
 		>
 		<span
-			><i class="wideband-delphi-diagram__line wideband-delphi-diagram__line--market"></i> Market signal</span
+			><i class="wideband-delphi-diagram__line wideband-delphi-diagram__line--market"></i>
+			{label('market')}</span
 		>
 		<span
-			><i class="wideband-delphi-diagram__line wideband-delphi-diagram__line--procurement"></i> Procurement
-			target</span
+			><i class="wideband-delphi-diagram__line wideband-delphi-diagram__line--procurement"></i>
+			{label('procurement')}</span
 		>
 	</div>
 </section>

@@ -2,11 +2,18 @@
 	import createRiskImpactMapState from '$stylist/chart/component/organism/risk-impact-map/state.svelte';
 	import type { RecipeRiskImpactMap } from '$stylist/chart/interface/recipe/risk-impact-map';
 
+	import { CHART_RISK_IMPACT_MAP_MESSAGE } from '$stylist/chart/const/record/risk-impact-map-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeRiskImpactMap = $props();
 	const state = createRiskImpactMapState(() => props);
+	const t = useMessage('risk-impact-map', CHART_RISK_IMPACT_MAP_MESSAGE);
+	// Content texts: the catalog gives defaults, `labels` overrides them.
+	const label = (key: keyof NonNullable<RecipeRiskImpactMap['labels']>) =>
+		props.labels?.[key] ?? t(key);
 </script>
 
-<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? 'Risk impact map'}>
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}<header class="risk-impact-map__header">
 			<h3>{props.text}</h3>
 			{#if props.description}<p>{props.description}</p>{/if}
@@ -39,13 +46,13 @@
 				class="risk-impact-map__axis-label"
 				x={state.layout.plotX + state.layout.plotWidth}
 				y={state.layout.plotY + state.layout.plotHeight + 28}
-				text-anchor="end">Probability</text
+				text-anchor="end">{label('probability')}</text
 			>
 			<text
 				class="risk-impact-map__axis-label"
 				x={state.layout.plotX - 42}
 				y={state.layout.plotY + 8}
-				text-anchor="start">Impact</text
+				text-anchor="start">{label('impact')}</text
 			>
 			{#each state.layout.risks as risk (risk.id)}
 				<circle

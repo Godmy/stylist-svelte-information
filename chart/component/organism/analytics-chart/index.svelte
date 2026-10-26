@@ -6,8 +6,12 @@
 	import LineChart from '$stylist/chart/component/organism/line-chart/index.svelte';
 	import PieChart from '$stylist/chart/component/molecule/pie-chart/index.svelte';
 
+	import { CHART_ANALYTICS_CHART_MESSAGE } from '$stylist/chart/const/record/analytics-chart-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeAnalyticsChart = $props();
 	const state = createAnalyticsChartState(() => props);
+	const t = useMessage('analytics-chart', CHART_ANALYTICS_CHART_MESSAGE);
 
 	const maxValue = $derived(ManagerAnalyticsChart.resolveMaxValue(props.data ?? []));
 	const chartPoints = $derived(ManagerAnalyticsChart.buildBarChartPoints(props.data ?? []));
@@ -21,7 +25,7 @@
 	<div class={state.headerClasses}>
 		<div class={state.titleContainerClasses}>
 			<div>
-				<h3 class={state.titleClasses}>{props.title ?? 'Analytics Chart'}</h3>
+				<h3 class={state.titleClasses}>{props.title ?? t('title')}</h3>
 				{#if props.subtitle}
 					<p class={state.subtitleClasses}>{props.subtitle}</p>
 				{/if}

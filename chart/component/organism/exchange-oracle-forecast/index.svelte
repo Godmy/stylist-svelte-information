@@ -2,14 +2,18 @@
 	import createExchangeOracleForecastState from '$stylist/chart/component/organism/exchange-oracle-forecast/state.svelte';
 	import type { RecipeExchangeOracleForecast } from '$stylist/chart/interface/recipe/exchange-oracle-forecast';
 
+	import { CHART_EXCHANGE_ORACLE_FORECAST_MESSAGE } from '$stylist/chart/const/record/exchange-oracle-forecast-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeExchangeOracleForecast = $props();
 	const state = createExchangeOracleForecastState(() => props);
+	const t = useMessage('exchange-oracle-forecast', CHART_EXCHANGE_ORACLE_FORECAST_MESSAGE);
+	// Content texts: the catalog gives defaults, `labels` overrides them.
+	const label = (key: keyof NonNullable<RecipeExchangeOracleForecast['labels']>) =>
+		props.labels?.[key] ?? t(key);
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Exchange oracle forecast'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}
 		<header class="exchange-oracle-forecast__header">
 			<h3>{props.text}</h3>
@@ -23,7 +27,7 @@
 		<svg
 			viewBox={`0 0 ${state.layout.width} ${state.layout.height}`}
 			role="img"
-			aria-label={props.ariaLabel ?? props.text ?? 'Exchange quote and oracle forecast'}
+			aria-label={props.ariaLabel ?? props.text ?? t('chart')}
 		>
 			<rect
 				class="exchange-oracle-forecast__plot"
@@ -80,14 +84,14 @@
 				x={state.layout.plotX + 12}
 				y={state.layout.plotY + 20}
 			>
-				Exchange quote
+				{label('quoteZone')}
 			</text>
 			<text
 				class="exchange-oracle-forecast__zone-label"
 				x={state.layout.splitX + 12}
 				y={state.layout.plotY + 20}
 			>
-				Wideband oracle
+				{label('oracleZone')}
 			</text>
 			{#each state.layout.historyPoints as point (point.id)}
 				<line
@@ -152,19 +156,20 @@
 
 	<div class="exchange-oracle-forecast__legend">
 		<span
-			><i class="exchange-oracle-forecast__line exchange-oracle-forecast__line--history"></i> Exchange
-			quote</span
+			><i class="exchange-oracle-forecast__line exchange-oracle-forecast__line--history"></i>
+			{label('quote')}</span
 		>
 		<span
-			><i class="exchange-oracle-forecast__swatch exchange-oracle-forecast__swatch--outer"></i> Oracle
-			corridor</span
+			><i class="exchange-oracle-forecast__swatch exchange-oracle-forecast__swatch--outer"></i>
+			{label('corridor')}</span
 		>
 		<span
-			><i class="exchange-oracle-forecast__swatch exchange-oracle-forecast__swatch--core"></i> Core variants</span
+			><i class="exchange-oracle-forecast__swatch exchange-oracle-forecast__swatch--core"></i>
+			{label('core')}</span
 		>
 		<span
-			><i class="exchange-oracle-forecast__line exchange-oracle-forecast__line--consensus"></i> Expert
-			consensus</span
+			><i class="exchange-oracle-forecast__line exchange-oracle-forecast__line--consensus"></i>
+			{label('consensus')}</span
 		>
 	</div>
 </section>

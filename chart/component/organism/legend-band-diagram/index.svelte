@@ -4,16 +4,17 @@
 	import { writable } from 'svelte/store';
 	import type { RecipeLegendBandDiagram } from '$stylist/chart/interface/recipe/legend-band-diagram';
 
+	import { CHART_LEGEND_BAND_DIAGRAM_MESSAGE } from '$stylist/chart/const/record/legend-band-diagram-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeLegendBandDiagram = $props();
 	const state = createLegendBandDiagramState(() => props);
+	const t = useMessage('legend-band-diagram', CHART_LEGEND_BAND_DIAGRAM_MESSAGE);
 	const activeItemId = writable<string | null>(null);
 	const hoverColor = '#f59e0b';
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Legend band diagram'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}
 		<header class="legend-band-diagram__header">
 			<h3>{props.text}</h3>
@@ -27,7 +28,7 @@
 		<svg
 			viewBox={`0 0 ${state.layout.width} ${state.layout.height}`}
 			role="img"
-			aria-label={props.ariaLabel ?? props.text ?? 'Band diagram'}
+			aria-label={props.ariaLabel ?? props.text ?? t('chart')}
 		>
 			<rect
 				class="legend-band-diagram__plot"
@@ -101,15 +102,15 @@
 			1,
 			selectedItem.segments.reduce((total, segment) => total + segment.value, 0)
 		)}
-		<div class="legend-band-diagram__selection" aria-label="Selected domain">
+		<div class="legend-band-diagram__selection" aria-label={t('selected')}>
 			<div class="legend-band-diagram__selection-card">
 				<span>{selectedItem.text}</span>
 				<strong>{selectedItem.valueLabel}</strong>
 			</div>
-			<div class="legend-band-diagram__composition" aria-label="Selected component composition">
+			<div class="legend-band-diagram__composition" aria-label={t('composition')}>
 				{#each selectedItem.segments as segment (segment.id)}
 					<div
-						class={`legend-band-diagram__composition-segment ${segment.text === 'Molecule' || segment.text === 'Template' ? 'legend-band-diagram__composition-segment--light' : 'legend-band-diagram__composition-segment--dark'}`}
+						class={`legend-band-diagram__composition-segment ${segment.level === 'molecule' || segment.level === 'template' ? 'legend-band-diagram__composition-segment--light' : 'legend-band-diagram__composition-segment--dark'}`}
 						style={`--segment-color: ${segment.color}; --segment-width: ${(segment.value / selectedSegmentTotal) * 100}%;`}
 					>
 						<span>{segment.text}</span>

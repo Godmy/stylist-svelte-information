@@ -4,10 +4,6 @@ export class ManagerCriticalPathTimeline {
 		return Number.isNaN(date.getTime()) ? new Date('2026-01-01T00:00:00') : date;
 	}
 
-	private static formatTick(date: Date): string {
-		return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-	}
-
 	private static addDays(date: Date, days: number): Date {
 		const nextDate = new Date(date);
 		nextDate.setDate(nextDate.getDate() + days);
@@ -30,11 +26,13 @@ export class ManagerCriticalPathTimeline {
 			dependsOn?: string[];
 		}[],
 		options: {
+			/** Day tick label; components pass their locale formatter. */
+			formatTick: (date: Date) => string;
 			width?: number;
 			rowHeight?: number;
 			dayWidth?: number;
 			timeLabelStep?: number;
-		} = {}
+		}
 	): {
 		width: number;
 		height: number;
@@ -129,7 +127,7 @@ export class ManagerCriticalPathTimeline {
 			return {
 				id: `tick-${index}`,
 				x: plotX + (plotWidth * index) / totalDays,
-				label: ManagerCriticalPathTimeline.formatTick(date),
+				label: options.formatTick(date),
 				showLabel: index % timeLabelStep === 0 || index === totalDays
 			};
 		});

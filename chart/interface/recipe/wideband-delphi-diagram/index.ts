@@ -19,5 +19,13 @@ export interface RecipeWidebandDelphiDiagram extends ComputeIntersectAll<
 	maxValue?: number;
 	timeLabelStep?: number;
 	currency?: string;
+	/** Legend texts over the catalog defaults. */
+	labels?: {
+		wideband?: string;
+		core?: string;
+		consensus?: string;
+		market?: string;
+		procurement?: string;
+	};
 	class?: string;
 }

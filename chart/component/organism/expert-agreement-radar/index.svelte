@@ -2,14 +2,15 @@
 	import createExpertAgreementRadarState from '$stylist/chart/component/organism/expert-agreement-radar/state.svelte';
 	import type { RecipeExpertAgreementRadar } from '$stylist/chart/interface/recipe/expert-agreement-radar';
 
+	import { CHART_EXPERT_AGREEMENT_RADAR_MESSAGE } from '$stylist/chart/const/record/expert-agreement-radar-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeExpertAgreementRadar = $props();
 	const state = createExpertAgreementRadarState(() => props);
+	const t = useMessage('expert-agreement-radar', CHART_EXPERT_AGREEMENT_RADAR_MESSAGE);
 </script>
 
-<section
-	class={state.className}
-	aria-label={props.ariaLabel ?? props.text ?? 'Expert agreement radar'}
->
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}<header class="expert-agreement-radar__header">
 			<h3>{props.text}</h3>
 			{#if props.description}<p>{props.description}</p>{/if}

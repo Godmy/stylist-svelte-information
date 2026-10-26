@@ -8,10 +8,14 @@ export class ManagerChart {
 		return series ?? [];
 	}
 
-	static resolveLegendItems(series: ChartSeries[]): ChartLegendItem[] {
+	/** `fallbackName` names unnamed series (1-based index); components pass their translator. */
+	static resolveLegendItems(
+		series: ChartSeries[],
+		fallbackName: (index: number) => string
+	): ChartLegendItem[] {
 		return series.map((s, index) => ({
 			id: s.id ?? `series-${index}`,
-			name: s.name ?? `Series ${index + 1}`,
+			name: s.name ?? fallbackName(index + 1),
 			color: s.color
 		}));
 	}

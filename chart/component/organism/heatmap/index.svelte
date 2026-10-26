@@ -5,8 +5,14 @@
 	import createHeatmapState from '$stylist/chart/component/organism/heatmap/state.svelte';
 	import { ManagerHeatmap } from '$stylist/chart/class/manager/heatmap';
 
+	import { CHART_HEATMAP_MESSAGE } from '$stylist/chart/const/record/heatmap-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+	import { useFormat } from '$stylist/localization/function/hook/use-format';
+
 	let props: RecipeHeatmap = $props();
 	const state = createHeatmapState(() => props);
+	const t = useMessage('heatmap', CHART_HEATMAP_MESSAGE);
+	const format = useFormat();
 </script>
 
 <div
@@ -97,7 +103,11 @@
 					onblur={state.handleCellBlur}
 					role="button"
 					tabindex="0"
-					aria-label={`Heatmap cell: ${cell.row} - ${cell.column}, Value: ${cell.value}`}
+					aria-label={t('cell', {
+						row: String(cell.row),
+						column: String(cell.column),
+						value: format.number(cell.value)
+					})}
 				>
 					<rect
 						x={cell.x}
@@ -146,7 +156,7 @@
 				style={`background-image: ${ManagerHeatmap.resolveLegendGradient(state.resolvedColorScheme)}`}
 			></div>
 			<div class={state.legendTitleClasses}>
-				{ManagerHeatmap.resolveLegendTitle(state.resolvedColorScheme)}
+				{t('legend', { scheme: state.resolvedColorScheme })}
 			</div>
 		</div>
 	{/if}

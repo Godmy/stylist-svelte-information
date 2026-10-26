@@ -4,13 +4,17 @@
 	import { writable } from 'svelte/store';
 	import type { RecipeLegendBarDiagram } from '$stylist/chart/interface/recipe/legend-bar-diagram';
 
+	import { CHART_LEGEND_BAR_DIAGRAM_MESSAGE } from '$stylist/chart/const/record/legend-bar-diagram-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeLegendBarDiagram = $props();
 	const state = createLegendBarDiagramState(() => props);
+	const t = useMessage('legend-bar-diagram', CHART_LEGEND_BAR_DIAGRAM_MESSAGE);
 	const activeItemId = writable<string | null>(null);
 	const hoverColor = '#f59e0b';
 </script>
 
-<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? 'Legend bar diagram'}>
+<section class={state.className} aria-label={props.ariaLabel ?? props.text ?? t('label')}>
 	{#if props.text}
 		<header class="legend-bar-diagram__header">
 			<h3>{props.text}</h3>
@@ -24,7 +28,7 @@
 		<svg
 			viewBox={`0 0 ${state.layout.width} ${state.layout.height}`}
 			role="img"
-			aria-label={props.ariaLabel ?? props.text ?? 'Bar diagram'}
+			aria-label={props.ariaLabel ?? props.text ?? t('chart')}
 		>
 			<rect
 				class="legend-bar-diagram__plot"
@@ -70,7 +74,7 @@
 	{#if state.layout.items.length > 0}
 		{@const selectedItem =
 			state.layout.items.find((item) => item.id === $activeItemId) ?? state.layout.items[0]}
-		<div class="legend-bar-diagram__selection" aria-label="Selected domain">
+		<div class="legend-bar-diagram__selection" aria-label={t('selected')}>
 			<span>{selectedItem.text}</span>
 			<strong>{selectedItem.valueLabel}</strong>
 		</div>
