@@ -4,8 +4,12 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Button from '$stylist/button/component/atom/button/index.svelte';
 
+	import { VIDEO_VIDEO_PLAYER_MESSAGE } from '$stylist/video/const/record/video-player-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeVideoPlayer = $props();
 	const state = createVideoPlayerState(() => props);
+	const t = useMessage('video-player', VIDEO_VIDEO_PLAYER_MESSAGE);
 </script>
 
 <div class={state.hostClasses} style={state.hostStyle} {...state.restProps}>
@@ -22,7 +26,7 @@
 		class={`vp-video ${state.videoClass}`}
 		controls={false}
 	>
-		<track kind="captions" label="No captions available" srclang="en" src="" />
+		<track kind="captions" label={t('noCaptions')} srclang="en" src="" />
 	</video>
 
 	{#if state.showControls}
@@ -36,7 +40,7 @@
 						variant="ghost"
 						size="sm"
 						onclick={() => state.togglePlay()}
-						aria-label={state.isPlaying ? 'Pause' : 'Play'}
+						aria-label={state.isPlaying ? t('pause') : t('play')}
 					>
 						{#if state.isPlaying}
 							<BaseIcon name="pause" size={20} />
@@ -49,7 +53,7 @@
 						variant="ghost"
 						size="sm"
 						onclick={() => state.toggleMute()}
-						aria-label={state.isMuted ? 'Unmute' : 'Mute'}
+						aria-label={state.isMuted ? t('unmute') : t('mute')}
 					>
 						{#if state.isMuted}
 							<BaseIcon name="volume-x" size={20} />
@@ -65,6 +69,7 @@
 						step="0.01"
 						value={state.volume}
 						oninput={(e) => state.handleVolumeChange(e)}
+						aria-label={t('volume')}
 						class="vp-volume"
 					/>
 				</div>
@@ -73,7 +78,7 @@
 					variant="ghost"
 					size="sm"
 					onclick={() => state.reloadVideo()}
-					aria-label="Reload video"
+					aria-label={t('reload')}
 				>
 					<BaseIcon name="rotate-ccw" size={20} />
 				</Button>
@@ -87,6 +92,7 @@
 					max={state.duration || 100}
 					value={state.currentTime}
 					oninput={(e) => state.handleProgressChange(e)}
+					aria-label={t('seek')}
 					class="vp-progress"
 				/>
 				<span class="vp-time-after">{state.formatTime(state.duration)}</span>
