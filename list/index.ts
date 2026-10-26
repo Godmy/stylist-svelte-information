@@ -6,7 +6,10 @@ export {
 	ListItemMarker,
 	SortableList
 } from './component';
-export { LIST_ITEM_MARKER_TYPE } from './const';
+export {
+	LIST_ITEM_MARKER_TYPE,
+	LIST_SORTABLE_LIST_MESSAGE
+} from './const';
 export type { ListItemMarkerType } from './type';
 export type {
 	RecipeBaseCard,

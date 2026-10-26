@@ -5,6 +5,8 @@
 
 	import type { RecipeSortableList } from '$stylist/list/interface/recipe/sortable-list';
 	import createSortableListState from '$stylist/list/component/organism/sortable-list/state.svelte';
+	import { LIST_SORTABLE_LIST_MESSAGE } from '$stylist/list/const/record/sortable-list-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
 
 	let {
 		items = [],
@@ -29,6 +31,7 @@
 		variant,
 		...restProps
 	}));
+	const t = useMessage('sortable-list', LIST_SORTABLE_LIST_MESSAGE);
 </script>
 
 <div class={state.rootClass} {...restProps}>
@@ -65,6 +68,7 @@
 							type="button"
 							class="c-sortable-list__item-action"
 							onclick={() => onItemAction?.(item, 'menu')}
+							aria-label={t('actions', { title: item.title })}
 						>
 							<BaseIcon name={MoreHorizontal} size={16} />
 						</button>
