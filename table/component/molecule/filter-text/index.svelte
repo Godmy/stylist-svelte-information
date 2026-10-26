@@ -2,15 +2,19 @@
 	import type { RecipeFilterText } from '$stylist/table/interface/recipe/filter-text';
 	import { createFilterTextState } from '$stylist/table/component/molecule/filter-text/state.svelte';
 
+	import { TABLE_FILTER_TEXT_MESSAGE } from '$stylist/table/const/record/filter-text-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeFilterText = $props();
 	const state = createFilterTextState(() => props);
+	const t = useMessage('filter-text', TABLE_FILTER_TEXT_MESSAGE);
 </script>
 
 <div class="c-filter-text {props.class ?? ''}">
 	<input
 		class="c-filter-text__input"
 		type="search"
-		placeholder={props.placeholder ?? 'Search...'}
+		placeholder={props.placeholder ?? t('placeholder')}
 		value={state.value}
 		oninput={state.handleInput}
 	/>

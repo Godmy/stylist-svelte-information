@@ -4,6 +4,8 @@
 	import FilterBar from '$stylist/table/component/molecule/filter-bar/index.svelte';
 	import ColumnManager from '$stylist/table/component/molecule/column-manager/index.svelte';
 	import DataTable from '$stylist/table/component/organism/data-table/index.svelte';
+	import { TABLE_DATA_TABLE_SHELL_MESSAGE } from '$stylist/table/const/record/data-table-shell-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
 
 	type RowData = Record<string, unknown>;
 
@@ -11,7 +13,7 @@
 		data = [],
 		schema = [],
 		title,
-		searchPlaceholder = 'Search...',
+		searchPlaceholder,
 		showSearch = true,
 		showColumnManager = false,
 		pageSizeOptions = [10, 25, 50],
@@ -62,6 +64,8 @@
 		}
 	});
 
+	const t = useMessage('data-table-shell', TABLE_DATA_TABLE_SHELL_MESSAGE);
+
 	const columnManagerColumns = $derived(
 		schema.map((col) => ({
 			key: String(col.key),
@@ -77,15 +81,18 @@
 			{#if title}<h3 class="c-data-table-shell__title">{title}</h3>{/if}
 			<div class="c-data-table-shell__controls">
 				{#if onExport}
-					<button type="button" class="c-data-table-shell__btn" onclick={onExport}>Export</button>
+					<button type="button" class="c-data-table-shell__btn" onclick={onExport}
+						>{t('export')}</button
+					>
 				{/if}
 				<select
 					class="c-data-table-shell__select"
+					aria-label={t('pageSize')}
 					value={state.pageSize}
 					onchange={(e) => state.setPageSize(Number((e.target as HTMLSelectElement).value))}
 				>
 					{#each pageSizeOptions as size}
-						<option value={size}>{size} / page</option>
+						<option value={size}>{t('perPage', { size })}</option>
 					{/each}
 				</select>
 			</div>
@@ -123,7 +130,7 @@
 			{/if}
 
 			{#if loading}
-				<div class="c-data-table-shell__loading">Loading…</div>
+				<div class="c-data-table-shell__loading">{t('loading')}</div>
 			{:else}
 				<DataTable data={state.pageData} schema={state.visibleSchema} {onRowClick} />
 
@@ -133,7 +140,7 @@
 							type="button"
 							class="c-data-table-shell__btn"
 							onclick={state.goPrev}
-							disabled={state.currentPage <= 1}>‹ Prev</button
+							disabled={state.currentPage <= 1}>{t('previous')}</button
 						>
 						<span class="c-data-table-shell__page-info">
 							{state.currentPage} / {state.totalPages}
@@ -142,7 +149,7 @@
 							type="button"
 							class="c-data-table-shell__btn"
 							onclick={state.goNext}
-							disabled={state.currentPage >= state.totalPages}>Next ›</button
+							disabled={state.currentPage >= state.totalPages}>{t('next')}</button
 						>
 					</div>
 				{/if}

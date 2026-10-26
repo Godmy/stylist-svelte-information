@@ -3,15 +3,19 @@
 	import type { RecipeColumnManager } from '$stylist/table/interface/recipe/column-manager';
 	import { createColumnManagerState } from '$stylist/table/component/molecule/column-manager/state.svelte';
 
+	import { TABLE_COLUMN_MANAGER_MESSAGE } from '$stylist/table/const/record/column-manager-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeColumnManager & HTMLAttributes<HTMLDivElement> = $props();
 	const state = createColumnManagerState(() => props);
+	const t = useMessage('column-manager', TABLE_COLUMN_MANAGER_MESSAGE);
 </script>
 
 <div class="c-column-manager {props.class ?? ''}">
 	<div class="c-column-manager__header">
-		<span class="c-column-manager__label">{props.title ?? 'Columns'}</span>
+		<span class="c-column-manager__label">{props.title ?? t('title')}</span>
 		<button type="button" class="c-column-manager__reset" onclick={state.reset}
-			>{props.resetLabel ?? 'Reset'}</button
+			>{props.resetLabel ?? t('reset')}</button
 		>
 	</div>
 	<ul class="c-column-manager__list">

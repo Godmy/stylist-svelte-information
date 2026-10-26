@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { createColumnVisibility } from '$stylist/table/function/state/column-visibility/index.svelte';
+import { createColumnVisibility } from '$stylist/table/function/state/column-visibility/state.svelte';
 
 describe('createColumnVisibility', () => {
 	afterEach(() => {

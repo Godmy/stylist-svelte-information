@@ -2,8 +2,12 @@
 	import type { RecipeComparisonTable } from '$stylist/table/interface/recipe/comparison-table';
 	import { createComparisonTableState } from '$stylist/table/component/molecule/comparison-table/state.svelte';
 
+	import { TABLE_COMPARISON_TABLE_MESSAGE } from '$stylist/table/const/record/comparison-table-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeComparisonTable = $props();
 	const state = createComparisonTableState(() => props);
+	const t = useMessage('comparison-table', TABLE_COMPARISON_TABLE_MESSAGE);
 
 	const restProps = $derived.by(() => {
 		const {
@@ -72,11 +76,19 @@
 						>
 							{#if typeof product.features[feature.id] === 'boolean'}
 								{#if product.features[feature.id]}
-									<span class="c-comparison-table__badge c-comparison-table__badge--yes">
+									<span
+										class="c-comparison-table__badge c-comparison-table__badge--yes"
+										role="img"
+										aria-label={t('yes')}
+									>
 										&#10003;
 									</span>
 								{:else}
-									<span class="c-comparison-table__badge c-comparison-table__badge--no">
+									<span
+										class="c-comparison-table__badge c-comparison-table__badge--no"
+										role="img"
+										aria-label={t('no')}
+									>
 										&#8212;
 									</span>
 								{/if}

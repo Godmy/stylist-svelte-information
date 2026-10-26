@@ -17,8 +17,12 @@
 	const ArrowRight = 'arrow-right';
 	const Sparkles = 'sparkles';
 
+	import { TABLE_COMPONENT_MESSAGE } from '$stylist/table/const/record/component-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeComponent & HTMLAttributes<HTMLDivElement> = $props();
 	const state = createComponentState(() => props);
+	const t = useMessage('component', TABLE_COMPONENT_MESSAGE);
 </script>
 
 <div class="pcc-wrap">
@@ -36,11 +40,15 @@
 						value={state.searchQuery}
 						oninput={(event) =>
 							state.onSearchQueryChange((event.currentTarget as HTMLInputElement).value)}
-						placeholder="Search components... (try 'button', 'input', 'card')"
+						placeholder={t('search')}
 						class="pcc-search-input"
 					/>
 					{#if state.searchQuery}
-						<button onclick={() => state.onSearchQueryChange('')} class="pcc-clear-btn">
+						<button
+							onclick={() => state.onSearchQueryChange('')}
+							class="pcc-clear-btn"
+							aria-label={t('clearSearch')}
+						>
 							<BaseIcon name={X} size={16} />
 						</button>
 					{/if}
@@ -50,14 +58,16 @@
 					<button
 						onclick={() => state.onViewModeChange('grid')}
 						class="pcc-view-btn {state.viewMode === 'grid' ? 'pcc-view-btn--active' : ''}"
-						title="Grid view"
+						title={t('gridView')}
+						aria-label={t('gridView')}
 					>
 						<BaseIcon name={Grid} size={20} />
 					</button>
 					<button
 						onclick={() => state.onViewModeChange('list')}
 						class="pcc-view-btn {state.viewMode === 'list' ? 'pcc-view-btn--active' : ''}"
-						title="List view"
+						title={t('listView')}
+						aria-label={t('listView')}
 					>
 						<BaseIcon name={List} size={20} />
 					</button>
@@ -73,9 +83,9 @@
 						class="pcc-sort-select"
 						style="color-scheme: light dark;"
 					>
-						<option value="name">Sort by Name</option>
-						<option value="category">Sort by Category</option>
-						<option value="recent">Recently Updated</option>
+						<option value="name">{t('sortName')}</option>
+						<option value="category">{t('sortCategory')}</option>
+						<option value="recent">{t('sortRecent')}</option>
 					</select>
 					<div class="pcc-sort-icon">
 						<BaseIcon name={SortAsc} size={16} style="color: #9ca3af" />
@@ -85,7 +95,8 @@
 				<button
 					onclick={state.onToggleFilters}
 					class="pcc-filter-btn {state.showFilters ? 'pcc-filter-btn--active' : ''}"
-					title={state.showFilters ? 'Hide filters' : 'Show filters'}
+					title={state.showFilters ? t('hideFilters') : t('showFilters')}
+					aria-label={state.showFilters ? t('hideFilters') : t('showFilters')}
 				>
 					<BaseIcon name={Filter} size={20} />
 				</button>
@@ -94,7 +105,7 @@
 			{#if state.showFilters}
 				<div class="pcc-filter-panel">
 					<div>
-						<h3 class="pcc-filter-title">Categories</h3>
+						<h3 class="pcc-filter-title">{t('categories')}</h3>
 						<div class="pcc-categories">
 							{#each state.categories as category}
 								{@const colors = state.getCategoryColor(category)}
@@ -115,7 +126,7 @@
 					</div>
 
 					<div>
-						<h3 class="pcc-filter-title">Tags</h3>
+						<h3 class="pcc-filter-title">{t('tags')}</h3>
 						<div class="pcc-tags">
 							{#each state.tags.slice(0, 20) as tag}
 								{@const isSelected = state.selectedTags.has(tag)}
@@ -134,7 +145,7 @@
 						<div class="pcc-filter-footer">
 							<button onclick={state.onClearFilters} class="pcc-clear-all-btn">
 								<BaseIcon name={X} size={16} />
-								Clear all filters
+								{t('clearFilters')}
 							</button>
 						</div>
 					{/if}
@@ -143,8 +154,7 @@
 		</div>
 
 		<div class="pcc-stats">
-			Showing <span class="pcc-stats-highlight">{state.stats.filtered}</span>
-			of <span class="pcc-stats-highlight">{state.stats.total}</span> components
+			{t('stats', { filtered: state.stats.filtered, count: state.stats.total })}
 		</div>
 
 		{#if state.viewMode === 'grid'}
@@ -160,7 +170,7 @@
 								style="opacity: 0.3; transition: opacity 0.15s"
 								class={colors.text}
 							/>
-							<div class="pcc-preview-label {colors.text}">Preview</div>
+							<div class="pcc-preview-label {colors.text}">{t('preview')}</div>
 						</div>
 
 						<div class="pcc-card-meta">
@@ -186,14 +196,14 @@
 							{/if}
 							<div class="pcc-ai-chip">
 								<BaseIcon name={Sparkles} size={12} />
-								AI-Generated
+								{t('aiGenerated')}
 							</div>
 						</div>
 
 						<div class="pcc-card-footer">
 							<span class="pcc-svelte-version">Svelte 5</span>
 							<div class="pcc-open-link">
-								<span>Open</span>
+								<span>{t('open')}</span>
 								<BaseIcon name={ArrowRight} size={16} style="transition: transform 0.15s" />
 							</div>
 						</div>
@@ -228,7 +238,7 @@
 								{/if}
 								<div class="pcc-ai-chip">
 									<BaseIcon name={Sparkles} size={12} />
-									AI-Generated
+									{t('aiGenerated')}
 								</div>
 								<span style="margin-left:auto;font-size:0.75rem;color:#9ca3af">Svelte 5</span>
 							</div>
@@ -247,9 +257,9 @@
 				<div class="pcc-empty-icon">
 					<BaseIcon name={Search} size={48} style="color: #f97316" />
 				</div>
-				<h3 class="pcc-empty-title">No components found</h3>
-				<p class="pcc-empty-text">Try adjusting your search or filters</p>
-				<button onclick={state.onClearFilters} class="pcc-empty-btn">Clear all filters</button>
+				<h3 class="pcc-empty-title">{t('emptyTitle')}</h3>
+				<p class="pcc-empty-text">{t('emptyText')}</p>
+				<button onclick={state.onClearFilters} class="pcc-empty-btn">{t('clearFilters')}</button>
 			</div>
 		{/if}
 	</div>

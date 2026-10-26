@@ -2,6 +2,8 @@
 	import type { RecipeRowExpandable } from '$stylist/table/interface/recipe/row-expandable';
 	import { createExpandableTableRowState } from '$stylist/table/component/molecule/row-expandable/state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
+	import { TABLE_ROW_EXPANDABLE_MESSAGE } from '$stylist/table/const/record/row-expandable-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
 
 	let {
 		expandableContent,
@@ -24,6 +26,7 @@
 		onToggle,
 		...restProps
 	}));
+	const t = useMessage('row-expandable', TABLE_ROW_EXPANDABLE_MESSAGE);
 </script>
 
 <tr class="c-row-expandable {hostClass}" data-expanded={state.expanded || undefined} {...restProps}>
@@ -33,6 +36,7 @@
 			class="c-row-expandable__btn"
 			onclick={() => state.toggleExpanded()}
 			aria-expanded={state.expanded}
+			aria-label={state.expanded ? t('collapse') : t('expand')}
 		>
 			<Icon
 				name={state.expanded ? 'chevron-down' : 'chevron-right'}

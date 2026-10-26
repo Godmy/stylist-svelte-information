@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { TABLE_TABLE_LIST_PANEL_MESSAGE } from '$stylist/table/const/record/table-list-panel-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
 	import type { RecipeTableListPanel } from '$stylist/table/interface/recipe/table-list-panel';
 
 	let { class: hostClass, items, selectedName, onSelect }: RecipeTableListPanel = $props();
 
+	const t = useMessage('table-list-panel', TABLE_TABLE_LIST_PANEL_MESSAGE);
 	let searchQuery = $state('');
 
 	const filteredItems = $derived.by(() => {
@@ -32,8 +35,8 @@
 				>
 			</div>
 			<div>
-				<h2 class="c-table-list-panel__title">Database Tables</h2>
-				<p class="c-table-list-panel__count">{items.length} tables</p>
+				<h2 class="c-table-list-panel__title">{t('title')}</h2>
+				<p class="c-table-list-panel__count">{t('tables', { count: items.length })}</p>
 			</div>
 		</div>
 		<div class="c-table-list-panel__search">
@@ -53,7 +56,7 @@
 			<input
 				type="text"
 				bind:value={searchQuery}
-				placeholder="Search tables..."
+				placeholder={t('search')}
 				class="c-table-list-panel__search-input"
 			/>
 		</div>
@@ -62,7 +65,7 @@
 	<div class="c-table-list-panel__body">
 		{#if filteredItems.length === 0}
 			<div class="c-table-list-panel__empty">
-				<p>No tables found</p>
+				<p>{t('empty')}</p>
 			</div>
 		{:else}
 			<div class="c-table-list-panel__items">
@@ -77,10 +80,10 @@
 							<div class="c-table-list-panel__item-row">
 								<span class="c-table-list-panel__item-name">{item.name}</span>
 								{#if item.hasSoftDelete}
-									<span class="c-table-list-panel__item-badge">Soft Delete</span>
+									<span class="c-table-list-panel__item-badge">{t('softDelete')}</span>
 								{/if}
 							</div>
-							<p class="c-table-list-panel__item-count">{item.rowCount} rows</p>
+							<p class="c-table-list-panel__item-count">{t('rows', { count: item.rowCount })}</p>
 						</div>
 						{#if selectedName === item.name}
 							<div class="c-table-list-panel__item-dot"></div>

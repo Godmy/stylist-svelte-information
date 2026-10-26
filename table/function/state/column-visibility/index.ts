@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createColumnVisibility } from './index.svelte';
+export { createColumnVisibility } from './state.svelte';

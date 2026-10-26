@@ -1,4 +1,6 @@
 import type { RecipeDataTable } from '$stylist/table/interface/recipe/data-table';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
+import { TABLE_DATA_TABLE_MESSAGE } from '$stylist/table/const/record/data-table-message';
 import { ObjectManagerTableControls } from '$stylist/table/class/manager/table-controls';
 
 type Row = Record<string, unknown>;
@@ -25,7 +27,8 @@ export function createDataTableState(getProps: () => RecipeDataTable<Row>) {
 	const className = $derived(props.class ?? '');
 	const rowNumbers = $derived(props.rowNumbers ?? false);
 	const stickyHeader = $derived(props.stickyHeader ?? false);
-	const emptyText = $derived(props.emptyText ?? 'No data to display.');
+	const t = useMessage('data-table', TABLE_DATA_TABLE_MESSAGE);
+	const emptyText = $derived(props.emptyText ?? t('empty'));
 	const visibleSchema = $derived(schema.filter((col) => !col.hidden));
 	const sortedData = $derived(ObjectManagerTableControls.sortData(data, sortKey, sortDirection));
 	const rootClass = $derived(['c-data-table', className].filter(Boolean).join(' '));

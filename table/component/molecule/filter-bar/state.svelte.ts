@@ -7,7 +7,8 @@ export function createFilterBarState(getProps: () => RecipeFilterBar) {
 			return props.searchValue ?? '';
 		},
 		get searchPlaceholder() {
-			return props.searchPlaceholder ?? 'Search...';
+			// Undefined lets FilterText show its own localized placeholder.
+			return props.searchPlaceholder;
 		},
 		get pillGroups() {
 			return props.pillGroups ?? [];

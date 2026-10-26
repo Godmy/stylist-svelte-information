@@ -1,3 +1,5 @@
+import { TABLE_COMPARISON_TABLE_MESSAGE } from '$stylist/table/const/record/comparison-table-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeComparisonTable } from '$stylist/table/interface/recipe/comparison-table';
 
 export function createComparisonTableState(getProps: () => RecipeComparisonTable) {
@@ -22,7 +24,8 @@ export function createComparisonTableState(getProps: () => RecipeComparisonTable
 	);
 	const features = $derived(props.features ?? []);
 	const products = $derived(props.products ?? []);
-	const featureColumnLabel = $derived(props.featureColumnLabel ?? 'Features');
+	const t = useMessage('comparison-table', TABLE_COMPARISON_TABLE_MESSAGE);
+	const featureColumnLabel = $derived(props.featureColumnLabel ?? t('feature'));
 	const showHeader = $derived(props.showHeader ?? true);
 	const showDescription = $derived(props.showDescription ?? false);
 
