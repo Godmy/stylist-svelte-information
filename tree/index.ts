@@ -4,6 +4,7 @@ export {
 	TreeNodeItem,
 	TreeViewer
 } from './component';
+export { TREE_TREE_NODE_ITEM_MESSAGE } from './const';
 export {
 	createTreeExpansionState,
 	normalizeTreeViewerNode

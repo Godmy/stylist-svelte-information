@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { RecipeTree } from '$stylist/tree/interface/recipe/tree';
 	import type { TreeNode } from '$stylist/tree/type/object/tree-node';
-	import createTreeExpansionState from '$stylist/tree/function/state/tree-expansion/index.svelte';
+	import createTreeExpansionState from '$stylist/tree/function/state/tree-expansion/state.svelte';
 	let {
 		nodes = [],
 		selectedId = '',

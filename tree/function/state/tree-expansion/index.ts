@@ -1,2 +1,2 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { createTreeExpansionState } from './index.svelte';
+export { createTreeExpansionState } from './state.svelte';

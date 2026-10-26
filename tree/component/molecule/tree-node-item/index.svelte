@@ -4,8 +4,12 @@
 	import createTreeNodeItemState from '$stylist/tree/component/molecule/tree-node-item/state.svelte';
 	import Self from '$stylist/tree/component/molecule/tree-node-item/index.svelte';
 
+	import { TREE_TREE_NODE_ITEM_MESSAGE } from '$stylist/tree/const/record/tree-node-item-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeTreeNodeItem = $props();
 	const state = createTreeNodeItemState(() => props);
+	const t = useMessage('tree-node-item', TREE_TREE_NODE_ITEM_MESSAGE);
 </script>
 
 <div class={state.containerClasses}>
@@ -36,7 +40,7 @@
 					}
 				}}
 				tabindex="0"
-				aria-label={state.expanded ? 'Collapse' : 'Expand'}
+				aria-label={state.expanded ? t('collapse') : t('expand')}
 			>
 				{#if state.expanded}
 					<Icon name={state.ChevronDown} style="width:1rem;height:1rem;" />
@@ -54,11 +58,8 @@
 			{#if state.faIcon}
 				<span class={state.secondaryIconClasses}>{state.secondaryIcon}</span>
 			{:else}
-				<img
-					src={state.secondaryIcon}
-					alt="secondary icon"
-					class={state.secondaryIconImageClasses}
-				/>
+				<!-- Decorative: the node text next to it already names the item. -->
+				<img src={state.secondaryIcon} alt="" class={state.secondaryIconImageClasses} />
 			{/if}
 		{/if}
 	</div>

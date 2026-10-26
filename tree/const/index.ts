@@ -1,0 +1,2 @@
+/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export { TREE_TREE_NODE_ITEM_MESSAGE } from './record';
