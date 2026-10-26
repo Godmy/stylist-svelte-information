@@ -1,3 +1,5 @@
+import { AUDIO_TRANSCRIBER_MESSAGE } from '$stylist/audio/const/record/transcriber-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeTranscriber } from '$stylist/audio/interface/recipe/transcriber';
 import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-recording';
 import type { TypeTranscriberStatus } from '$stylist/audio/type/alias/transcriber-status';
@@ -6,6 +8,7 @@ import { AudioRecorderManager } from '$stylist/audio/class/manager/audio-recorde
 
 export function createTranscriberState(getProps: () => RecipeTranscriber) {
 	const props = $derived(getProps());
+	const t = useMessage('transcriber', AUDIO_TRANSCRIBER_MESSAGE);
 	const recorder = new AudioRecorderManager();
 	let recording = $state<SlotAudioRecording | null>(null);
 	let transcription = $state<SlotTranscriptionResult | null>(null);
@@ -28,20 +31,20 @@ export function createTranscriberState(getProps: () => RecipeTranscriber) {
 	const canCopy = $derived(Boolean(transcription?.text && status === 'done'));
 	const className = $derived(props.class ?? '');
 	const actionLabel = $derived(
-		isRecording ? (props.stopLabel ?? 'Stop') : (props.recordLabel ?? 'Record')
+		isRecording ? (props.stopLabel ?? t('stop')) : (props.recordLabel ?? t('record'))
 	);
 	const copyLabel = $derived(
-		copied ? (props.copiedLabel ?? 'Copied') : (props.copyLabel ?? 'Copy')
+		copied ? (props.copiedLabel ?? t('copied')) : (props.copyLabel ?? t('copy'))
 	);
 	const statusLabel = $derived.by(() => {
-		if (!isSupported) return 'Recording is not supported in this browser';
-		if (status === 'recording') return 'Recording audio';
-		if (status === 'processing') return 'Preparing audio';
-		if (status === 'uploading') return 'Uploading audio';
-		if (status === 'transcribing') return 'Transcribing audio';
-		if (status === 'done') return 'Transcription ready';
-		if (status === 'error') return 'Transcription failed';
-		return 'Ready';
+		if (!isSupported) return t('unsupported');
+		if (status === 'recording') return t('recording');
+		if (status === 'processing') return t('processing');
+		if (status === 'uploading') return t('uploading');
+		if (status === 'transcribing') return t('transcribing');
+		if (status === 'done') return t('done');
+		if (status === 'error') return t('error');
+		return t('idle');
 	});
 
 	const restProps = $derived.by(() => {
@@ -106,7 +109,7 @@ export function createTranscriberState(getProps: () => RecipeTranscriber) {
 		status = 'transcribing';
 		const payload = await response.json();
 		if (!response.ok) {
-			throw new Error(payload.error ?? 'Transcription failed');
+			throw new Error(payload.error ?? t('error'));
 		}
 
 		const result = {
@@ -166,6 +169,12 @@ export function createTranscriberState(getProps: () => RecipeTranscriber) {
 	}
 
 	return {
+		get progressLabel() {
+			return t('progress');
+		},
+		get emptyLabel() {
+			return t('empty');
+		},
 		get isSupported() {
 			return isSupported;
 		},

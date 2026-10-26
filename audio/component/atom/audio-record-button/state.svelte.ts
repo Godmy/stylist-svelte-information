@@ -1,3 +1,5 @@
+import { AUDIO_AUDIO_RECORD_BUTTON_MESSAGE } from '$stylist/audio/const/record/audio-record-button-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeAudioRecordButton } from '$stylist/audio/interface/recipe/audio-record-button';
 import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-recording';
 import { TOKEN_AUDIO_ICON } from '$stylist/audio/const/record/audio-icon';
@@ -5,6 +7,7 @@ import { AudioRecorderManager } from '$stylist/audio/class/manager/audio-recorde
 
 export function createAudioRecordButtonState(getProps: () => RecipeAudioRecordButton) {
 	const props = $derived(getProps());
+	const t = useMessage('audio-record-button', AUDIO_AUDIO_RECORD_BUTTON_MESSAGE);
 	const recorder = new AudioRecorderManager();
 	let recording = $state<SlotAudioRecording | null>(null);
 	let isRecording = $state(false);
@@ -16,13 +19,13 @@ export function createAudioRecordButtonState(getProps: () => RecipeAudioRecordBu
 	const fileName = $derived(props.fileName ?? `audio-message-${Date.now()}.webm`);
 	const isDisabled = $derived(Boolean(props.disabled || isProcessing || !isSupported));
 	const buttonLabel = $derived(
-		isRecording ? (props.stopLabel ?? 'Stop') : (props.startLabel ?? 'Record')
+		isRecording ? (props.stopLabel ?? t('stop')) : (props.startLabel ?? t('record'))
 	);
 	const statusLabel = $derived(
 		isRecording
-			? (props.saveLabel ?? 'Recording')
+			? (props.saveLabel ?? t('recording'))
 			: recording
-				? (props.saveLabel ?? 'Audio ready')
+				? (props.saveLabel ?? t('ready'))
 				: ''
 	);
 	const iconName = $derived(isRecording ? TOKEN_AUDIO_ICON.SQUARE : TOKEN_AUDIO_ICON.MIC);

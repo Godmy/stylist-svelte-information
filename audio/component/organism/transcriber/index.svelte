@@ -37,7 +37,7 @@
 		<span>{state.statusLabel}</span>
 		<span>{state.progress}%</span>
 	</div>
-	<div class="c-transcriber__progress" aria-label="Transcription progress">
+	<div class="c-transcriber__progress" aria-label={state.progressLabel}>
 		<span style={`width:${state.progress}%`}></span>
 	</div>
 
@@ -51,7 +51,7 @@
 		{:else if state.errorMessage}
 			<p class="c-transcriber__error">{state.errorMessage}</p>
 		{:else}
-			<p class="c-transcriber__empty">Transcript will appear here.</p>
+			<p class="c-transcriber__empty">{state.emptyLabel}</p>
 		{/if}
 	</div>
 </section>

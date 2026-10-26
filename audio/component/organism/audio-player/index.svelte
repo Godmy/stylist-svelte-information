@@ -4,8 +4,12 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Button from '$stylist/button/component/atom/button/index.svelte';
 
+	import { AUDIO_AUDIO_PLAYER_MESSAGE } from '$stylist/audio/const/record/audio-player-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeAudioPlayer = $props();
 	const state = createAudioPlayerState(() => props);
+	const t = useMessage('audio-player', AUDIO_AUDIO_PLAYER_MESSAGE);
 </script>
 
 <div class={state.hostClasses} {...state.restProps}>
@@ -29,7 +33,7 @@
 					variant="ghost"
 					size="sm"
 					onclick={() => state.togglePlay()}
-					aria-label={state.isPlaying ? 'Pause' : 'Play'}
+					aria-label={state.isPlaying ? t('pause') : t('play')}
 				>
 					{#if state.isPlaying}
 						<BaseIcon name={state.icons.PAUSE} size={20} />
@@ -42,7 +46,7 @@
 					variant="ghost"
 					size="sm"
 					onclick={() => state.toggleMute()}
-					aria-label={state.isMuted ? 'Unmute' : 'Mute'}
+					aria-label={state.isMuted ? t('unmute') : t('mute')}
 				>
 					{#if state.isMuted}
 						<BaseIcon name={state.icons.VOLUME_X} size={20} />
@@ -60,6 +64,7 @@
 					max={state.duration || 100}
 					value={state.currentTime}
 					oninput={(e) => state.handleProgressChange(e)}
+					aria-label={t('seek')}
 					class="ap-progress"
 				/>
 				<span class="ap-time">{state.formatTime(state.duration)}</span>
@@ -73,13 +78,14 @@
 					step="0.01"
 					value={state.volume}
 					oninput={(e) => state.handleVolumeChange(e)}
+					aria-label={t('volume')}
 					class="ap-volume"
 				/>
 				<Button
 					variant="ghost"
 					size="sm"
 					onclick={() => state.reloadAudio()}
-					aria-label="Reload audio"
+					aria-label={t('reload')}
 				>
 					<BaseIcon name={state.icons.ROTATE_CCW} size={16} />
 				</Button>

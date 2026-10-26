@@ -1,4 +1,6 @@
 import type { HTMLAttributes } from 'svelte/elements';
+import { AUDIO_AUDIO_VISUALIZER_MESSAGE } from '$stylist/audio/const/record/audio-visualizer-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeAudioVisualizer } from '$stylist/audio/interface/recipe/audio-visualizer';
 
 export function createAudioVisualizerState(
@@ -8,9 +10,10 @@ export function createAudioVisualizerState(
 	let localIsPlaying = $derived(props.isPlaying ?? false);
 
 	const src = $derived(props.src ?? '');
-	const alt = $derived(props.alt ?? 'Audio Visualization');
-	const title = $derived(props.title ?? 'Audio Track');
-	const author = $derived(props.author ?? 'Unknown Artist');
+	const t = useMessage('audio-visualizer', AUDIO_AUDIO_VISUALIZER_MESSAGE);
+	const alt = $derived(props.alt ?? t('alt'));
+	const title = $derived(props.title ?? t('title'));
+	const author = $derived(props.author ?? t('author'));
 	const duration = $derived(props.duration ?? '0:00');
 	const className = $derived(props.class ?? '');
 
