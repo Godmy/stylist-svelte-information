@@ -3,12 +3,16 @@
 	import { createScheduledNotificationState } from '$stylist/notification/component/organism/scheduled-notification/state.svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 
+	import { NOTIFICATION_SCHEDULED_NOTIFICATION_MESSAGE } from '$stylist/notification/const/record/scheduled-notification-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeScheduledNotification = $props();
 	const state = createScheduledNotificationState(() => props);
+	const t = useMessage('scheduled-notification', NOTIFICATION_SCHEDULED_NOTIFICATION_MESSAGE);
 </script>
 
 <div class={state.containerClasses} {...state.restProps}>
-	<h3 class="scheduled-notification__title">Scheduled Notifications</h3>
+	<h3 class="scheduled-notification__title">{t('heading')}</h3>
 
 	<div class="scheduled-notification__list">
 		{#each state.notifications as notification (notification.id)}
@@ -49,7 +53,7 @@
 							<button
 								type="button"
 								class="scheduled-notification__action"
-								aria-label="Edit notification"
+								aria-label={t('edit')}
 								onclick={() => state.handleEdit(notification)}
 							>
 								<Icon name="edit" class="scheduled-notification__action-icon" />
@@ -59,7 +63,7 @@
 							<button
 								type="button"
 								class="scheduled-notification__action scheduled-notification__action--danger"
-								aria-label="Delete notification"
+								aria-label={t('delete')}
 								onclick={() => state.handleDelete(notification.id)}
 							>
 								<Icon name="trash-2" class="scheduled-notification__action-icon" />
@@ -69,7 +73,7 @@
 				{/if}
 			</div>
 		{:else}
-			<div class="scheduled-notification__empty">No scheduled notifications.</div>
+			<div class="scheduled-notification__empty">{t('empty')}</div>
 		{/each}
 	</div>
 </div>

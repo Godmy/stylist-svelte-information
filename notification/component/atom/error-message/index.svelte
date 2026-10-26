@@ -27,8 +27,8 @@
 		<div class={state.textClasses}>{state.errorMessage}</div>
 		{#if state.showRetry && state.onRetry}
 			<div class={state.buttonContainerClasses}>
-				<button class={state.buttonClasses} onclick={state.onRetry} aria-label="Retry action"
-					>Retry</button
+				<button class={state.buttonClasses} onclick={state.onRetry} aria-label={state.retryLabel}
+					>{state.retryText}</button
 				>
 			</div>
 		{/if}

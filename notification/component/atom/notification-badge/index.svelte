@@ -2,8 +2,12 @@
 	import type { RecipeNotificationBadge } from '$stylist/notification/interface/recipe/notification-badge';
 	import { createNotificationBadgeState } from '$stylist/notification/component/atom/notification-badge/state.svelte';
 
+	import { NOTIFICATION_NOTIFICATION_BADGE_MESSAGE } from '$stylist/notification/const/record/notification-badge-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeNotificationBadge = $props();
 	const state = createNotificationBadgeState(() => props);
+	const t = useMessage('notification-badge', NOTIFICATION_NOTIFICATION_BADGE_MESSAGE);
 </script>
 
 {#if state.shouldShow}
@@ -12,7 +16,7 @@
 			{@render props.children()}
 		{/if}
 
-		<span class={state.badgeClasses} aria-label={`${state.count} notifications`}>
+		<span class={state.badgeClasses} aria-label={t('count', { count: state.count })}>
 			{#if !state.showDot && (state.count > 0 || state.showZero)}
 				{state.badgeContent}
 			{/if}

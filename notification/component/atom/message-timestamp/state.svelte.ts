@@ -1,8 +1,14 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
+import { NOTIFICATION_MESSAGE_TIMESTAMP_MESSAGE } from '$stylist/notification/const/record/message-timestamp-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
+import { useFormat } from '$stylist/localization/function/hook/use-format';
 import type { RecipeMessageTimestamp } from '$stylist/notification/interface/recipe/message-timestamp';
 
 export function createMessageTimestampState(getProps: () => RecipeMessageTimestamp) {
 	const props = $derived(getProps());
+	const t = useMessage('message-timestamp', NOTIFICATION_MESSAGE_TIMESTAMP_MESSAGE);
+	const format = useFormat();
+	const TIME: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' };
 	// Initialize props with defaults
 	const timestamp = $derived.by(() => {
 		if (props.timestamp instanceof Date) {
@@ -22,21 +28,17 @@ export function createMessageTimestampState(getProps: () => RecipeMessageTimesta
 			const hours = Math.floor(diff / 3600000);
 			const days = Math.floor(diff / 86400000);
 
-			if (minutes < 1) return 'Just now';
-			if (minutes < 60) return `${minutes} m ago`;
-			if (hours < 24) return `${hours} h ago`;
-			if (days < 7) return `${days} d ago`;
+			if (minutes < 1) return format.relative(0, 'second');
+			if (minutes < 60) return format.relative(-minutes, 'minute');
+			if (hours < 24) return format.relative(-hours, 'hour');
+			if (days < 7) return format.relative(-days, 'day');
 		}
 
 		switch (formatStyle) {
 			case 'time':
-				return timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+				return format.date(timestamp, TIME);
 			case 'date':
-				return timestamp.toLocaleDateString('en-US', {
-					day: '2-digit',
-					month: '2-digit',
-					year: 'numeric'
-				});
+				return format.date(timestamp, { day: '2-digit', month: '2-digit', year: 'numeric' });
 			case 'datetime':
 			default:
 				const today = new Date();
@@ -54,16 +56,17 @@ export function createMessageTimestampState(getProps: () => RecipeMessageTimesta
 					timestamp.getFullYear() === yesterday.getFullYear();
 
 				if (isToday) {
-					return timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+					return format.date(timestamp, TIME);
 				} else if (isYesterday) {
-					return `Yesterday, ${timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
-				} else {
-					const dateStr = timestamp.toLocaleDateString('en-US', { day: '2-digit', month: 'short' });
-					const timeStr = timestamp.toLocaleTimeString('en-US', {
-						hour: '2-digit',
-						minute: '2-digit'
+					return t('dateTime', {
+						date: format.relative(-1, 'day'),
+						time: format.date(timestamp, TIME)
 					});
-					return `${dateStr}, ${timeStr}`;
+				} else {
+					return t('dateTime', {
+						date: format.date(timestamp, { day: '2-digit', month: 'short' }),
+						time: format.date(timestamp, TIME)
+					});
 				}
 		}
 	}

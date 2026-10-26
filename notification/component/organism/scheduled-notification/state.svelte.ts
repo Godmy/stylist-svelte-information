@@ -1,16 +1,19 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
+import { NOTIFICATION_SCHEDULED_NOTIFICATION_MESSAGE } from '$stylist/notification/const/record/scheduled-notification-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeScheduledNotification } from '$stylist/notification/interface/recipe/scheduled-notification';
 import type { ScheduledNotificationItem } from '$stylist/notification/type/object/scheduled-notification-item';
 
-const RECURRENCE_LABEL: Record<ScheduledNotificationItem['recurrence'], string> = {
-	daily: 'Daily',
-	weekly: 'Weekly',
-	monthly: 'Monthly',
-	once: 'One-time'
+const RECURRENCE_KEYS: Record<ScheduledNotificationItem['recurrence'], true> = {
+	daily: true,
+	weekly: true,
+	monthly: true,
+	once: true
 };
 
 export function createScheduledNotificationState(getProps: () => RecipeScheduledNotification) {
 	const props = $derived(getProps());
+	const t = useMessage('scheduled-notification', NOTIFICATION_SCHEDULED_NOTIFICATION_MESSAGE);
 	const notifications = $derived(props.notifications ?? []);
 	const showEditButton = $derived(props.showEditButton ?? true);
 	const showDeleteButton = $derived(props.showDeleteButton ?? true);
@@ -37,7 +40,7 @@ export function createScheduledNotificationState(getProps: () => RecipeScheduled
 	});
 
 	function recurrenceLabel(recurrence: ScheduledNotificationItem['recurrence']) {
-		return RECURRENCE_LABEL[recurrence] ?? recurrence;
+		return recurrence in RECURRENCE_KEYS ? t(recurrence) : recurrence;
 	}
 
 	function handleEdit(notification: ScheduledNotificationItem) {

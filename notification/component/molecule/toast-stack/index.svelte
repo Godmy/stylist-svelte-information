@@ -49,7 +49,7 @@
 								type="button"
 								class="toast-item__dismiss-btn"
 								onclick={toast.onDismiss}
-								aria-label="Dismiss toast"
+								aria-label={state.dismissLabel}
 							>
 								<Icon name={state.X} class="toast-item__dismiss-icon" />
 							</button>

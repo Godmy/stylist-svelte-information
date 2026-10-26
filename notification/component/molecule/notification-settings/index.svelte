@@ -3,8 +3,12 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import createNotificationSettingsState from '$stylist/notification/component/molecule/notification-settings/state.svelte';
 
+	import { NOTIFICATION_NOTIFICATION_SETTINGS_MESSAGE } from '$stylist/notification/const/record/notification-settings-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeNotificationSettings = $props();
 	const state = createNotificationSettingsState(() => props);
+	const t = useMessage('notification-settings', NOTIFICATION_NOTIFICATION_SETTINGS_MESSAGE);
 </script>
 
 <div class={`${state.className} _c14`} {...state.restProps}>
@@ -12,23 +16,23 @@
 		<div class="_c1">
 			<BaseIcon name={state.bellIcon} class="_c2" />
 
-			<h3 class="_c3">Notification Settings</h3>
+			<h3 class="_c3">{t('heading')}</h3>
 		</div>
 
-		<p class="_c4">Manage how and when you receive notifications.</p>
+		<p class="_c4">{t('description')}</p>
 	</div>
 
 	<div class="_c5">
 		<!-- Channel headers -->
 
 		<div class="_c6">
-			<div>Notification Type</div>
+			<div>{t('type')}</div>
 
 			{#if state.showEmail}
 				<div class="_c7">
 					<BaseIcon name={state.mailIcon} class="_c8" />
 
-					Email
+					{t('email')}
 				</div>
 			{/if}
 
@@ -36,7 +40,7 @@
 				<div class="_c7">
 					<BaseIcon name={state.smartphoneIcon} class="_c8" />
 
-					Push
+					{t('push')}
 				</div>
 			{/if}
 
@@ -51,7 +55,7 @@
 						/>
 					</svg>
 
-					SMS
+					{t('sms')}
 				</div>
 			{/if}
 
@@ -59,7 +63,7 @@
 				<div class="_c7">
 					<BaseIcon name={state.monitorIcon} class="_c8" />
 
-					In-App
+					{t('inApp')}
 				</div>
 			{/if}
 		</div>
@@ -169,7 +173,7 @@
 		<div class="_c13">
 			<BaseIcon name={state.settingsIcon} class="_c8" />
 
-			<span>Changes to notification preferences are saved automatically</span>
+			<span>{t('autosave')}</span>
 		</div>
 	</div>
 </div>

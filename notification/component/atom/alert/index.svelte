@@ -3,8 +3,12 @@
 	import type { RecipeAlert } from '$stylist/notification/interface/recipe/alert';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 
+	import { NOTIFICATION_ALERT_MESSAGE } from '$stylist/notification/const/record/alert-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	const props: RecipeAlert = $props();
 	const state = createAlertState(() => props);
+	const t = useMessage('alert', NOTIFICATION_ALERT_MESSAGE);
 </script>
 
 {#if state.open}
@@ -32,7 +36,7 @@
 					<button
 						type="button"
 						class={state.closeButtonClasses}
-						aria-label="Close alert"
+						aria-label={t('close')}
 						onclick={state.handleClose}
 					>
 						<Icon name={state.XIcon} class="alert-close-icon" aria-hidden="true" />

@@ -5,8 +5,12 @@
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 
+	import { NOTIFICATION_NOTIFICATION_LIST_MESSAGE } from '$stylist/notification/const/record/notification-list-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeNotificationList = $props();
 	const state = createNotificationListState(() => props);
+	const t = useMessage('notification-list', NOTIFICATION_NOTIFICATION_LIST_MESSAGE);
 </script>
 
 <div class={state.containerClasses} {...state.restProps as HTMLAttributes<HTMLDivElement>}>
@@ -40,7 +44,7 @@
 					role="button"
 					tabindex="0"
 					class="notification-list__dismiss"
-					aria-label="Dismiss notification"
+					aria-label={t('dismiss')}
 					onclick={(event) => state.handleDismiss(event, notification.id)}
 					onkeydown={(event) => {
 						if (event.key === 'Enter' || event.key === ' ') {
@@ -54,7 +58,7 @@
 			{/if}
 		</button>
 	{:else}
-		<div class="notification-list__empty">No notifications yet.</div>
+		<div class="notification-list__empty">{t('empty')}</div>
 	{/each}
 </div>
 

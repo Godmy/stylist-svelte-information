@@ -1,13 +1,16 @@
 import { TOKEN_COLOR_TONE_ICON } from '$stylist/theme/const/map/color-tone-icon';
 import type { TokenColorTone } from '$stylist/design-token/type/alias/color-tone';
+import { NOTIFICATION_TOAST_STACK_MESSAGE } from '$stylist/notification/const/record/toast-stack-message';
+import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeToastStack } from '$stylist/notification/interface/recipe/toast-stack';
 
 export function createToastStackState(getProps: () => RecipeToastStack) {
 	const props = $derived(getProps());
+	const t = useMessage('toast-stack', NOTIFICATION_TOAST_STACK_MESSAGE);
 	const position = $derived(props.position ?? 'bottom-right');
 	const maxToasts = $derived(props.maxToasts ?? 5);
 	const toasts = $derived(props.toasts ?? []);
-	const dismissAllLabel = $derived(props.dismissAllLabel ?? 'Dismiss all');
+	const dismissAllLabel = $derived(props.dismissAllLabel ?? t('dismissAll'));
 	const canDismissAll = $derived(Boolean(props.onDismissAll) && toasts.length > 1);
 
 	const containerClasses = $derived(
@@ -51,6 +54,9 @@ export function createToastStackState(getProps: () => RecipeToastStack) {
 		},
 		get dismissAllLabel() {
 			return dismissAllLabel;
+		},
+		get dismissLabel() {
+			return t('dismiss');
 		},
 		get canDismissAll() {
 			return canDismissAll;

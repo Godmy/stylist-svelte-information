@@ -5,15 +5,19 @@
 	import CountBadge from '$stylist/notification/component/atom/count-badge/index.svelte';
 	import MessageTimestamp from '$stylist/notification/component/atom/message-timestamp/index.svelte';
 
+	import { NOTIFICATION_NOTIFICATION_CENTER_MESSAGE } from '$stylist/notification/const/record/notification-center-message';
+	import { useMessage } from '$stylist/localization/function/hook/use-message';
+
 	let props: RecipeNotificationCenter = $props();
 	const state = createNotificationCenterState(() => props);
+	const t = useMessage('notification-center', NOTIFICATION_NOTIFICATION_CENTER_MESSAGE);
 </script>
 
 <div class={state.containerClasses} {...state.restProps}>
 	<div class="notification-center__header">
 		<div class="notification-center__title">
 			<Icon name="bell" class="notification-center__title-icon" />
-			<h3 class="notification-center__title-text">Notification Center</h3>
+			<h3 class="notification-center__title-text">{t('heading')}</h3>
 		</div>
 		{#if state.showUnreadCount}
 			<CountBadge count={state.unread} />
@@ -25,13 +29,13 @@
 			{#if state.canMarkAllRead}
 				<button type="button" class="notification-center__action" onclick={state.handleMarkAllRead}>
 					<Icon name="check-check" class="notification-center__action-icon" />
-					Mark all read
+					{t('markAllRead')}
 				</button>
 			{/if}
 			{#if state.canClearAll}
 				<button type="button" class="notification-center__action" onclick={state.handleClearAll}>
 					<Icon name="trash-2" class="notification-center__action-icon" />
-					Clear all
+					{t('clearAll')}
 				</button>
 			{/if}
 		</div>
@@ -61,13 +65,13 @@
 				{/if}
 			</button>
 		{:else}
-			<div class="notification-center__empty">No notifications yet.</div>
+			<div class="notification-center__empty">{t('empty')}</div>
 		{/each}
 	</div>
 
 	{#if state.canFetchMore}
 		<button type="button" class="notification-center__fetch-more" onclick={state.handleFetchMore}>
-			Load more
+			{t('loadMore')}
 		</button>
 	{/if}
 </div>
