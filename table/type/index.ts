@@ -1,14 +1,9 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export type {
-	CellType,
-	PlaygroundComponentCatalogSortBy,
-	PlaygroundComponentCatalogViewMode
-} from './alias';
+export type { CellType } from './alias';
 export type {
 	ColumnSchema,
 	ComparisonTableFeature,
 	ComparisonTableProduct,
-	ComponentStory,
 	FilterSchema,
 	FilterType,
 	RowExpandableProps,

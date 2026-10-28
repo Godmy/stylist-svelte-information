@@ -12,7 +12,6 @@ export {
 	Column,
 	ColumnManager,
 	ComparisonTable,
-	Component,
 	DataTable,
 	DataTableShell,
 	FilterBar,
@@ -24,13 +23,10 @@ export {
 	TableListPanel
 } from './component';
 export {
-	PLAYGROUND_COMPONENT_CATALOG_SORT_BY,
-	PLAYGROUND_COMPONENT_CATALOG_VIEW_MODE,
 	PresetCellHeader,
 	TABLE_ALIGNMENT_CLASSES,
 	TABLE_COLUMN_MANAGER_MESSAGE,
 	TABLE_COMPARISON_TABLE_MESSAGE,
-	TABLE_COMPONENT_MESSAGE,
 	TABLE_DATA_TABLE_MESSAGE,
 	TABLE_DATA_TABLE_SHELL_MESSAGE,
 	TABLE_FILTER_TEXT_MESSAGE,
@@ -48,11 +44,8 @@ export type {
 	ColumnSchema,
 	ComparisonTableFeature,
 	ComparisonTableProduct,
-	ComponentStory,
 	FilterSchema,
 	FilterType,
-	PlaygroundComponentCatalogSortBy,
-	PlaygroundComponentCatalogViewMode,
 	RowExpandableProps,
 	TableSchema,
 	TokenSortDirection
@@ -66,7 +59,6 @@ export type {
 	RecipeColumn,
 	RecipeColumnManager,
 	RecipeComparisonTable,
-	RecipeComponent,
 	RecipeDataTable,
 	RecipeDataTableShell,
 	RecipeFilterBar,

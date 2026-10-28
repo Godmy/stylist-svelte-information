@@ -2,7 +2,6 @@
 export type { ColumnSchema } from './column';
 export type { ComparisonTableFeature } from './comparison-table-feature';
 export type { ComparisonTableProduct } from './comparison-table-product';
-export type { ComponentStory } from './component-story';
 export type {
 	FilterSchema,
 	FilterType

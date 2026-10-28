@@ -8,7 +8,6 @@ export type {
 	RecipeColumn,
 	RecipeColumnManager,
 	RecipeComparisonTable,
-	RecipeComponent,
 	RecipeDataTable,
 	RecipeDataTableShell,
 	RecipeFilterBar,

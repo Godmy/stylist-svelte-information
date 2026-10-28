@@ -7,7 +7,6 @@ export type { RecipeCellText } from './cell-text';
 export type { RecipeColumn } from './column';
 export type { RecipeColumnManager } from './column-manager';
 export type { RecipeComparisonTable } from './comparison-table';
-export type { RecipeComponent } from './component';
 export type { RecipeDataTable } from './data-table';
 export type { RecipeDataTableShell } from './data-table-shell';
 export type { RecipeFilterBar } from './filter-bar';

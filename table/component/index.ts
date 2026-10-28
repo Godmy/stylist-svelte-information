@@ -18,7 +18,6 @@ export {
 	RowExpandable
 } from './molecule';
 export {
-	Component,
 	DataTable,
 	DataTableShell,
 	TableListPanel
