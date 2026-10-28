@@ -57,7 +57,7 @@
 				/>
 
 				<!-- Y axis labels -->
-				{#each state.yAxisValues as val, i}
+				{#each state.yAxisValues as val, i (i)}
 					<text
 						x={props.showAxis ? 45 : 0}
 						y={(props.height ?? 400) - 15 - i * (state.chartHeight / 4)}
@@ -80,7 +80,7 @@
 
 				<!-- X axis labels (only for the first dataset) -->
 				{#if props.data?.[0]}
-					{#each props.data[0].data as item, i}
+					{#each props.data[0].data as item, i (i)}
 						<text
 							x={50 + i * (state.chartWidth / (props.data[0].data.length - 1 || 1))}
 							y={(props.height ?? 400) - 5}
@@ -95,7 +95,7 @@
 			{/if}
 
 			<!-- Lines -->
-			{#each props.data ?? [] as series, seriesIndex}
+			{#each props.data ?? [] as series, seriesIndex (seriesIndex)}
 				<path
 					d={state.linePaths[seriesIndex]}
 					fill="none"
@@ -106,7 +106,7 @@
 				/>
 
 				<!-- Points -->
-				{#each series.data as point, pointIndex}
+				{#each series.data as point, pointIndex (pointIndex)}
 					{@const pointPosition = ManagerLineChart.resolvePointPosition({
 						pointIndex,
 						seriesLength: series.data.length,
@@ -143,7 +143,7 @@
 
 	{#if props.showLegend}
 		<div class={state.legendContainerClasses}>
-			{#each props.data ?? [] as series, i}
+			{#each props.data ?? [] as series, i (i)}
 				<div class={state.legendItemClasses}>
 					<div
 						class="lc-legend-line"

@@ -66,7 +66,7 @@
 
 		{#if props.showLegend}
 			<div class={state.legendContainerClasses}>
-				{#each props.data ?? [] as item}
+				{#each props.data ?? [] as item, i (i)}
 					<div class={state.legendItemClasses}>
 						<div
 							class={state.legendColorClasses}

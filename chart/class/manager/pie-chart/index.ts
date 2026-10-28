@@ -2,18 +2,18 @@ import type { PieChartDataPoint } from '$stylist/chart/interface/slot/pie-chart'
 import { TOKEN_CHART_COLORS } from '$stylist/chart/const/array/chart-colors';
 
 export class ManagerPieChart {
-	static resolveTotal(data: PieChartDataPoint[]): number {
+	static resolveTotal(data: readonly PieChartDataPoint[]): number {
 		return data.reduce((sum, item) => sum + item.value, 0);
 	}
 
-	static resolveColors(colors?: string[]): string[] {
-		return colors && colors.length > 0 ? colors : [...TOKEN_CHART_COLORS];
+	static resolveColors(colors?: readonly string[]): string[] {
+		return colors && colors.length > 0 ? [...colors] : [...TOKEN_CHART_COLORS];
 	}
 
 	static resolveSegments(
-		data: PieChartDataPoint[],
+		data: readonly PieChartDataPoint[],
 		total: number,
-		colors: string[]
+		colors: readonly string[]
 	): (PieChartDataPoint & {
 		startAngle: number;
 		endAngle: number;

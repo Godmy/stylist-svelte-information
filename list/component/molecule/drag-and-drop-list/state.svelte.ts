@@ -15,7 +15,7 @@ export function createDragAndDropListState(getProps: () => RecipeDragAndDropList
 	let draggedOverIndex = $state<number | null>(null);
 	let isDragging = $state(false);
 
-	function handleDragStart(e: DragEvent, item: DragAndDropListItem, index: number) {
+	function handleDragStart(e: DragEvent, item: DragAndDropListItem, _index: number) {
 		if (disabled) return;
 
 		e.dataTransfer?.setData('text/plain', item.id);

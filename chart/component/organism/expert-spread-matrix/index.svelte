@@ -19,7 +19,7 @@
 	{/if}
 	<div class="expert-spread-matrix__viewport">
 		<svg viewBox={`0 0 ${state.layout.width} ${state.layout.height}`} role="img">
-			{#each state.layout.periods as period, index}
+			{#each state.layout.periods as period, index (index)}
 				<text
 					class="expert-spread-matrix__label"
 					x={state.layout.labelWidth + index * state.layout.cellSize + state.layout.cellSize / 2}
@@ -27,7 +27,7 @@
 					text-anchor="middle">{period}</text
 				>
 			{/each}
-			{#each state.layout.experts as expert, index}
+			{#each state.layout.experts as expert, index (index)}
 				<text
 					class="expert-spread-matrix__label expert-spread-matrix__label--expert"
 					x={state.layout.labelWidth - 10}

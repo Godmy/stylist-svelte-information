@@ -19,7 +19,7 @@
 		>
 	</div>
 	<ul class="c-column-manager__list">
-		{#each state.localColumns as col, i}
+		{#each state.localColumns as col, i (col.key)}
 			<li class="c-column-manager__item">
 				<label class="c-column-manager__row">
 					<input

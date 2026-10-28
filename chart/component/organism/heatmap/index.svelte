@@ -59,7 +59,7 @@
 				/>
 
 				<!-- X axis labels -->
-				{#each state.columns as col, i}
+				{#each state.columns as col, i (col)}
 					<text
 						x={50 + i * state.cellWidth + state.cellWidth / 2}
 						y={(props.height ?? 400) - 5}
@@ -73,7 +73,7 @@
 				{/each}
 
 				<!-- Y axis labels -->
-				{#each state.rows as row, i}
+				{#each state.rows as row, i (row)}
 					<text
 						x={props.showAxis ? 45 : 0}
 						y={10 + i * state.cellHeight + state.cellHeight / 2}
@@ -89,7 +89,7 @@
 			{/if}
 
 			<!-- Cells -->
-			{#each state.heatmapCells as cell}
+			{#each state.heatmapCells as cell, i (i)}
 				<g
 					class={state.cellClasses(state.hoveredCell === cell.id)}
 					onclick={() => props.onCellClick?.(cell)}

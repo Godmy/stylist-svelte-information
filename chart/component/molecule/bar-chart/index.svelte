@@ -56,7 +56,7 @@
 				/>
 
 				<!-- Y axis labels -->
-				{#each state.yAxisValues as val, i}
+				{#each state.yAxisValues as val, i (i)}
 					<text
 						x={props.showAxis ? 45 : 0}
 						y={state.chartHeight + 6 - i * (state.chartHeight / 4)}
@@ -92,7 +92,7 @@
 			{/if}
 
 			<!-- Bars -->
-			{#each state.barPositions as position, i}
+			{#each state.barPositions as position, i (position.x)}
 				<g
 					class="bc-bar-group"
 					onclick={() => props.onBarClick?.(props.data[i])}
@@ -129,7 +129,7 @@
 
 	{#if props.showLegend}
 		<div class={state.legendClasses}>
-			{#each props.data ?? [] as item, i}
+			{#each props.data ?? [] as item, i (i)}
 				<div class={state.legendItemClasses}>
 					<div
 						class="bc-legend-dot"

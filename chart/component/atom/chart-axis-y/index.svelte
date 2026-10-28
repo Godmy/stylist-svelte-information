@@ -24,7 +24,7 @@
 		/>
 	{/if}
 
-	{#each state.ticks as tick, i}
+	{#each state.ticks as tick, i (i)}
 		<line
 			x1={state.x}
 			y1={tick}

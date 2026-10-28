@@ -8,7 +8,7 @@
 
 <div class={state.containerClasses}>
 	<svg width={state.width} height={state.height} viewBox={`0 0 ${state.width} ${state.height}`}>
-		{#each state.segments as segment, i}
+		{#each state.segments as segment, i (i)}
 			<path
 				d={`
           M ${state.width / 2} ${state.height / 2}
@@ -24,7 +24,7 @@
 		{/each}
 	</svg>
 	<div class={state.legendClasses}>
-		{#each state.segments as segment, i}
+		{#each state.segments as segment, i (i)}
 			<div class={state.legendItemClasses}>
 				<div class={state.legendSwatchClasses} style={`background-color: ${segment.color}`}></div>
 				<span class={state.legendTextClasses}>{segment.label}: {segment.value}</span>

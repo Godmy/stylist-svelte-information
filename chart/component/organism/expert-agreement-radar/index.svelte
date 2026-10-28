@@ -16,7 +16,7 @@
 			{#if props.description}<p>{props.description}</p>{/if}
 		</header>{/if}
 	<svg viewBox={`0 0 ${state.layout.width} ${state.layout.height}`} role="img">
-		{#each [0.25, 0.5, 0.75, 1] as ratio}
+		{#each [0.25, 0.5, 0.75, 1] as ratio (ratio)}
 			<circle
 				class="expert-agreement-radar__ring"
 				cx={state.layout.centerX}
@@ -24,7 +24,7 @@
 				r={state.layout.radius * ratio}
 			/>
 		{/each}
-		{#each state.layout.labelPoints as label, index}
+		{#each state.layout.labelPoints as label, index (label.id)}
 			<line
 				class="expert-agreement-radar__axis"
 				x1={state.layout.centerX}

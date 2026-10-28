@@ -11,7 +11,7 @@
 		<span class="c-filter-pills__label">{state.label}</span>
 	{/if}
 	<div class="c-filter-pills__list">
-		{#each state.options as option}
+		{#each state.options as option, i (i)}
 			<button
 				type="button"
 				class="c-filter-pills__pill {state.isActive(option) ? 'is-active' : ''}"

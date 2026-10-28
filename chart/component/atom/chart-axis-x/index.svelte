@@ -43,7 +43,7 @@
 		/>
 	{/if}
 
-	{#each ticks as tick, i}
+	{#each ticks as tick, i (i)}
 		<line
 			x1={tick}
 			y1={y}

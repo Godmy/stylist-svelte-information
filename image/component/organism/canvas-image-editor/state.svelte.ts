@@ -13,7 +13,6 @@ export function createCanvasImageEditorState(
 	const width = $derived(Number(props.imageWidth ?? 800));
 	const height = $derived(Number(props.imageHeight ?? 600));
 	const imageSrc = $derived(props.imageSrc);
-	const cropEnabled = $derived(props.cropEnabled ?? false);
 	const filter = $derived((props.filter ?? 'none') as string);
 	const brightness = $derived(props.brightness ?? 100);
 	const contrast = $derived(props.contrast ?? 100);

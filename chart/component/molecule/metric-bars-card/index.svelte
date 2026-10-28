@@ -22,7 +22,7 @@
 	</div>
 
 	<div class={state.barsClasses}>
-		{#each state.bars as bar}
+		{#each state.bars as bar, i (i)}
 			<MetricBar
 				text={bar.label}
 				value={bar.value}

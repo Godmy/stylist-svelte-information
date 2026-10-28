@@ -24,7 +24,7 @@
 		stroke-dasharray="6 4"
 	/>
 	{#if tickCount > 0}
-		{#each Array.from({ length: tickCount }, (_, i) => i + 1) as tick}
+		{#each Array.from({ length: tickCount }, (_, i) => i + 1) as tick (tick)}
 			{@const ratio = tick / (tickCount + 1)}
 			{@const x = startX + (endX - startX) * ratio}
 			{@const y = startY + (endY - startY) * ratio}
