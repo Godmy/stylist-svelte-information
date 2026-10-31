@@ -36,5 +36,12 @@ export const BAR_CHART_COLOR_SCHEME = {
 		'var(--color-info-500)',
 		'var(--color-success-500)',
 		'var(--color-warning-500)'
+	],
+	spanish: [
+		'var(--color-primary-500)',
+		'var(--color-secondary-500)',
+		'var(--color-tertiary-500)',
+		'var(--color-success-500)',
+		'var(--color-warning-500)'
 	]
 } as const satisfies Record<TokenThemeScheme, readonly string[]>;
