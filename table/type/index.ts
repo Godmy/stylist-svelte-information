@@ -2,6 +2,8 @@
 export type { CellType } from './alias';
 export type {
 	ColumnSchema,
+	ComparisonCardColumn,
+	ComparisonCardItem,
 	ComparisonTableFeature,
 	ComparisonTableProduct,
 	FilterSchema,

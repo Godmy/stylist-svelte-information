@@ -1,6 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export { ColumnManager } from './column-manager/index';
 export { Column } from './column/index';
+export { ComparisonCard } from './comparison-card/index';
 export { ComparisonTable } from './comparison-table/index';
 export { FilterBar } from './filter-bar/index';
 export { FilterPills } from './filter-pills/index';

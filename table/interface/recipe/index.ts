@@ -6,6 +6,7 @@ export type { RecipeCellPill } from './cell-pill';
 export type { RecipeCellText } from './cell-text';
 export type { RecipeColumn } from './column';
 export type { RecipeColumnManager } from './column-manager';
+export type { RecipeComparisonCard } from './comparison-card';
 export type { RecipeComparisonTable } from './comparison-table';
 export type { RecipeDataTable } from './data-table';
 export type { RecipeDataTableShell } from './data-table-shell';

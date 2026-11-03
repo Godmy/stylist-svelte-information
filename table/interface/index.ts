@@ -7,6 +7,7 @@ export type {
 	RecipeCellText,
 	RecipeColumn,
 	RecipeColumnManager,
+	RecipeComparisonCard,
 	RecipeComparisonTable,
 	RecipeDataTable,
 	RecipeDataTableShell,

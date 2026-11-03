@@ -11,6 +11,7 @@ export {
 export {
 	Column,
 	ColumnManager,
+	ComparisonCard,
 	ComparisonTable,
 	FilterBar,
 	FilterPills,
