@@ -1,0 +1,2 @@
+/** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export { ARTICLE_BLOCK_OPTIONS } from './array';

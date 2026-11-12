@@ -17,6 +17,10 @@ export {
 	IMAGE_MEDIA_THUMBNAIL_MESSAGE
 } from './const';
 export type {
+	CreditedImage,
+	ImageAttribution
+} from './type';
+export type {
 	RecipeCanvasImageEditor,
 	RecipeCard,
 	RecipeDividerHeadingImageText,
