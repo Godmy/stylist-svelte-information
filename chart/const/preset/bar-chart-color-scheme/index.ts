@@ -37,6 +37,13 @@ export const BAR_CHART_COLOR_SCHEME = {
 		'var(--color-success-500)',
 		'var(--color-warning-500)'
 	],
+	pavarenkin: [
+		'var(--color-primary-500)',
+		'var(--color-secondary-500)',
+		'var(--color-info-500)',
+		'var(--color-success-500)',
+		'var(--color-warning-500)'
+	],
 	spanish: [
 		'var(--color-primary-500)',
 		'var(--color-secondary-500)',

@@ -6,5 +6,6 @@ export const HEATMAP_GRADIENT_BY_SCHEME: Record<TokenThemeScheme, string> = {
 	ocean: 'var(--gradient-ocean)',
 	minimal: 'var(--gradient-info)',
 	weoracle: 'var(--gradient-weoracle, var(--gradient-sunset))',
-	spanish: 'var(--gradient-sunset)'
+	spanish: 'var(--gradient-sunset)',
+	pavarenkin: 'var(--gradient-info)'
 };
