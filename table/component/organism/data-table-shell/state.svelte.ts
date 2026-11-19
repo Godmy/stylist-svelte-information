@@ -1,3 +1,4 @@
+import { untrack } from 'svelte';
 import type { RecipeDataTableShell } from '$stylist/table/interface/recipe/data-table-shell';
 import { ObjectManagerTableControls } from '$stylist/table/class/manager/table-controls';
 
@@ -13,6 +14,48 @@ export function createDataTableShellState(props: RecipeDataTableShell<Row>) {
 	let columnVisibility = $state<Record<string, boolean>>(
 		Object.fromEntries(props.schema.map((col) => [String(col.key), !(col.hidden ?? false)]))
 	);
+
+	let columnsOpen = $state(false);
+	/** Storage may be missing or blocked (private mode); the table then works without it. */
+	const store = (key: string | undefined, value: unknown) => {
+		if (!key) return;
+		try {
+			localStorage.setItem(key, JSON.stringify(value));
+		} catch {
+			// Settings live until the page is reloaded.
+		}
+	};
+	// Runs after hydration, so the server markup always shows the defaults.
+	// Only the storage keys are tracked: a new key (another table) restores its own settings.
+	$effect(() => {
+		const panelKey = props.storageKey;
+		const columnsKey = props.columnsStorageKey;
+		untrack(() => restore(panelKey, columnsKey));
+	});
+	function restore(panelKey: string | undefined, columnsKey: string | undefined) {
+		try {
+			const open = panelKey ? JSON.parse(localStorage.getItem(panelKey) ?? 'null') : null;
+			if (typeof open === 'boolean') columnsOpen = open;
+			const saved = columnsKey ? JSON.parse(localStorage.getItem(columnsKey) ?? 'null') : null;
+			if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
+				const known = new Set(props.schema.map((col) => String(col.key)));
+				columnVisibility = {
+					...columnVisibility,
+					...Object.fromEntries(
+						Object.entries(saved).filter(
+							([key, value]) => known.has(key) && typeof value === 'boolean'
+						)
+					)
+				};
+			}
+		} catch {
+			// Unreadable settings fall back to the defaults.
+		}
+	}
+	const toggleColumns = () => {
+		columnsOpen = !columnsOpen;
+		store(props.storageKey, columnsOpen);
+	};
 
 	const sort = (columnKey: string) => {
 		if (sortKey === columnKey) {
@@ -41,9 +84,11 @@ export function createDataTableShellState(props: RecipeDataTableShell<Row>) {
 	};
 	const toggleColumn = (key: string) => {
 		columnVisibility = { ...columnVisibility, [key]: !columnVisibility[key] };
+		store(props.columnsStorageKey, columnVisibility);
 	};
 	const setColumnVisibility = (nextVisibility: Record<string, boolean>) => {
 		columnVisibility = { ...columnVisibility, ...nextVisibility };
+		store(props.columnsStorageKey, columnVisibility);
 	};
 	const goPrev = () => {
 		if (currentPage > 1) currentPage -= 1;
@@ -111,6 +156,10 @@ export function createDataTableShellState(props: RecipeDataTableShell<Row>) {
 		get pillFilters() {
 			return pillFilters;
 		},
+		get columnsOpen() {
+			return columnsOpen;
+		},
+		toggleColumns,
 		get columnVisibility() {
 			return columnVisibility;
 		},

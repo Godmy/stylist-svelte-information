@@ -4,3 +4,4 @@ export {
 	TreeNodeItem,
 	TreeViewer
 } from './molecule';
+export { Catalog } from './organism';

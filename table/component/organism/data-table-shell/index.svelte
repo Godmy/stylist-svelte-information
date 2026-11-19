@@ -1,9 +1,10 @@
 <script lang="ts">
 	import type { RecipeDataTableShell } from '$stylist/table/interface/recipe/data-table-shell';
-	import { createDataTableShellState } from '$stylist/table/component/organism/data-table-shell/state.svelte';
+	import { createDataTableShellState } from './state.svelte';
 	import FilterBar from '$stylist/table/component/molecule/filter-bar/index.svelte';
 	import ColumnManager from '$stylist/table/component/molecule/column-manager/index.svelte';
 	import DataTable from '$stylist/table/component/organism/data-table/index.svelte';
+	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import { TABLE_DATA_TABLE_SHELL_MESSAGE } from '$stylist/table/const/record/data-table-shell-message';
 	import { useMessage } from '$stylist/localization/function/hook/use-message';
 
@@ -21,6 +22,10 @@
 		loading = false,
 		onExport,
 		onRowClick,
+		columnManagerToggle = false,
+		storageKey,
+		columnsStorageKey,
+		fill = false,
 		class: className = '',
 		...restProps
 	}: RecipeDataTableShell<RowData> = $props();
@@ -59,12 +64,21 @@
 		get onRowClick() {
 			return onRowClick;
 		},
+		get storageKey() {
+			return storageKey;
+		},
+		get columnsStorageKey() {
+			return columnsStorageKey;
+		},
 		get class() {
 			return className;
 		}
 	});
 
 	const t = useMessage('data-table-shell', TABLE_DATA_TABLE_SHELL_MESSAGE);
+	const uid = $props.id();
+	const toggleable = $derived(showColumnManager && columnManagerToggle);
+	const managerVisible = $derived(showColumnManager && (!columnManagerToggle || state.columnsOpen));
 
 	const columnManagerColumns = $derived(
 		schema.map((col) => ({
@@ -75,11 +89,23 @@
 	);
 </script>
 
-<div class="c-data-table-shell {className}" {...restProps}>
-	{#if title || onExport}
+<div class="c-data-table-shell {className}" class:c-data-table-shell--fill={fill} {...restProps}>
+	{#if title || onExport || toggleable}
 		<div class="c-data-table-shell__header">
 			{#if title}<h3 class="c-data-table-shell__title">{title}</h3>{/if}
 			<div class="c-data-table-shell__controls">
+				{#if toggleable}
+					<button
+						type="button"
+						class="c-data-table-shell__btn c-data-table-shell__toggle"
+						aria-pressed={state.columnsOpen}
+						aria-controls="{uid}-columns"
+						title={state.columnsOpen ? t('hideColumns') : t('showColumns')}
+						onclick={state.toggleColumns}
+					>
+						<Icon name="columns" size="sm" />{t('columns')}
+					</button>
+				{/if}
 				{#if onExport}
 					<button type="button" class="c-data-table-shell__btn" onclick={onExport}
 						>{t('export')}</button
@@ -100,8 +126,8 @@
 	{/if}
 
 	<div class="c-data-table-shell__body">
-		{#if showColumnManager}
-			<aside class="c-data-table-shell__aside">
+		{#if managerVisible}
+			<aside class="c-data-table-shell__aside" id="{uid}-columns">
 				<ColumnManager
 					columns={columnManagerColumns}
 					onColumnsChange={(cols) => {
@@ -132,7 +158,13 @@
 			{#if loading}
 				<div class="c-data-table-shell__loading">{t('loading')}</div>
 			{:else}
-				<DataTable data={state.pageData} schema={state.visibleSchema} {onRowClick} />
+				<DataTable
+					data={state.pageData}
+					schema={state.visibleSchema}
+					{onRowClick}
+					stickyHeader={fill}
+					class={fill ? 'c-data-table-shell__table' : ''}
+				/>
 
 				{#if state.totalPages > 1}
 					<div class="c-data-table-shell__pagination">
@@ -195,6 +227,46 @@
 		font-size: 12px;
 		cursor: pointer;
 		color: var(--color-text-primary);
+	}
+
+	.c-data-table-shell__toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	.c-data-table-shell__toggle[aria-pressed='true'] {
+		border-color: var(--color-primary-600);
+		color: var(--color-primary-600);
+	}
+
+	/* Fill mode: the shell takes the parent height and only the table scrolls. */
+	.c-data-table-shell--fill {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+	}
+
+	.c-data-table-shell--fill .c-data-table-shell__body {
+		flex: 1;
+		min-height: 0;
+	}
+
+	.c-data-table-shell--fill .c-data-table-shell__aside {
+		overflow: auto;
+	}
+
+	.c-data-table-shell--fill .c-data-table-shell__main {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+	}
+
+	.c-data-table-shell--fill :global(.c-data-table-shell__table) {
+		flex: 0 1 auto;
+		min-height: 0;
+		border: 0;
+		border-radius: 0;
 	}
 
 	.c-data-table-shell__btn:disabled {

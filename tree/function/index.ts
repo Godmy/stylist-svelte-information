@@ -1,3 +1,8 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
-export { normalizeTreeViewerNode } from './script';
+export {
+	buildCatalogTree,
+	filterCatalogTree,
+	normalizeTreeViewerNode,
+	prettyJson
+} from './script';
 export { createTreeExpansionState } from './state';
