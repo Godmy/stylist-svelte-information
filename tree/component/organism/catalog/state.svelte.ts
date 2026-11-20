@@ -191,6 +191,22 @@ export function createCatalogState(getProps: () => RecipeCatalog) {
 		!empty(node.row[props.activeKey]) &&
 		!Number(node.row[props.activeKey]);
 
+	let toggling = $state<string | null>(null);
+	/** Flips the visibility column of one row through `onSave`, without the editor form. */
+	async function toggleActive(node: CatalogTreeNode) {
+		const key = props.activeKey;
+		if (key === undefined || !props.onSave || props.readonly || toggling) return;
+		toggling = node.id;
+		try {
+			const result = await props.onSave(node.id, { [key]: inactive(node) ? 1 : 0 });
+			if (typeof result === 'string') status = { tone: 'error', text: result };
+		} catch (cause) {
+			status = { tone: 'error', text: cause instanceof Error ? cause.message : String(cause) };
+		} finally {
+			toggling = null;
+		}
+	}
+
 	async function save(messages: { required: (name: string) => string; saved: string }) {
 		if (!selected || !props.onSave || saving || !changedKeys.length) return;
 		const missing = fields.find(
@@ -274,6 +290,13 @@ export function createCatalogState(getProps: () => RecipeCatalog) {
 		get labelsOpen() {
 			return labelsOpen;
 		},
+		get activeKey() {
+			return props.activeKey;
+		},
+		get toggling() {
+			return toggling;
+		},
+		toggleActive,
 		toggleLabels,
 		setColumns,
 		isOpen,

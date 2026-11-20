@@ -15,7 +15,10 @@ export interface RecipeCatalog extends ComputeIntersectAll<
 	labelKey?: string;
 	/** Reference column shown as a badge next to the label, e.g. the row type. */
 	badgeKey?: string;
-	/** Column whose falsy value dims a row, e.g. `is_visible`. */
+	/**
+	 * Visibility column, e.g. `is_visible`: an eye button on each row shows it and, with `onSave`,
+	 * toggles it (1/0); a row with a falsy value is shown slightly dimmed.
+	 */
 	activeKey?: string;
 	title?: string;
 	/** Row selected on first render. */

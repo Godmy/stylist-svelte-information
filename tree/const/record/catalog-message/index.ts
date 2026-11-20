@@ -27,7 +27,11 @@ export const TREE_CATALOG_MESSAGE = {
 		saved: 'Saved.',
 		required: 'Fill in «{name}».',
 		readOnly: 'read-only',
-		close: 'Close'
+		close: 'Close',
+		show: 'Show «{name}»',
+		hide: 'Hide «{name}»',
+		shown: 'Shown',
+		hidden: 'Hidden'
 	},
 	ru: {
 		title: 'Каталог',
@@ -56,6 +60,10 @@ export const TREE_CATALOG_MESSAGE = {
 		saved: 'Сохранено.',
 		required: 'Заполните поле «{name}».',
 		readOnly: 'только чтение',
-		close: 'Закрыть'
+		close: 'Закрыть',
+		show: 'Показать «{name}»',
+		hide: 'Скрыть «{name}»',
+		shown: 'Видна',
+		hidden: 'Скрыта'
 	}
 } as const;

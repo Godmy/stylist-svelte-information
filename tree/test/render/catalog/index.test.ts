@@ -94,4 +94,26 @@ describe('Catalog', () => {
 			).checked
 		).toBe(true);
 	});
+	it('toggles visibility with the eye button instead of striking rows out', async () => {
+		const onSave = vi.fn(async () => undefined);
+		const view = render(Catalog, { props: { rows, fields, activeKey: 'is_visible', onSave } });
+		const hidden = view.getByRole('button', { name: 'Show «aeza»' });
+		expect(hidden.getAttribute('aria-pressed')).toBe('false');
+		expect(view.getByRole('button', { name: 'Hide «VPS»' }).getAttribute('aria-pressed')).toBe(
+			'true'
+		);
+		const label = view.getByText('aeza');
+		expect(getComputedStyle(label).textDecorationLine).not.toContain('line-through');
+
+		await fireEvent.click(hidden);
+		await waitFor(() => expect(onSave).toHaveBeenCalledWith('aeza', { is_visible: 1 }));
+		await fireEvent.click(view.getByRole('button', { name: 'Hide «VPS»' }));
+		await waitFor(() => expect(onSave).toHaveBeenCalledWith('vps', { is_visible: 0 }));
+	});
+
+	it('shows the eye without a button when read-only', () => {
+		const view = render(Catalog, { props: { rows, fields, activeKey: 'is_visible' } });
+		expect(view.queryByRole('button', { name: /Show|Hide/ })).toBeNull();
+		expect(view.getAllByRole('img', { name: 'Hidden' })).toHaveLength(1);
+	});
 });

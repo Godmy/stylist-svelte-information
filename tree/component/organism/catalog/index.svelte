@@ -86,6 +86,28 @@
 						>
 					{/if}
 				</button>
+				{#if state.activeKey !== undefined}
+					{@const hidden = state.inactive(node)}
+					{#if state.readonly}
+						<span
+							class={['c-catalog__eye', { 'c-catalog__eye--off': hidden }]}
+							role="img"
+							aria-label={t(hidden ? 'hidden' : 'shown')}
+							><Icon name={hidden ? 'eye-off' : 'eye'} size="sm" /></span
+						>
+					{:else}
+						<button
+							type="button"
+							class={['c-catalog__eye', { 'c-catalog__eye--off': hidden }]}
+							aria-pressed={!hidden}
+							aria-label={t(hidden ? 'show' : 'hide', { name: node.label })}
+							title={t(hidden ? 'show' : 'hide', { name: node.label })}
+							disabled={state.toggling !== null}
+							onclick={() => state.toggleActive(node)}
+							><Icon name={hidden ? 'eye-off' : 'eye'} size="sm" /></button
+						>
+					{/if}
+				{/if}
 			</div>
 			{#if open}
 				<ul class="c-catalog__children" role="group">
@@ -474,8 +496,7 @@
 		box-shadow: inset 3px 0 0 var(--c-catalog-accent);
 	}
 	.c-catalog__row--inactive .c-catalog__label {
-		opacity: 0.55;
-		text-decoration: line-through dotted;
+		opacity: 0.65;
 	}
 	.c-catalog__toggle {
 		display: inline-flex;
@@ -519,6 +540,31 @@
 		outline: 2px solid var(--c-catalog-accent);
 		outline-offset: -2px;
 		border-radius: 0.4rem;
+	}
+	.c-catalog__eye {
+		display: inline-flex;
+		flex: 0 0 1.8rem;
+		align-items: center;
+		justify-content: center;
+		height: 1.8rem;
+		padding: 0;
+		border: 0;
+		border-radius: 0.4rem;
+		background: transparent;
+		color: var(--c-catalog-accent);
+	}
+	button.c-catalog__eye {
+		cursor: pointer;
+	}
+	button.c-catalog__eye:hover:not(:disabled),
+	button.c-catalog__eye:focus-visible {
+		background: var(--c-catalog-accent-soft);
+	}
+	button.c-catalog__eye:disabled {
+		cursor: wait;
+	}
+	.c-catalog__eye--off {
+		color: var(--color-text-secondary);
 	}
 	.c-catalog__icon {
 		display: inline-flex;
