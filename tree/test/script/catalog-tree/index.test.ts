@@ -28,6 +28,19 @@ describe('buildCatalogTree', () => {
 	});
 });
 
+describe('buildCatalogTree weight', () => {
+	it('puts heavier siblings first and keeps the old order on equal weight', () => {
+		const tree = buildCatalogTree([
+			{ id: 'folder', parent_id: null, caption: 'Б' },
+			{ id: 'child', parent_id: 'folder', caption: 'x' },
+			{ id: 'light', parent_id: null, caption: 'А' },
+			{ id: 'heavy', parent_id: null, caption: 'Я', weight: 10 },
+			{ id: 'text', parent_id: null, caption: 'В', weight: 'n/a' }
+		]);
+		expect(tree.map((node) => node.id)).toEqual(['heavy', 'folder', 'light', 'text']);
+	});
+});
+
 describe('filterCatalogTree', () => {
 	it('keeps matches with their ancestors and searches listed columns', () => {
 		const tree = buildCatalogTree(rows);

@@ -115,8 +115,9 @@ export function createCatalogState(getProps: () => RecipeCatalog) {
 	const searching = $derived(query.trim() !== '');
 
 	const expansion = createTreeExpansionState();
-	const isOpen = (node: CatalogTreeNode, depth: number) =>
-		searching || (expansion.expanded[node.id] ?? depth === 0);
+	// Branches start collapsed; search opens every match.
+	const isOpen = (node: CatalogTreeNode, _depth: number) =>
+		searching || (expansion.expanded[node.id] ?? false);
 	function toggle(node: CatalogTreeNode, depth: number) {
 		expansion.toggle(node.id, !isOpen(node, depth));
 	}

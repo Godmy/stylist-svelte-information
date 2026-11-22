@@ -33,8 +33,8 @@ describe('Catalog', () => {
 	it('expands branches, shows the type badge and saves only changed columns', async () => {
 		const onSave = vi.fn(async () => undefined);
 		const view = render(Catalog, { props: { rows, fields, badgeKey: 'catalog_id', onSave } });
-		// Roots are open, deeper branches closed.
-		expect(labels(view.container)).toEqual(['VPS', 'aeza', 'Проект']);
+		// Every branch starts collapsed.
+		expect(labels(view.container)).toEqual(['VPS', 'Проект']);
 		await fireEvent.click(view.getByText('Expand all'));
 		expect(labels(view.container)).toContain('myspanish.space');
 		expect(view.container.querySelector('.c-catalog__badge')?.textContent).toBe('Проект');
@@ -97,6 +97,7 @@ describe('Catalog', () => {
 	it('toggles visibility with the eye button instead of striking rows out', async () => {
 		const onSave = vi.fn(async () => undefined);
 		const view = render(Catalog, { props: { rows, fields, activeKey: 'is_visible', onSave } });
+		await fireEvent.click(view.getByText('Expand all'));
 		const hidden = view.getByRole('button', { name: 'Show «aeza»' });
 		expect(hidden.getAttribute('aria-pressed')).toBe('false');
 		expect(view.getByRole('button', { name: 'Hide «VPS»' }).getAttribute('aria-pressed')).toBe(
@@ -111,8 +112,9 @@ describe('Catalog', () => {
 		await waitFor(() => expect(onSave).toHaveBeenCalledWith('vps', { is_visible: 0 }));
 	});
 
-	it('shows the eye without a button when read-only', () => {
+	it('shows the eye without a button when read-only', async () => {
 		const view = render(Catalog, { props: { rows, fields, activeKey: 'is_visible' } });
+		await fireEvent.click(view.getByText('Expand all'));
 		expect(view.queryByRole('button', { name: /Show|Hide/ })).toBeNull();
 		expect(view.getAllByRole('img', { name: 'Hidden' })).toHaveLength(1);
 	});

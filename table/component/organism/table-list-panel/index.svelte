@@ -1,44 +1,37 @@
 <script lang="ts">
-	import { TABLE_TABLE_LIST_PANEL_MESSAGE } from '$stylist/table/const/record/table-list-panel-message';
-	import { useMessage } from '$stylist/localization/function/hook/use-message';
 	import type { RecipeTableListPanel } from '$stylist/table/interface/recipe/table-list-panel';
-
-	let { class: hostClass, items, selectedName, onSelect }: RecipeTableListPanel = $props();
-
-	const t = useMessage('table-list-panel', TABLE_TABLE_LIST_PANEL_MESSAGE);
-	let searchQuery = $state('');
-
-	const filteredItems = $derived.by(() => {
-		if (!searchQuery.trim()) return items;
-		const query = searchQuery.toLowerCase();
-		return items.filter((item) => item.name.toLowerCase().includes(query));
-	});
+	import createTableListPanelState from '$stylist/table/component/organism/table-list-panel/state.svelte';
+	let props: RecipeTableListPanel = $props();
+	const state = createTableListPanelState(() => props);
 </script>
 
-<div class="c-table-list-panel {hostClass ?? ''}">
+<div class="c-table-list-panel {props.class ?? ''}">
 	<div class="c-table-list-panel__header">
-		<div class="c-table-list-panel__meta">
-			<div class="c-table-list-panel__icon">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					><ellipse cx="12" cy="5" rx="9" ry="3" /><path
-						d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"
-					/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg
-				>
+		{#if props.showMetadata !== false}<div class="c-table-list-panel__meta">
+				<div class="c-table-list-panel__icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						><ellipse cx="12" cy="5" rx="9" ry="3" /><path
+							d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"
+						/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg
+					>
+				</div>
+				<div>
+					<h2 class="c-table-list-panel__title">{state.t('title')}</h2>
+					<p class="c-table-list-panel__count">
+						{state.t('tables', { count: props.items.length })}
+					</p>
+				</div>
 			</div>
-			<div>
-				<h2 class="c-table-list-panel__title">{t('title')}</h2>
-				<p class="c-table-list-panel__count">{t('tables', { count: items.length })}</p>
-			</div>
-		</div>
+		{/if}
 		<div class="c-table-list-panel__search">
 			<span class="c-table-list-panel__search-icon"
 				><svg
@@ -55,50 +48,77 @@
 			>
 			<input
 				type="text"
-				bind:value={searchQuery}
-				placeholder={t('search')}
+				bind:value={state.searchQuery}
+				placeholder={state.t('search')}
+				aria-label={state.t('search')}
 				class="c-table-list-panel__search-input"
 			/>
 		</div>
 	</div>
 
 	<div class="c-table-list-panel__body">
-		{#if filteredItems.length === 0}
+		{#if state.filteredItems.length === 0}
 			<div class="c-table-list-panel__empty">
-				<p>{t('empty')}</p>
+				<p>{state.t('empty')}</p>
 			</div>
 		{:else}
-			<div class="c-table-list-panel__items">
-				{#each filteredItems as item (item.name)}
-					<button
-						onclick={() => onSelect(item.name)}
-						class="c-table-list-panel__item {selectedName === item.name
-							? 'c-table-list-panel__item--active'
-							: ''}"
-					>
-						<div class="c-table-list-panel__item-left">
-							<div class="c-table-list-panel__item-row">
-								<span class="c-table-list-panel__item-name">{item.name}</span>
-								{#if item.hasSoftDelete}
-									<span class="c-table-list-panel__item-badge">{t('softDelete')}</span>
+			{#each state.sections as group (group.label)}
+				<div class="c-table-list-panel__group">
+					{#if group.label}<h3 class="c-table-list-panel__group-title">{group.label}</h3>{/if}
+					<div class="c-table-list-panel__items">
+						{#each group.items as item (item.name)}
+							<button
+								type="button"
+								onclick={() => props.onSelect(item.name)}
+								ondblclick={() => props.onOpen?.(item.name)}
+								onkeydown={(event) => state.openWithKeyboard(event, item.name)}
+								aria-current={props.selectedName === item.name ? 'true' : undefined}
+								class="c-table-list-panel__item {props.selectedName === item.name
+									? 'c-table-list-panel__item--active'
+									: ''}"
+							>
+								<div class="c-table-list-panel__item-left">
+									<div class="c-table-list-panel__item-row">
+										<span class="c-table-list-panel__item-name">{item.name}</span>
+										{#if item.hasSoftDelete}
+											<span class="c-table-list-panel__item-badge">{state.t('softDelete')}</span>
+										{/if}
+									</div>
+									<p class="c-table-list-panel__item-count">
+										{state.t('rows', { count: item.rowCount })}
+									</p>
+								</div>
+								{#if props.selectedName === item.name}
+									<div class="c-table-list-panel__item-dot"></div>
 								{/if}
-							</div>
-							<p class="c-table-list-panel__item-count">{t('rows', { count: item.rowCount })}</p>
-						</div>
-						{#if selectedName === item.name}
-							<div class="c-table-list-panel__item-dot"></div>
-						{/if}
-					</button>
-				{/each}
-			</div>
+							</button>
+						{/each}
+					</div>
+				</div>
+			{/each}
 		{/if}
 	</div>
 </div>
 
 <style>
+	.c-table-list-panel__group + .c-table-list-panel__group {
+		margin-top: 1rem;
+	}
+	.c-table-list-panel__group-title {
+		margin: 0;
+		padding: 0.6rem 0.75rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1.5;
+		color: var(--color-text-secondary, #6b7280);
+	}
+
 	.c-table-list-panel {
+		box-sizing: border-box;
+		min-width: 0;
 		display: flex;
 		flex-direction: column;
+		min-height: 0;
 		height: 100%;
 		background: var(--color-background-primary, #fff);
 		border-radius: var(--radius-3, 0.75rem);
@@ -107,6 +127,7 @@
 		overflow: hidden;
 	}
 	.c-table-list-panel__header {
+		flex-shrink: 0;
 		border-bottom: 1px solid var(--color-border-primary, #e5e7eb);
 		padding: 1rem;
 	}
@@ -166,6 +187,7 @@
 		box-shadow: 0 0 0 2px rgb(99 102 241 / 0.15);
 	}
 	.c-table-list-panel__body {
+		min-height: 0;
 		flex: 1;
 		overflow-y: auto;
 		padding: 0.5rem;

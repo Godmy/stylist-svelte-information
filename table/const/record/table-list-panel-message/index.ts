@@ -2,6 +2,7 @@
 export const TABLE_TABLE_LIST_PANEL_MESSAGE = {
 	en: {
 		title: 'Database Tables',
+		ungrouped: 'Other',
 		tables: {
 			one: '{count} table',
 			other: '{count} tables'
@@ -16,6 +17,7 @@ export const TABLE_TABLE_LIST_PANEL_MESSAGE = {
 	},
 	ru: {
 		title: 'Таблицы базы данных',
+		ungrouped: 'Другие',
 		tables: {
 			one: '{count} таблица',
 			few: '{count} таблицы',

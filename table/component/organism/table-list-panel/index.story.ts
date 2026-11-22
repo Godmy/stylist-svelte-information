@@ -6,7 +6,8 @@ import type { ContractStory } from '$stylist/html/interface/contract/story';
 export default {
 	component: TableListPanel,
 	title: 'TableListPanel',
-	description: 'Searchable list of database tables with row counts and soft-delete badges.',
+	description:
+		'Searchable database tables, optional non-interactive group headings and optional metadata.',
 	args: {
 		selectedName: 'users',
 		items: [
@@ -17,5 +18,18 @@ export default {
 			{ name: 'audit_log', rowCount: 98210, hasSoftDelete: false }
 		]
 	},
-	presets: { 'No selection': { selectedName: null }, Empty: { items: [] } }
+	presets: {
+		Grouped: {
+			groups: {
+				users: 'Identity',
+				orders: 'Commerce',
+				products: 'Commerce',
+				categories: 'Commerce',
+				audit_log: 'Operations'
+			},
+			showMetadata: false
+		},
+		'No selection': { selectedName: null },
+		Empty: { items: [] }
+	}
 } satisfies ContractStory<RecipeTableListPanel>;

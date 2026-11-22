@@ -3,13 +3,18 @@ import type { CatalogTreeNode } from '$stylist/tree/type/object/catalog-tree-nod
 /**
  * Builds a tree from flat rows linked by a parent column. Rows whose parent is
  * missing, or that sit on a parent cycle, become roots, so no row is ever lost.
- * Siblings are sorted: branches first, then by label.
+ * Siblings are sorted by weight (a larger `weightKey` value comes first; missing or non-numeric is 0),
+ * then branches before leaves, then by label.
  */
 export function buildCatalogTree(
 	rows: readonly Record<string, unknown>[],
-	options: { idKey?: string; parentKey?: string; labelKey?: string } = {}
+	options: { idKey?: string; parentKey?: string; labelKey?: string; weightKey?: string } = {}
 ): CatalogTreeNode[] {
-	const { idKey = 'id', parentKey = 'parent_id', labelKey = 'caption' } = options;
+	const { idKey = 'id', parentKey = 'parent_id', labelKey = 'caption', weightKey = 'weight' } = options;
+	const weight = (node: CatalogTreeNode) => {
+		const value = Number(node.row[weightKey]);
+		return Number.isFinite(value) ? value : 0;
+	};
 	const nodes = new Map<string, CatalogTreeNode>();
 	for (const row of rows) {
 		const id = String(row[idKey] ?? '');
@@ -45,6 +50,7 @@ export function buildCatalogTree(
 	const finish = (list: CatalogTreeNode[]): number => {
 		list.sort(
 			(a, b) =>
+				weight(b) - weight(a) ||
 				Number(b.children.length > 0) - Number(a.children.length > 0) ||
 				a.label.localeCompare(b.label)
 		);
