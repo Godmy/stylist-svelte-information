@@ -1,8 +1,10 @@
-import type { AnyProperty } from '$stylist/layout/type/record/any-property';
+import type { HTMLAttributes } from 'svelte/elements';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { NotificationItem } from '$stylist/notification/type/object/notification-item';
 
-export interface RecipeNotificationList extends ComputeIntersectAll<[AnyProperty]> {
+export interface RecipeNotificationList extends ComputeIntersectAll<
+	[HTMLAttributes<HTMLDivElement>]
+> {
 	notifications?: NotificationItem[];
 	showDismiss?: boolean;
 	showTypeIcon?: boolean;
