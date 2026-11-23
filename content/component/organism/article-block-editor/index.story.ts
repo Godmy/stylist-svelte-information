@@ -1,9 +1,9 @@
-import ArticleBlockEditorStory from '$stylist/content/component/organism/article-block-editor/index.story.svelte';
+import ArticleBlockEditor from '$stylist/content/component/organism/article-block-editor/index.svelte';
 import type { RecipeArticleBlockEditor } from '$stylist/content/interface/recipe/article-block-editor';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 
 export default {
-	component: ArticleBlockEditorStory,
+	component: ArticleBlockEditor,
 	title: 'Article block editor',
 	description: 'Add and reorder blocks; the preview below reads the same live document.',
 	args: {
