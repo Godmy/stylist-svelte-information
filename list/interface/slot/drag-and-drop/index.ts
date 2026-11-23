@@ -17,7 +17,7 @@ export interface SlotDragAndDrop
 	/** Разрешить сброс элемента (drop zone) */
 	dropzone?: boolean;
 	/** Данные для передачи при перетаскивании */
-	dragData?: any;
+	dragData?: unknown;
 	/** Обработчик перетаскивания над зоной */
 	onDragOver?: (event: DragEvent) => void;
 	/** Блокировка перетаскивания */

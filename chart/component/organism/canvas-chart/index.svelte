@@ -10,7 +10,9 @@
 
 	let canvasRef: HTMLCanvasElement | null = null;
 	const resolvedColors = $derived(ManagerCanvasChart.resolveColors(state.colors));
-	const resolvedData = $derived(state.data as any[]);
+	const resolvedData = $derived(
+		state.data as unknown as { x: number | string; y: number; label?: string }[]
+	);
 	const resolvedType = $derived(state.type);
 
 	$effect(() => {

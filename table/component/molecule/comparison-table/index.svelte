@@ -35,7 +35,7 @@
 				<th class="c-comparison-table__th c-comparison-table__th--feature"
 					>{state.featureColumnLabel}</th
 				>
-				{#each state.products as product}
+				{#each state.products as product (product.id)}
 					<th
 						class={[
 							'c-comparison-table__th',
@@ -55,7 +55,7 @@
 			</tr>
 		</thead>
 		<tbody class="c-comparison-table__body">
-			{#each state.features as feature}
+			{#each state.features as feature (feature.id)}
 				<tr class="c-comparison-table__row">
 					<td class="c-comparison-table__feature-cell">
 						<div>
@@ -65,7 +65,7 @@
 							{/if}
 						</div>
 					</td>
-					{#each state.products as product}
+					{#each state.products as product (product.id)}
 						<td
 							class={[
 								'c-comparison-table__value-cell',

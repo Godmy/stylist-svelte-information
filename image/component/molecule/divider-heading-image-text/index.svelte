@@ -50,7 +50,7 @@
 
 	<div class="divider-heading-image-text__content">
 		<div class="divider-heading-image-text__paragraphs">
-			{#each resolvedParagraphs as paragraph}
+			{#each resolvedParagraphs as paragraph, paragraphIndex (paragraphIndex)}
 				<Paragraph text={paragraph} class="divider-heading-image-text__text" />
 			{/each}
 		</div>

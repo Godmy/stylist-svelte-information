@@ -70,7 +70,7 @@
 			<!-- Thumbnails -->
 			{#if state.showThumbnails && state.images.length > 1}
 				<div class="image-gallery__thumbnails-container">
-					{#each state.images as img, index}
+					{#each state.images as img, index (img.id)}
 						<div
 							class={state.getThumbnailClasses(index)}
 							onclick={() => state.goToImage(index)}

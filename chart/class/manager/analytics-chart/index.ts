@@ -1,4 +1,5 @@
 import type { AnalyticsChartDataPoint } from '$stylist/chart/interface/slot/analytics-chart-data-point';
+import type { PieChartDataPoint } from '$stylist/chart/interface/slot/pie-chart';
 
 export class ManagerAnalyticsChart {
 	static resolveMaxValue(data: AnalyticsChartDataPoint[]): number {
@@ -15,17 +16,14 @@ export class ManagerAnalyticsChart {
 		}));
 	}
 
-	static buildPieChartPoints(data: AnalyticsChartDataPoint[]): any[] {
-		return data.map((item, index) => ({
-			x: index,
-			y: item.value,
+	static buildPieChartPoints(data: AnalyticsChartDataPoint[]): PieChartDataPoint[] {
+		return data.map((item) => ({
 			label: item.label,
-			color: item.color
+			value: item.value
 		}));
 	}
 
-	static buildLineSeries(data: AnalyticsChartDataPoint[], title: string): any[] {
-		// TODO: Fix type mismatch with AnalyticsChartLineSeries
+	static buildLineSeries(data: AnalyticsChartDataPoint[], title: string) {
 		return [
 			{
 				id: 'analytics-series',

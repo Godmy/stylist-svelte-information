@@ -33,7 +33,7 @@
 					{#if state.rowNumbers}
 						<th class="c-data-table__number" scope="col">№</th>
 					{/if}
-					{#each state.visibleSchema as col}
+					{#each state.visibleSchema as col, colIndex (colIndex)}
 						<Column
 							schema={col}
 							currentSortKey={state.sortKey ?? undefined}
@@ -54,7 +54,7 @@
 						</td>
 					</tr>
 				{:else}
-					{#each state.sortedData as row, i}
+					{#each state.sortedData as row, i (i)}
 						<Row
 							striped={state.striped && i % 2 === 1}
 							hoverable={state.hoverable}
@@ -64,7 +64,7 @@
 								{#if state.rowNumbers}
 									<td class="c-data-table__number">{i + 1}</td>
 								{/if}
-								{#each state.visibleSchema as col}
+								{#each state.visibleSchema as col, colIndex2 (colIndex2)}
 									{#if col.cell === 'custom' && col.snippet}
 										<td class="c-data-table__custom">{@render col.snippet(row)}</td>
 									{:else if col.cell === 'icon'}

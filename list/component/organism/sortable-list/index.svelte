@@ -36,7 +36,7 @@
 
 <div class={state.rootClass} {...restProps}>
 	<div class="c-sortable-list__items" role="list">
-		{#each items as item, index}
+		{#each items as item, index (item.id)}
 			<div
 				class="c-sortable-list__item"
 				data-variant={variant}

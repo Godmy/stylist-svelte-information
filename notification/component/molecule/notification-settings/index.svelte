@@ -70,7 +70,7 @@
 
 		<!-- Notification preferences -->
 
-		{#each state.preferences as pref}
+		{#each state.preferences as pref (pref.id)}
 			<div class={`${state.sectionClassName} _c16`}>
 				<div>
 					<h4 class="_c9">{pref.name}</h4>

@@ -81,7 +81,7 @@
 		state.leaveDropZone();
 		const data = event.dataTransfer?.getData('application/json');
 		if (data) {
-			(event as any).dragData = JSON.parse(data);
+			(event as DragEvent & { dragData?: unknown }).dragData = JSON.parse(data);
 		}
 		props.onDrop?.(event);
 	}

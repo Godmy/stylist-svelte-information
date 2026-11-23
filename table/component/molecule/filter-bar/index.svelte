@@ -14,7 +14,7 @@
 		placeholder={state.searchPlaceholder}
 		onSearch={props.onSearch}
 	/>
-	{#each state.pillGroups as group}
+	{#each state.pillGroups as group, groupIndex (groupIndex)}
 		<FilterPills
 			columnKey={group.columnKey}
 			label={group.label}

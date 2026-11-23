@@ -16,7 +16,7 @@
 				</button>
 			</div>
 		{/if}
-		{#each state.toasts.slice(0, state.maxToasts) as toast}
+		{#each state.toasts.slice(0, state.maxToasts) as toast (toast.id)}
 			<div class={`${state.getToastColor(toast.type)} ${props.toastClass ?? ''}`}>
 				<div class="toast-item__body">
 					<div class="toast-item__icon-wrap">
@@ -34,7 +34,7 @@
 
 						{#if toast.actions && toast.actions.length > 0}
 							<div class="toast-item__actions">
-								{#each toast.actions as action}
+								{#each toast.actions as action, actionIndex (actionIndex)}
 									<button type="button" class="toast-item__action-btn" onclick={action.onClick}>
 										{action.label}
 									</button>

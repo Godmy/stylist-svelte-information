@@ -49,7 +49,7 @@
 		</button>
 		{#if node.children?.length && state.isOpen(node)}
 			<ul class="c-tree__children">
-				{#each node.children as child}
+				{#each node.children as child (child.id)}
 					{@render renderNode(child, depth + 1)}
 				{/each}
 			</ul>
@@ -59,7 +59,7 @@
 
 <div class={rootClass} {...restProps}>
 	<ul class="c-tree__list">
-		{#each nodes as node}
+		{#each nodes as node (node.id)}
 			{@render renderNode(node, 0)}
 		{/each}
 	</ul>

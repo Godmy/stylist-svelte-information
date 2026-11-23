@@ -117,7 +117,7 @@
 					value={state.pageSize}
 					onchange={(e) => state.setPageSize(Number((e.target as HTMLSelectElement).value))}
 				>
-					{#each pageSizeOptions as size}
+					{#each pageSizeOptions as size, sizeIndex (sizeIndex)}
 						<option value={size}>{t('perPage', { size })}</option>
 					{/each}
 				</select>

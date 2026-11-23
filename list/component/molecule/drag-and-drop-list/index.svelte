@@ -33,7 +33,7 @@
 	{...restProps}
 >
 	<div class="c-dnd-list__items">
-		{#each state.items as item, index}
+		{#each state.items as item, index (item.id)}
 			<div
 				draggable={!state.disabled}
 				role="listitem"
