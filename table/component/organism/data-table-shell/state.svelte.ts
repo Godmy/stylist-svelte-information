@@ -1,6 +1,8 @@
 import { untrack } from 'svelte';
 import type { RecipeDataTableShell } from '$stylist/table/interface/recipe/data-table-shell';
 import { ObjectManagerTableControls } from '$stylist/table/class/manager/table-controls';
+import { toSet } from '$stylist/theme/function/script/collection/to-set';
+import { unique } from '$stylist/theme/function/script/collection/unique';
 
 type Row = Record<string, unknown>;
 
@@ -38,7 +40,7 @@ export function createDataTableShellState(props: RecipeDataTableShell<Row>) {
 			if (typeof open === 'boolean') columnsOpen = open;
 			const saved = columnsKey ? JSON.parse(localStorage.getItem(columnsKey) ?? 'null') : null;
 			if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
-				const known = new Set(props.schema.map((col) => String(col.key)));
+				const known = toSet(props.schema.map((col) => String(col.key)));
 				columnVisibility = {
 					...columnVisibility,
 					...Object.fromEntries(
@@ -107,10 +109,7 @@ export function createDataTableShellState(props: RecipeDataTableShell<Row>) {
 
 	const pillOptions = $derived(
 		Object.fromEntries(
-			pillFilterKeys.map((key) => [
-				key,
-				[...new Set(props.data.map((row) => String(row[key] ?? '')))]
-			])
+			pillFilterKeys.map((key) => [key, unique(props.data.map((row) => String(row[key] ?? '')))])
 		)
 	);
 

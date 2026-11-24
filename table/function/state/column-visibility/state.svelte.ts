@@ -1,3 +1,4 @@
+import { unique } from '$stylist/theme/function/script/collection/unique';
 /**
  * Hidden table columns remembered in this browser (localStorage) under `storageKey`.
  * Call `restore()` on the client after mount; without storage (private mode, SSR) the
@@ -24,7 +25,7 @@ export function createColumnVisibility(storageKey: () => string) {
 			}
 		},
 		set(next: string[]) {
-			hidden = [...new Set(next)];
+			hidden = unique(next);
 			try {
 				localStorage.setItem(storageKey(), JSON.stringify(hidden));
 			} catch {

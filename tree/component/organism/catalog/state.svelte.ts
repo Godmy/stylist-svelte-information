@@ -4,6 +4,8 @@ import type { CatalogTreeNode } from '$stylist/tree/type/object/catalog-tree-nod
 import { buildCatalogTree } from '$stylist/tree/function/script/build-catalog-tree';
 import { filterCatalogTree } from '$stylist/tree/function/script/filter-catalog-tree';
 import createTreeExpansionState from '$stylist/tree/function/state/tree-expansion/state.svelte';
+import { indexBy } from '$stylist/theme/function/script/collection/index-by';
+import { toSet } from '$stylist/theme/function/script/collection/to-set';
 
 type Draft = Record<string, string | boolean | null>;
 
@@ -86,15 +88,9 @@ export function createCatalogState(getProps: () => RecipeCatalog) {
 
 	const tree = $derived(buildCatalogTree(props.rows, { idKey, parentKey, labelKey }));
 	const nodes = $derived.by(() => {
-		const map = new Map<string, CatalogTreeNode>();
-		const walk = (list: CatalogTreeNode[]) => {
-			for (const node of list) {
-				map.set(node.id, node);
-				walk(node.children);
-			}
-		};
-		walk(tree);
-		return map;
+		const flatten = (list: CatalogTreeNode[]): CatalogTreeNode[] =>
+			list.flatMap((node) => [node, ...flatten(node.children)]);
+		return indexBy(flatten(tree), (node) => node.id);
 	});
 	/** Rows in tree order with their depth, for reference pickers. */
 	const outline = $derived.by(() => {
@@ -162,13 +158,11 @@ export function createCatalogState(getProps: () => RecipeCatalog) {
 
 	/** Ids that cannot become the parent of the selected row: itself and its subtree. */
 	const blockedParents = $derived.by(() => {
-		const blocked = new Set<string>();
-		const walk = (node: CatalogTreeNode) => {
-			blocked.add(node.id);
-			node.children.forEach(walk);
-		};
-		if (selected) walk(selected);
-		return blocked;
+		const subtree = (node: CatalogTreeNode): string[] => [
+			node.id,
+			...node.children.flatMap(subtree)
+		];
+		return toSet(selected ? subtree(selected) : []);
 	});
 	const editable = (field: CatalogField) =>
 		!(props.readonly || !props.onSave) && field.editable !== false;

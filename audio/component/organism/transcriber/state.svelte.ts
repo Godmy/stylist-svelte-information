@@ -5,6 +5,7 @@ import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-rec
 import type { TypeTranscriberStatus } from '$stylist/audio/type/alias/transcriber-status';
 import type { SlotTranscriptionResult } from '$stylist/audio/interface/slot/transcription-result';
 import { AudioRecorderManager } from '$stylist/audio/class/manager/audio-recorder';
+import { now } from '$stylist/calendar/function/script/date/now';
 
 export function createTranscriberState(getProps: () => RecipeTranscriber) {
 	const props = $derived(getProps());
@@ -118,7 +119,7 @@ export function createTranscriberState(getProps: () => RecipeTranscriber) {
 			language: typeof payload.language === 'string' ? payload.language : props.language,
 			durationMs: Date.now() - startedAt,
 			fileName: nextRecording.fileName,
-			createdAt: new Date()
+			createdAt: now()
 		};
 		transcription = result;
 		status = 'done';

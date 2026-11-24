@@ -3,6 +3,9 @@ import { NOTIFICATION_MESSAGE_TIMESTAMP_MESSAGE } from '$stylist/notification/co
 import { useMessage } from '$stylist/localization/function/hook/use-message';
 import { useFormat } from '$stylist/localization/function/hook/use-format';
 import type { RecipeMessageTimestamp } from '$stylist/notification/interface/recipe/message-timestamp';
+import { toDate } from '$stylist/calendar/function/script/date/to-date';
+import { addDays } from '$stylist/calendar/function/script/date/add-days';
+import { now } from '$stylist/calendar/function/script/date/now';
 
 export function createMessageTimestampState(getProps: () => RecipeMessageTimestamp) {
 	const props = $derived(getProps());
@@ -14,8 +17,8 @@ export function createMessageTimestampState(getProps: () => RecipeMessageTimesta
 		if (props.timestamp instanceof Date) {
 			return props.timestamp;
 		}
-		const candidate = new Date(props.timestamp as unknown as string | number | Date);
-		return Number.isNaN(candidate.getTime()) ? new Date(0) : candidate;
+		const candidate = toDate(props.timestamp as unknown as string | number | Date);
+		return Number.isNaN(candidate.getTime()) ? toDate(0) : candidate;
 	});
 	const formatStyle = $derived(props.formatStyle ?? 'datetime');
 	const showRelative = $derived(props.showRelative ?? false);
@@ -41,9 +44,8 @@ export function createMessageTimestampState(getProps: () => RecipeMessageTimesta
 				return format.date(timestamp, { day: '2-digit', month: '2-digit', year: 'numeric' });
 			case 'datetime':
 			default:
-				const today = new Date();
-				const yesterday = new Date(today);
-				yesterday.setDate(yesterday.getDate() - 1);
+				const today = now();
+				const yesterday = addDays(today, -1);
 
 				const isToday =
 					timestamp.getDate() === today.getDate() &&

@@ -26,7 +26,8 @@ export function createArticleBlockEditorState(
 		if (uploading) getProps().onBusyChange?.(false);
 	});
 	$effect(() => {
-		const key = getProps().resetKey;
+		// Read only to re-run when the parent bumps resetKey.
+		const _resetKey = getProps().resetKey;
 		untrack(() => {
 			open.clear();
 			if (blocks.length <= 30)

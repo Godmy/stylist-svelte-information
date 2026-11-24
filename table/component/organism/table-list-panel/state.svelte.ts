@@ -1,6 +1,7 @@
 import { TABLE_TABLE_LIST_PANEL_MESSAGE } from '$stylist/table/const/record/table-list-panel-message';
 import { useMessage } from '$stylist/localization/function/hook/use-message';
 import type { RecipeTableListPanel } from '$stylist/table/interface/recipe/table-list-panel';
+import { groupBy } from '$stylist/theme/function/script/collection/group-by';
 export function createTableListPanelState(getProps: () => RecipeTableListPanel) {
 	const props = $derived(getProps());
 	const t = useMessage('table-list-panel', TABLE_TABLE_LIST_PANEL_MESSAGE);
@@ -13,13 +14,12 @@ export function createTableListPanelState(getProps: () => RecipeTableListPanel) 
 	});
 	const sections = $derived.by(() => {
 		if (!props.groups) return [{ label: '', items: filteredItems }];
-		const groups = new Map<string, typeof props.items>();
-		for (const label of Object.values(props.groups)) if (!groups.has(label)) groups.set(label, []);
-		for (const item of filteredItems) {
-			const label = props.groups[item.name] ?? t('ungrouped');
-			if (!groups.has(label)) groups.set(label, []);
-			groups.get(label)!.push(item);
-		}
+		const groupOf = props.groups;
+		const groups = groupBy(
+			filteredItems,
+			(item) => groupOf[item.name] ?? t('ungrouped'),
+			Object.values(groupOf)
+		);
 		return [...groups]
 			.filter(([, items]) => items.length > 0)
 			.map(([label, items]) => ({ label, items }));
