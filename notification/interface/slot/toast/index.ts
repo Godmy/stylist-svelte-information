@@ -2,7 +2,7 @@ import type { SlotText } from '$stylist/typography/interface/slot/text';
 import type { TokenColorTone } from '$stylist/design-token/type/alias/color-tone';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeToast extends ComputeIntersectAll<
+export interface SlotToast extends ComputeIntersectAll<
 	[
 		{
 			id: string;

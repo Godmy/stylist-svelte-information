@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ToastStack from '$stylist/notification/component/molecule/toast-stack/index.svelte';
 	import type { RecipeToastStack } from '$stylist/notification/interface/recipe/toast-stack';
-	import type { RecipeToast } from '$stylist/notification/interface/recipe/toast';
+	import type { SlotToast } from '$stylist/notification/interface/slot/toast';
 
 	// Render of index.story.ts: the toast list is local state with dismiss and action callbacks.
 	let args: RecipeToastStack = $props();
@@ -14,9 +14,9 @@
 	} as const;
 
 	let seed = $state(4);
-	let toasts = $state<RecipeToast[]>(createInitialToasts());
+	let toasts = $state<SlotToast[]>(createInitialToasts());
 
-	function createInitialToasts(): RecipeToast[] {
+	function createInitialToasts(): SlotToast[] {
 		return [
 			{
 				id: '1',
