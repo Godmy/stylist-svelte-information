@@ -1,3 +1,12 @@
-import type { SlotFilterText } from '$stylist/table/interface/slot/filter-text';
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 
-export interface RecipeFilterText extends SlotFilterText {}
+export interface RecipeFilterText extends ComputeIntersectAll<
+	[
+		{
+			value?: string;
+			placeholder?: string;
+			onSearch?: (value: string) => void;
+			class?: string;
+		}
+	]
+> {}

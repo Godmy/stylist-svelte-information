@@ -1,2 +1,31 @@
-import type { SlotColumnManager } from '$stylist/table/interface/slot/column-manager';
-export interface RecipeColumnManager extends SlotColumnManager {}
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
+
+export interface RecipeColumnManager extends ComputeIntersectAll<
+	[
+		{
+			columns: {
+				key: string;
+				header: string;
+				visible: boolean;
+				sortable?: boolean;
+				filterable?: boolean;
+				width?: number;
+			}[];
+			onColumnsChange?: (
+				columns: {
+					key: string;
+					header: string;
+					visible: boolean;
+					sortable?: boolean;
+					filterable?: boolean;
+					width?: number;
+				}[]
+			) => void;
+			class?: string;
+			/** Heading of the list; defaults to «Columns». */
+			title?: string;
+			/** Label of the reset button; defaults to «Reset». */
+			resetLabel?: string;
+		}
+	]
+> {}
