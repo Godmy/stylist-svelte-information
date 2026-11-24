@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { IMAGE_IMAGE_CAPTION_EDITOR_CARD_MESSAGE } from '$stylist/image/const/record/image-caption-editor-card-message';
-	import { useMessage } from '$stylist/localization/function/hook/use-message';
 	import type { RecipeImageCaptionEditorCard } from '$stylist/image/interface/recipe/image-caption-editor-card';
+	import createImageCaptionEditorCardComponentState from '$stylist/image/component/organism/image-caption-editor-card/state.svelte';
 
 	let {
 		src,
@@ -24,22 +23,14 @@
 		class: className = ''
 	}: RecipeImageCaptionEditorCard = $props();
 
-	const t = useMessage('image-caption-editor-card', IMAGE_IMAGE_CAPTION_EDITOR_CARD_MESSAGE);
-
-	// Unsaved text; a saved (or restored) caption from the consumer drops it.
-	let draft = $derived.by<string | null>(() => {
-		void caption;
-		return null;
-	});
-	const text = $derived(draft ?? caption);
-	const changed = $derived(text !== caption);
+	const state = createImageCaptionEditorCardComponentState(() => ({ caption: caption }));
 </script>
 
 <article class="c-image-caption-editor-card {className}" class:edited>
 	<figure>
 		<img {src} {alt} loading="lazy" />
 		{#if number !== undefined}<span class="c-image-caption-editor-card__number">{number}</span>{/if}
-		{#if text.trim()}<figcaption>{text}</figcaption>{/if}
+		{#if state.text.trim()}<figcaption>{state.text}</figcaption>{/if}
 	</figure>
 
 	<form method="POST" action={saveAction} use:enhance>
@@ -50,18 +41,22 @@
 			{name}
 			rows="3"
 			maxlength={maxLength}
-			aria-label={fieldLabel ?? t('field')}
-			value={text}
-			oninput={(event) => (draft = event.currentTarget.value)}></textarea>
+			aria-label={fieldLabel ?? state.t('field')}
+			value={state.text}
+			oninput={(event) => (state.draft = event.currentTarget.value)}></textarea>
 		<div class="c-image-caption-editor-card__actions">
-			<button type="submit" class="primary" disabled={!changed}>{saveLabel ?? t('save')}</button>
-			{#if changed}
-				<button type="button" onclick={() => (draft = null)}>{cancelLabel ?? t('cancel')}</button>
+			<button type="submit" class="primary" disabled={!state.changed}
+				>{saveLabel ?? state.t('save')}</button
+			>
+			{#if state.changed}
+				<button type="button" onclick={() => (state.draft = null)}
+					>{cancelLabel ?? state.t('cancel')}</button
+				>
 			{/if}
 			{#if resetAction && edited}
-				<button type="submit" formaction={resetAction}>{resetLabel ?? t('reset')}</button>
+				<button type="submit" formaction={resetAction}>{resetLabel ?? state.t('reset')}</button>
 			{/if}
-			<span class="c-image-caption-editor-card__count">{text.length}/{maxLength}</span>
+			<span class="c-image-caption-editor-card__count">{state.text.length}/{maxLength}</span>
 		</div>
 		{#if message?.error}<p class="c-image-caption-editor-card__alert error" role="alert">
 				{message.error}
