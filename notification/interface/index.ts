@@ -8,9 +8,8 @@ export type {
 	RecipeNotificationBadge,
 	RecipeNotificationCenter,
 	RecipeNotificationList,
-	RecipeNotificationOptions,
 	RecipeNotificationSettings,
 	RecipeScheduledNotification,
-	RecipeToast,
 	RecipeToastStack
 } from './recipe';
+export type { SlotToast } from './slot';

@@ -42,9 +42,8 @@ export type {
 	RecipeNotificationBadge,
 	RecipeNotificationCenter,
 	RecipeNotificationList,
-	RecipeNotificationOptions,
 	RecipeNotificationSettings,
 	RecipeScheduledNotification,
-	RecipeToast,
-	RecipeToastStack
+	RecipeToastStack,
+	SlotToast
 } from './interface';

@@ -17,8 +17,6 @@ export type {
 	RecipeDragAndDropList,
 	RecipeListItemMarker,
 	RecipeSortableList,
-	SlotDragAndDrop,
 	SlotDragAndDropListItem,
-	SlotSortableList,
 	SlotSortableListItem
 } from './interface';

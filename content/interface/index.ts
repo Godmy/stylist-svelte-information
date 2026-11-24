@@ -7,7 +7,3 @@ export type {
 	RecipeArticleBlockEditor,
 	RecipeArticleReader
 } from './recipe';
-export type {
-	SlotArticleBlockEditor,
-	SlotArticleReader
-} from './slot';

@@ -8,5 +8,4 @@ export type {
 	FilterSchema,
 	FilterType
 } from './filter';
-export type { RowExpandableProps } from './row-expandable-props';
 export type { TableSchema } from './table';

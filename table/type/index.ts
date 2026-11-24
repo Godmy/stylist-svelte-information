@@ -8,7 +8,6 @@ export type {
 	ComparisonTableProduct,
 	FilterSchema,
 	FilterType,
-	RowExpandableProps,
 	TableSchema
 } from './object';
 export type { TokenSortDirection } from './record';

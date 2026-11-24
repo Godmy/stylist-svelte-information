@@ -7,9 +7,7 @@ export type {
 	RecipeTranscriber
 } from './recipe';
 export type {
-	SlotAudioPlayer,
 	SlotAudioRecording,
-	SlotAudioSlider,
 	SlotAudioVisualizer,
 	SlotTranscriptionResult
 } from './slot';

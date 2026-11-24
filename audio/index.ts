@@ -22,9 +22,7 @@ export type {
 	RecipeAudioSlider,
 	RecipeAudioVisualizer,
 	RecipeTranscriber,
-	SlotAudioPlayer,
 	SlotAudioRecording,
-	SlotAudioSlider,
 	SlotAudioVisualizer,
 	SlotTranscriptionResult
 } from './interface';

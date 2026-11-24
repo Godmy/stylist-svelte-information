@@ -49,7 +49,6 @@ export type {
 	ComparisonTableProduct,
 	FilterSchema,
 	FilterType,
-	RowExpandableProps,
 	TableSchema,
 	TokenSortDirection
 } from './type';
@@ -73,10 +72,7 @@ export type {
 	RecipeTable,
 	RecipeTableListPanel,
 	SlotColumnConfig,
-	SlotColumnManager,
 	SlotDataTable,
 	SlotDataTableShell,
-	SlotFilterBar,
-	SlotFilterPills,
-	SlotFilterText
+	SlotFilterPills
 } from './interface';

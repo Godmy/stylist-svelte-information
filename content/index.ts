@@ -26,7 +26,5 @@ export type {
 	BehaviorArticleBlockEditor,
 	BehaviorArticleReader,
 	RecipeArticleBlockEditor,
-	RecipeArticleReader,
-	SlotArticleBlockEditor,
-	SlotArticleReader
+	RecipeArticleReader
 } from './interface';

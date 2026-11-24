@@ -21,10 +21,7 @@ export type {
 } from './recipe';
 export type {
 	SlotColumnConfig,
-	SlotColumnManager,
 	SlotDataTable,
 	SlotDataTableShell,
-	SlotFilterBar,
-	SlotFilterPills,
-	SlotFilterText
+	SlotFilterPills
 } from './slot';

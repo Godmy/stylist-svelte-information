@@ -7,8 +7,6 @@ export type {
 	RecipeSortableList
 } from './recipe';
 export type {
-	SlotDragAndDrop,
 	SlotDragAndDropListItem,
-	SlotSortableList,
 	SlotSortableListItem
 } from './slot';
