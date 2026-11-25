@@ -365,6 +365,7 @@
 	}
 	.c-catalog__search {
 		display: flex;
+		flex-direction: row;
 		flex: 1 1 16rem;
 		align-items: center;
 		gap: 0.4rem;
@@ -381,9 +382,13 @@
 	}
 	.c-catalog__search input {
 		flex: 1;
+		width: auto;
 		min-width: 0;
+		min-height: 0;
 		padding: 0.45rem 0;
 		border: 0;
+		border-radius: 0;
+		box-shadow: none;
 		outline: 0;
 		background: transparent;
 		color: var(--color-text-primary, inherit);

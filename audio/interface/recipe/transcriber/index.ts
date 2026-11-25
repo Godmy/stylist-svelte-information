@@ -1,8 +1,11 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-recording';
 import type { SlotTranscriptionResult } from '$stylist/audio/interface/slot/transcription-result';
 
-export interface RecipeTranscriber extends Omit<HTMLAttributes<HTMLElement>, 'class'> {
+export interface RecipeTranscriber extends ComputeIntersectAll<
+	[Omit<HTMLAttributes<HTMLElement>, 'class'>]
+> {
 	class?: string;
 	endpoint?: string;
 	model?: string;

@@ -1,7 +1,10 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { HTMLButtonAttributes } from 'svelte/elements';
 import type { SlotAudioRecording } from '$stylist/audio/interface/slot/audio-recording';
 
-export interface RecipeAudioRecordButton extends Omit<HTMLButtonAttributes, 'class'> {
+export interface RecipeAudioRecordButton extends ComputeIntersectAll<
+	[Omit<HTMLButtonAttributes, 'class'>]
+> {
 	class?: string;
 	mimeType?: string;
 	fileName?: string;

@@ -1,6 +1,7 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { SlotText } from '$stylist/typography/interface/slot/text';
 
-export interface RecipeChartLegendBand extends SlotText {
+export interface RecipeChartLegendBand extends ComputeIntersectAll<[SlotText]> {
 	value: number;
 	valueLabel?: string;
 	color: string;
