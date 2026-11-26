@@ -37,3 +37,5 @@ export function createColumnVisibility(storageKey: () => string) {
 		}
 	};
 }
+
+export default createColumnVisibility;
